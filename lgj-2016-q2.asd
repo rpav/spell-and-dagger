@@ -18,9 +18,25 @@
     :components
     ((:file "util.rpav-1")
      (:file "package")
+     (:file "util")
+     (:file "proto")
+
+     (:file "game")
+     (:file "phase")
+     (:module #:phases
+      :pathname "phases"
+      :components
+      ((:file "map-phase")))
+
+     (:file "ui")
+     (:module #:uis
+      :pathname "ui"
+      :components nil)
+
      (:file "sprite")
      (:file "assets")
-     (:file "window")))
+     (:file "window")
+     (:file "quadtree")))
 
    (:module #:assets
     :pathname "assets"

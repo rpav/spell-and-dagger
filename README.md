@@ -16,3 +16,6 @@ This requires the *absolute latest* of the following:
 
 Everything else can be quickloaded.
 
+## Running
+
+Load it, then `(game:run)`.

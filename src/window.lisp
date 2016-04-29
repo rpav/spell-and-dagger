@@ -7,18 +7,22 @@
    (ui-list :initform (make-instance 'cmd-list :subsystem :nvg))))
 
 (defclass game-window (kit.sdl2:gl-window)
-  (gk assets
+  (gk assets game
+   (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
 
-(defmethod initialize-instance :after ((w game-window) &key &allow-other-keys)
-  (with-slots (gk assets render-bundle render-lists) w
+(defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
+  (with-slots (gk assets game render-bundle render-lists) win
     (with-slots (pass-list pre-list sprite-list ui-list) render-lists
       (setf gk (gk:create :gl3))
       (setf assets (load-assets gk))
 
+      (let ((*assets* assets))
+        (setf game (make-instance 'game :window win)))
+
       (let ((sprite (make-instance 'sprite
-                      :pos (gk-vec4 100 100 0 1)
+                      :pos (gk-vec4 (/ w 2.0) (/ h 2.0) 0 1)
                       :sheet (asset-sheet assets)
                       :size (gk-vec3 4 4 1)
                       :index 0)))
@@ -42,8 +46,11 @@
 (defmethod kit.sdl2:render ((w game-window))
   (gl:clear-color 0.0 0.0 0.0 1.0)
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
-  (with-slots (gk render-bundle) w
-    (gk:process gk render-bundle)))
+  (with-slots (gk assets game render-bundle) w
+    (let ((*assets* assets)
+          (*time* (current-time)))
+      (frame-update game)
+      (gk:process gk render-bundle))))
 
 (defmethod kit.sdl2:textinput-event ((w game-window) ts text)
   (when (string= "Q" (string-upcase text))
