@@ -20,6 +20,7 @@
       (let ((sprite (make-instance 'sprite
                       :pos (gk-vec4 100 100 0 1)
                       :sheet (asset-sheet assets)
+                      :size (gk-vec3 4 4 1)
                       :index 0)))
         (draw sprite render-lists (asset-proj assets)))
 
