@@ -9,5 +9,7 @@
 (defvar *ps* nil
   "This should be set to the game's phase stack")
 
+(defvar *screen* nil)
+
 (defgeneric draw (thing lists matrix)
   (:documentation "Draw `THING` given `LISTS` and prior transformation `MATRIX`"))
