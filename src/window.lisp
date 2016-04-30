@@ -7,10 +7,17 @@
    (ui-list :initform (make-instance 'cmd-list :subsystem :nvg))))
 
 (defclass game-window (kit.sdl2:gl-window)
-  (gk assets game screen
+  (gk assets game
+   (screen :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
+
+(defun current-screen ()
+  (game-window-screen *window*))
+
+(defun (setf current-screen) (v)
+  (setf (game-window-screen *window*) v))
 
 (defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
   (with-slots (gk assets game screen render-bundle render-lists) win

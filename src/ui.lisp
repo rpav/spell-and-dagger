@@ -39,11 +39,10 @@
   (if v
       (unless (and *screen* (eq s *screen*))
         (screen-opening s)
-        (setf *screen* s))
-      (when (and *screen* (eq s *screen*))
+        (setf (current-screen) s))
+      (when (and (current-screen) (eq s (current-screen)))
         (screen-closing s)
-        (setf *screen* nil))))
-
+        (setf (current-screen) nil))))
 
 (defclass test-screen (screen)
   (sprite))
