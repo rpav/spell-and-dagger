@@ -59,3 +59,6 @@
 (defmethod draw :after ((s test-screen) lists m)
   (with-slots (sprite) s
     (draw sprite lists m)))
+
+(defmethod key-event ((w test-screen) key state)
+  )

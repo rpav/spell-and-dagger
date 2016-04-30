@@ -14,10 +14,11 @@
    (render-lists :initform (make-instance 'game-lists))))
 
 (defun current-screen ()
-  (game-window-screen *window*))
+  (and *window* (game-window-screen *window*)))
 
 (defun (setf current-screen) (v)
-  (setf (game-window-screen *window*) v))
+  (when *window*
+    (setf (game-window-screen *window*) v)))
 
 (defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
   (with-slots (gk assets game screen render-bundle render-lists) win
@@ -25,7 +26,8 @@
       (setf gk (gk:create :gl3))
       (setf assets (load-assets gk))
 
-      (let ((*assets* assets))
+      (let ((*assets* assets)
+            (*window* win))
         (setf game (make-instance 'game :window win))
         (setf screen (make-instance 'test-screen :w w :h h)))
 
@@ -49,18 +51,22 @@
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
   (with-slots (gk assets game screen render-bundle render-lists) w
     (let ((*assets* assets)
-          (*time* (current-time)))
+          (*time* (current-time))
+          (*window* w))
       (draw screen render-lists (asset-proj *assets*))
       (gk:process gk render-bundle))))
 
-(defmethod kit.sdl2:textinput-event ((w game-window) ts text)
-  (when (string= "Q" (string-upcase text))
-    (kit.sdl2:close-window w)))
+(defgeneric key-event (ob key state) (:method (ob key state)))
 
 (defmethod kit.sdl2:keyboard-event ((window game-window) state ts repeat-p keysym)
-  (let ((scancode (sdl2:scancode keysym)))
-    (when (eq :scancode-escape scancode)
-      (kit.sdl2:close-window window))))
+  (let ((*window* window)
+        (scancode (sdl2:scancode keysym)))
+    (when (or (eq :scancode-escape scancode)
+              (eq :scancode-q scancode))
+      (kit.sdl2:close-window window))
+    (unless repeat-p
+      (when-let (screen (current-screen))
+        (key-event screen scancode state)))))
 
 (defun run (&key (w 1280) (h 720))
   (kit.sdl2:start)
