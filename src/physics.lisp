@@ -24,12 +24,10 @@
   (with-slots (last-time timestep) phys
     (let* ((diff (- *time* last-time))
            (steps (truncate diff timestep)))
-      (unless (< steps 1)
-        #++
-        (loop for i from 0 below steps
-              do (physics-step phys))
-        (physics-step phys)
-        (setf last-time *time*)))))
+      ;; Just let this depend on vsync for now, which isn't ideal, but
+      ;; whatever
+      (physics-step phys)
+      (setf last-time *time*))))
 
 (defun physics-step (phys)
   (with-slots (objects) phys
