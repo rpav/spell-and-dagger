@@ -21,7 +21,6 @@
      (:file "util")
      (:file "proto")
 
-     (:file "game")
      (:file "phase")
      (:module #:phases
       :pathname "phases"

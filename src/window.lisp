@@ -6,6 +6,12 @@
    (sprite-list :initform (make-instance 'cmd-list :prealloc 100 :subsystem :gl))
    (ui-list :initform (make-instance 'cmd-list :subsystem :nvg))))
 
+(defun game-lists-clear (game-lists)
+  (with-slots (pre-list sprite-list ui-list) game-lists
+    (cmd-list-clear pre-list)
+    (cmd-list-clear sprite-list)
+    (cmd-list-clear ui-list)))
+
 (defclass game-window (kit.sdl2:gl-window)
   (gk assets game
    (screen :accessor game-window-screen)
@@ -40,7 +46,10 @@
                        pre-list         ; 1
                        sprite-list      ; 2
                        ui-list          ; 3
-                       )))))
+                       ))
+      (sdl2:gl-set-swap-interval 1)
+      (setf (kit.sdl2:idle-render win) t)
+      )))
 
 (defmethod kit.sdl2:close-window :before ((w game-window))
   (with-slots (gk) w
@@ -50,6 +59,7 @@
   (gl:clear-color 0.0 0.0 0.0 1.0)
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
   (with-slots (gk assets game screen render-bundle render-lists) w
+    (game-lists-clear render-lists)
     (let ((*assets* assets)
           (*time* (current-time))
           (*window* w))

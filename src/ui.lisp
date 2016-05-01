@@ -61,4 +61,10 @@
     (draw sprite lists m)))
 
 (defmethod key-event ((w test-screen) key state)
-  )
+  (with-slots (sprite) w
+    (:say key state)
+    (when (eq state :keydown)
+      (case key
+        (:scancode-right
+         (incf (vx (sprite-pos sprite)) 5)
+         (:say (sprite-pos sprite)))))))
