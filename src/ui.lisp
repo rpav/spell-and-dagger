@@ -69,9 +69,8 @@
     (if (eq state :keydown)
         (progn
           (case key
-            (:scancode-right (gk:set-vec2 (entity-motion char) +motion-right+))
-            (:scancode-left (gk:set-vec2 (entity-motion char) +motion-left+))
-            (:scancode-up (gk:set-vec2 (entity-motion char) +motion-up+))
-            (:scancode-down (gk:set-vec2 (entity-motion char) +motion-down+)))
-          (gk:nv2* (entity-motion char) 3))
-        (gk:set-vec2 (entity-motion char) +motion-none+))))
+            (:scancode-right (entity-move char +motion-right+))
+            (:scancode-left (entity-move char +motion-left+))
+            (:scancode-up (entity-move char +motion-up+))
+            (:scancode-down (entity-move char +motion-down+))))
+        (entity-move char +motion-none+))))

@@ -19,6 +19,15 @@
       (when sprite
         (setf (sprite-pos sprite) pos)))))
 
+(defgeneric entity-move (entity move)
+  (:method ((e entity) move)
+    (with-slots (motion) e
+      (gk:set-vec2 motion move)
+      (gk:nv2* motion 3))))
+
+(defgeneric entity-action (entity action)
+  (:method (e a)))
+
  ;; Quick take on character
 
 (defclass game-char (entity) ())
