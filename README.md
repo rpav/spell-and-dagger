@@ -2,9 +2,9 @@
 
 Current status: Not much!  It loads, and displays a sprite.
 
-Current screenshot:
+Current video:
 
-<img src="http://ogmo.mephle.net/lgj/lgs-shot.png">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sbWiGE59PDw" frameborder="0" allowfullscreen></iframe>
 
 ## Building
 
