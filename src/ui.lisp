@@ -37,7 +37,7 @@
 (defmethod (setf ui-visible) (v (s screen))
   (call-next-method)
   (if v
-      (unless (and *screen* (eq s *screen*))
+      (unless (and (current-screen) (eq s (current-screen)))
         (screen-opening s)
         (setf (current-screen) s))
       (when (and (current-screen) (eq s (current-screen)))
@@ -45,26 +45,33 @@
         (setf (current-screen) nil))))
 
 (defclass test-screen (screen)
-  (sprite))
+  ((char :initform (make-instance 'game-char))
+   (physics :initform (make-instance 'physics))))
 
 (defmethod initialize-instance :after ((s test-screen) &key w h &allow-other-keys)
-  (with-slots (sprite) s
-    (setf sprite
-          (make-instance 'sprite
-            :pos (gk-vec4 (/ w 2.0) (/ h 2.0) 0 1)
-            :sheet (asset-sheet *assets*)
-            :size (gk-vec3 4 4 1)
-            :index 0))))
+  (with-slots (char physics) s
+    (let ((sprite
+            (make-instance 'sprite
+              :pos (gk-vec4 0 0 0 1)
+              :sheet (asset-sheet *assets*)
+              :index 0)))
+      (setf (entity-sprite char) sprite))
+    (physics-add physics char)
+    (physics-start physics)))
 
 (defmethod draw :after ((s test-screen) lists m)
-  (with-slots (sprite) s
-    (draw sprite lists m)))
+  (with-slots (char physics) s
+    (physics-update physics)
+    (draw (entity-sprite char) lists m)))
 
 (defmethod key-event ((w test-screen) key state)
-  (with-slots (sprite) w
-    (:say key state)
-    (when (eq state :keydown)
-      (case key
-        (:scancode-right
-         (incf (vx (sprite-pos sprite)) 5)
-         (:say (sprite-pos sprite)))))))
+  (with-slots (char) w
+    (if (eq state :keydown)
+        (progn
+          (case key
+            (:scancode-right (gk:set-vec2 (entity-motion char) +motion-right+))
+            (:scancode-left (gk:set-vec2 (entity-motion char) +motion-left+))
+            (:scancode-up (gk:set-vec2 (entity-motion char) +motion-up+))
+            (:scancode-down (gk:set-vec2 (entity-motion char) +motion-down+)))
+          (gk:nv2* (entity-motion char) 3))
+        (gk:set-vec2 (entity-motion char) +motion-none+))))

@@ -21,6 +21,9 @@
      (:file "util")
      (:file "proto")
 
+     (:file "entity")
+     (:file "physics")
+
      (:file "phase")
      (:module #:phases
       :pathname "phases"
@@ -31,6 +34,7 @@
      (:module #:uis
       :pathname "ui"
       :components nil)
+
 
      (:file "sprite")
      (:file "assets")

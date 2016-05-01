@@ -10,7 +10,7 @@
     (with-slots (proj font spritesheet) pack
       (with-bundle (b)
         (let* ((config (make-instance 'cmd-list :subsystem :config))
-               (ortho (cmd-tf-ortho proj 0 1280 0 720 -10000 10000))
+               (ortho (cmd-tf-ortho proj 0 128 0 72 -10000 10000))
                (load-sprites (cmd-spritesheet-create
                               (autowrap:asdf-path :lgj-2016-q2 :assets :image "spritesheet.json")
                               :gk-ssf-texturepacker-json

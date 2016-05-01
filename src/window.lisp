@@ -13,7 +13,7 @@
     (cmd-list-clear ui-list)))
 
 (defclass game-window (kit.sdl2:gl-window)
-  (gk assets game
+  (gk assets
    (screen :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
@@ -27,14 +27,13 @@
     (setf (game-window-screen *window*) v)))
 
 (defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
-  (with-slots (gk assets game screen render-bundle render-lists) win
+  (with-slots (gk assets screen render-bundle render-lists) win
     (with-slots (pass-list pre-list sprite-list ui-list) render-lists
       (setf gk (gk:create :gl3))
       (setf assets (load-assets gk))
 
       (let ((*assets* assets)
             (*window* win))
-        (setf game (make-instance 'game :window win))
         (setf screen (make-instance 'test-screen :w w :h h)))
 
       (let ((pre-pass (pass 1))
@@ -48,8 +47,7 @@
                        ui-list          ; 3
                        ))
       (sdl2:gl-set-swap-interval 1)
-      (setf (kit.sdl2:idle-render win) t)
-      )))
+      (setf (kit.sdl2:idle-render win) t))))
 
 (defmethod kit.sdl2:close-window :before ((w game-window))
   (with-slots (gk) w
@@ -58,11 +56,11 @@
 (defmethod kit.sdl2:render ((w game-window))
   (gl:clear-color 0.0 0.0 0.0 1.0)
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
-  (with-slots (gk assets game screen render-bundle render-lists) w
+  (with-slots (gk assets screen render-bundle render-lists) w
     (game-lists-clear render-lists)
-    (let ((*assets* assets)
-          (*time* (current-time))
-          (*window* w))
+    (let* ((*assets* assets)
+           (*time* (current-time))
+           (*window* w))
       (draw screen render-lists (asset-proj *assets*))
       (gk:process gk render-bundle))))
 
