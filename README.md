@@ -4,7 +4,7 @@ Current status: Not much!  It loads, and displays a sprite.
 
 Current screenshot ([video here](https://www.youtube.com/embed/sbWiGE59PDw)):
 
-<img src="http://ogmo.mephle.net/lgs/lgs-shot.png">
+<img src="http://ogmo.mephle.net/lgj/lgs-shot.png">
 
 ## Building
 
