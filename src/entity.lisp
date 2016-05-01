@@ -23,7 +23,7 @@
   (:method ((e entity) move)
     (with-slots (motion) e
       (gk:set-vec2 motion move)
-      (gk:nv2* motion 2))))
+      #++(gk:nv2* motion 2))))
 
 (defgeneric entity-action (entity action)
   (:method (e a)))
@@ -36,23 +36,22 @@
    anim anim-state))
 
 (defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
-  (with-slots (anim) g
-    (setf anim (make-instance 'anim-sprite :name "hero/walk-down"))))
-
-(defmethod (setf entity-sprite) (v (g game-char))
-  (call-next-method)
-  (with-slots (sprite anim anim-state) g
-    (setf anim-state (animation-instance anim sprite))
-    (anim-run *anim-manager* anim-state)))
+  (with-slots (anim anim-state) g
+    (setf anim (make-instance 'anim-sprite :name "hero/walk-down"))
+    (setf anim-state (animation-instance anim nil))))
 
 (defmethod entity-move ((e game-char) m)
   (call-next-method)
-  (let ((anims (asset-anims *assets*)))
-    (with-slots (sprite facing) e
-      (switch (m)
-        (+motion-none+ nil)
-        (+motion-up+ (setf facing "hero/walk-up"))
-        (+motion-down+ (setf facing "hero/walk-down"))
-        (+motion-left+ (setf facing "hero/walk-left"))
-        (+motion-right+ (setf facing "hero/walk-right")))
-      (setf (sprite-index sprite) (find-sheet-frame anims facing 0)))))
+  (with-slots (sprite facing anim anim-state) e
+    (switch (m)
+      (+motion-none+ nil)
+      (+motion-up+ (setf facing "hero/walk-up"))
+      (+motion-down+ (setf facing "hero/walk-down"))
+      (+motion-left+ (setf facing "hero/walk-left"))
+      (+motion-right+ (setf facing "hero/walk-right")))
+    (setf (anim-sprite-anim anim) (find-sheet-anim (asset-anims *assets*)
+                                                   facing)
+          (anim-state-object anim-state) sprite)
+    (anim-stop *anim-manager* anim-state)
+    (unless (eq +motion-none+ m)
+      (anim-run *anim-manager* anim-state))))
