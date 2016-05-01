@@ -68,6 +68,7 @@
 
 (defmethod kit.sdl2:keyboard-event ((window game-window) state ts repeat-p keysym)
   (let ((*window* window)
+        (*assets* (slot-value window 'assets))
         (scancode (sdl2:scancode keysym)))
     (when (or (eq :scancode-escape scancode)
               (eq :scancode-q scancode))

@@ -9,7 +9,7 @@
   :license "GPL2"
   :version "0.0"
 
-  :depends-on (:alexandria :defpackage-plus :sdl2kit :gamekernel)
+  :depends-on (:alexandria :defpackage-plus :cl-ppcre :sdl2kit :gamekernel)
   :serial t
 
   :components

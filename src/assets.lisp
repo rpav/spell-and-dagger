@@ -3,11 +3,12 @@
 (defclass asset-pack ()
   ((proj :initform (gk-mat4) :reader asset-proj)
    (font :reader asset-font)
-   (spritesheet :reader asset-sheet)))
+   (spritesheet :reader asset-sheet)
+   (anims :reader asset-anims)))
 
 (defun load-assets (gk)
   (let ((pack (make-instance 'asset-pack)))
-    (with-slots (proj font spritesheet) pack
+    (with-slots (proj font spritesheet anims) pack
       (with-bundle (b)
         (let* ((config (make-instance 'cmd-list :subsystem :config))
                (ortho (cmd-tf-ortho proj 0 128 0 72 -10000 10000))
@@ -23,5 +24,6 @@
           (gk:process gk b)
 
           (setf font (font-create-id load-font))
-          (setf spritesheet (make-sheet load-sprites)))))
+          (setf spritesheet (make-sheet load-sprites))
+          (setf anims (make-instance 'sheet-animations :sheet spritesheet)))))
     pack))

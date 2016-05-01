@@ -23,11 +23,25 @@
   (:method ((e entity) move)
     (with-slots (motion) e
       (gk:set-vec2 motion move)
-      (gk:nv2* motion 3))))
+      (gk:nv2* motion 2))))
 
 (defgeneric entity-action (entity action)
   (:method (e a)))
 
  ;; Quick take on character
 
-(defclass game-char (entity) ())
+(defclass game-char (entity)
+  ((pos :initform (gk-vec2 10 10))
+   (facing :initform "hero/walk-down")))
+
+(defmethod entity-move ((e game-char) m)
+  (call-next-method)
+  (let ((anims (asset-anims *assets*)))
+    (with-slots (sprite facing) e
+      (switch (m)
+        (+motion-none+ nil)
+        (+motion-up+ (setf facing "hero/walk-up"))
+        (+motion-down+ (setf facing "hero/walk-down"))
+        (+motion-left+ (setf facing "hero/walk-left"))
+        (+motion-right+ (setf facing "hero/walk-right")))
+      (setf (sprite-index sprite) (find-sheet-frame anims facing 0)))))

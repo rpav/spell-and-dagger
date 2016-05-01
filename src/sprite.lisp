@@ -32,3 +32,38 @@
       (setf (tf-trs-prior trs) m)
       (cmd-list-append pre-list trs)
       (cmd-list-append sprite-list qs))))
+
+ ;; Spritesheet animations
+
+(defclass sprite-anim ()
+  ((count :initarg :count :initform 0 :accessor sprite-anim-count)
+   (indexes :initform (make-array 2 :element-type '(unsigned-byte 8) :adjustable t :fill-pointer 0)
+            :reader sprite-anim-indexes)))
+
+(defun sprite-anim-append (sa index)
+  (with-slots (indexes) sa
+    (vector-push-extend index indexes)))
+
+(defun sprite-anim-frame (sa frame)
+  (with-slots (indexes) sa
+    (aref indexes frame)))
+
+(defclass sheet-animations ()
+  ((sheet :initarg :sheet :initform nil)
+   (anims :initform (make-hash-table :test 'equalp))))
+
+(defmethod initialize-instance :after ((s sheet-animations) &key &allow-other-keys)
+  (with-slots (sheet anims) s
+    (map-spritesheet
+     (lambda (x i)
+       (let* ((m (nth-value 1 (ppcre:scan-to-strings "(.*)_(\\d+)\\.png$" x)))
+              (name (ppcre:regex-replace-all "_" (aref m 0) "-"))
+              #++(num (parse-integer (aref m 1)))
+              (anim (ensure-gethash (nstring-upcase name) anims
+                                    (make-instance 'sprite-anim))))
+         (sprite-anim-append anim i)))
+     sheet)))
+
+(defun find-sheet-frame (sheet name frame)
+  (with-slots (anims) sheet
+    (sprite-anim-frame (gethash name anims) frame)))
