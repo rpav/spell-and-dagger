@@ -32,7 +32,18 @@
 
 (defclass game-char (entity)
   ((pos :initform (gk-vec2 10 10))
-   (facing :initform "hero/walk-down")))
+   (facing :initform "hero/walk-down")
+   anim anim-state))
+
+(defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
+  (with-slots (anim) g
+    (setf anim (make-instance 'anim-sprite :name "hero/walk-down"))))
+
+(defmethod (setf entity-sprite) (v (g game-char))
+  (call-next-method)
+  (with-slots (sprite anim anim-state) g
+    (setf anim-state (animation-instance anim sprite))
+    (anim-run *anim-manager* anim-state)))
 
 (defmethod entity-move ((e game-char) m)
   (call-next-method)

@@ -14,10 +14,19 @@
 
 (defclass game-window (kit.sdl2:gl-window)
   (gk assets
+   (anim-manager :initform (make-instance 'anim-manager))
    (screen :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
+
+(defmacro with-game-state ((gamewin) &body body)
+  (once-only (gamewin)
+    `(let ((*assets* (slot-value ,gamewin 'assets))
+           (*window* ,gamewin)
+           (*time* (current-time))
+           (*anim-manager* (slot-value ,gamewin 'anim-manager)))
+       ,@body)))
 
 (defun current-screen ()
   (and *window* (game-window-screen *window*)))
@@ -32,8 +41,7 @@
       (setf gk (gk:create :gl3))
       (setf assets (load-assets gk))
 
-      (let ((*assets* assets)
-            (*window* win))
+      (with-game-state (win)
         (setf screen (make-instance 'test-screen :w w :h h)))
 
       (let ((pre-pass (pass 1))
@@ -58,24 +66,22 @@
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
   (with-slots (gk assets screen render-bundle render-lists) w
     (game-lists-clear render-lists)
-    (let* ((*assets* assets)
-           (*time* (current-time))
-           (*window* w))
+    (with-game-state (w)
+      (anim-update *anim-manager*)
       (draw screen render-lists (asset-proj *assets*))
       (gk:process gk render-bundle))))
 
 (defgeneric key-event (ob key state) (:method (ob key state)))
 
 (defmethod kit.sdl2:keyboard-event ((window game-window) state ts repeat-p keysym)
-  (let ((*window* window)
-        (*assets* (slot-value window 'assets))
-        (scancode (sdl2:scancode keysym)))
-    (when (or (eq :scancode-escape scancode)
-              (eq :scancode-q scancode))
-      (kit.sdl2:close-window window))
-    (unless repeat-p
-      (when-let (screen (current-screen))
-        (key-event screen scancode state)))))
+  (with-game-state (window)
+    (let ((scancode (sdl2:scancode keysym)))
+      (when (or (eq :scancode-escape scancode)
+                (eq :scancode-q scancode))
+        (kit.sdl2:close-window window))
+      (unless repeat-p
+        (when-let (screen (current-screen))
+          (key-event screen scancode state))))))
 
 (defun run (&key (w 1280) (h 720))
   (kit.sdl2:start)

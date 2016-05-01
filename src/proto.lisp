@@ -12,5 +12,8 @@
 (defvar *window* nil
   "The current game-window")
 
+(defvar *anim-manager* nil
+  "The animation manager")
+
 (defgeneric draw (thing lists matrix)
   (:documentation "Draw `THING` given `LISTS` and prior transformation `MATRIX`"))

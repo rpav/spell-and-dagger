@@ -36,8 +36,7 @@
  ;; Spritesheet animations
 
 (defclass sprite-anim ()
-  ((count :initarg :count :initform 0 :accessor sprite-anim-count)
-   (indexes :initform (make-array 2 :element-type '(unsigned-byte 8) :adjustable t :fill-pointer 0)
+  ((indexes :initform (make-array 2 :element-type '(unsigned-byte 8) :adjustable t :fill-pointer 0)
             :reader sprite-anim-indexes)))
 
 (defun sprite-anim-append (sa index)
@@ -47,6 +46,10 @@
 (defun sprite-anim-frame (sa frame)
   (with-slots (indexes) sa
     (aref indexes frame)))
+
+(defun sprite-anim-length (sa)
+  (with-slots (indexes) sa
+    (length indexes)))
 
 (defclass sheet-animations ()
   ((sheet :initarg :sheet :initform nil)
@@ -67,3 +70,14 @@
 (defun find-sheet-frame (sheet name frame)
   (with-slots (anims) sheet
     (sprite-anim-frame (gethash name anims) frame)))
+
+(defun find-sheet-anim (sheet name)
+  (with-slots (anims) sheet
+    (gethash name anims)))
+
+(defun sheet-anim-length (sheet name)
+  (with-slots (anims) sheet
+    (with-slots (indexes)
+        (or (gethash sheet name)
+            (error "Can't find animation: ~S" name))
+      (length indexes))))
