@@ -5,12 +5,14 @@ Current status:
 * A fair bit of internal structure
 * Animations
 * Test entity with sprite, walking around and swinging arm on input
+* Tilemaps load from Tiled (http://www.mapeditor.org/) .json files
 
 Up next:
 
+* Tilemap rendering
 * Better input handling
 * Sword
-* Maps/collision
+* Collision
 
 Current screenshot:
 
