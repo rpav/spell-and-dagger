@@ -67,12 +67,12 @@
          (sprite-anim-append anim i)))
      sheet)))
 
-(defun find-sheet-frame (sheet name frame)
-  (with-slots (anims) sheet
+(defun find-anim-frame (animations name frame)
+  (with-slots (anims) animations
     (sprite-anim-frame (gethash name anims) frame)))
 
-(defun find-sheet-anim (sheet name)
-  (with-slots (anims) sheet
+(defun find-anim (animations name)
+  (with-slots (anims) animations
     (gethash name anims)))
 
 (defun sheet-anim-length (sheet name)

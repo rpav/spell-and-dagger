@@ -10,9 +10,10 @@
 (defgeneric animation-instance (animation object &key &allow-other-keys)
   (:documentation "Create an appropriate ANIM-STATE for ANIMATION,
 given `OBJECT` to be animated and any other optional parameters.")
-  (:method (a o &key &allow-other-keys)
-    (:say o)
-    (make-instance 'anim-state :animation a :object o)))
+  (:method (a o &key on-stop &allow-other-keys)
+    (make-instance 'anim-state
+      :animation a :object o
+      :on-stop on-stop)))
 
 ;;; ANIM-STATE keeps the _state_ of any active animation, so you can
 ;;; use the same ANIMATION instance for multiple different ongoing
@@ -20,7 +21,8 @@ given `OBJECT` to be animated and any other optional parameters.")
 (defclass anim-state ()
   ((animation :initarg :animation)
    (object :initarg :object :accessor anim-state-object)
-   (start-time :initform 0 :accessor anim-state-start-time)))
+   (start-time :initform 0 :accessor anim-state-start-time)
+   (on-stop :initform nil :initarg :on-stop :accessor anim-state-on-stop)))
 
 (defgeneric animation-begin (anim anim-state)
   (:documentation "Called when the animation ANIM is started by ANIM-RUN.")
@@ -34,7 +36,10 @@ Specialize on one or both."))
 (defgeneric animation-stopped (anim anim-state)
   (:documentation "Called when an animation is stopped, naturally
 or manually.")
-  (:method ((a animation) s)))
+  (:method ((a animation) s)
+    (with-slots (on-stop) s
+      (when on-stop
+        (funcall on-stop s)))))
 
  ;; ANIM-MANAGER
 
@@ -42,23 +47,27 @@ or manually.")
   ((animations :initform (make-hash-table))))
 
 (defun anim-run (manager &rest anim-states)
-  (with-slots (animations) manager
-    (loop for as in anim-states
-          do (with-slots (animation) as
-               (setf (gethash as animations) t)
-               (animation-begin animation as)))))
+  (let ((*anim-manager* manager))
+    (with-slots (animations) manager
+      (loop for as in anim-states
+            do (with-slots (animation) as
+                 (setf (gethash as animations) t)
+                 (animation-begin animation as))))))
 
 (defun anim-update (manager)
-  (with-slots (animations) manager
-    (loop for as being each hash-key in animations
-          do (with-slots (animation) as
-               (animation-update animation as)))))
+  (let ((*anim-manager* manager))
+    (with-slots (animations) manager
+      (loop for as being each hash-key in animations
+            for i from 0
+            do (with-slots (animation) as
+                 (animation-update animation as))))))
 
 (defun anim-stop (manager &rest anim-states)
-  (with-slots (animations) manager
-    (loop for as in anim-states
-          do (when (remhash as animations)
-               (animation-stopped (slot-value as 'animation) as)))))
+  (let ((*anim-manager* manager))
+    (with-slots (animations) manager
+      (loop for as in anim-states
+            do (when (remhash as animations)
+                 (animation-stopped (slot-value as 'animation) as))))))
 
  ;; spritesheet-anim
 
@@ -66,15 +75,16 @@ or manually.")
 
 (defclass anim-sprite (animation)
   ((anim :initform nil :accessor anim-sprite-anim)
-   (frame-length :initarg :frame-length :initform (/ 180.0 1000)))
+   (frame-length :initarg :frame-length :initform (/ 180.0 1000) :accessor anim-sprite-frame-length)
+   (count :initform nil :initarg :count :accessor anim-sprite-count))
   (:documentation "OBJECT should be a SPRITE."))
 
 (defmethod initialize-instance :after ((a anim-sprite) &key name &allow-other-keys)
   (with-slots (anim) a
-    (setf anim (find-sheet-anim (asset-anims *assets*) name))))
+    (setf anim (find-anim (asset-anims *assets*) name))))
 
 (defmethod animation-update ((a anim-sprite) state)
-  (with-slots (anim frame-length) a
+  (with-slots (anim count frame-length) a
     (with-slots (object start-time) state
       (when object
         (let* ((frame-count (sprite-anim-length anim))
@@ -82,6 +92,9 @@ or manually.")
                (frame
                  (truncate
                   (* frame-count
-                     (mod (/ delta (* frame-count frame-length)) 1.0)))))
-          (setf (sprite-index object)
-                (sprite-anim-frame anim frame)))))))
+                     (mod (/ delta (* frame-count frame-length)) 1.0))))
+               (c (truncate (/ delta (* frame-count frame-length)))))
+          (if (and count (>= c count))
+              (anim-stop *anim-manager* state)
+              (setf (sprite-index object)
+                    (sprite-anim-frame anim frame))))))))

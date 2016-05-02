@@ -3,9 +3,10 @@
 ;; Re-run this command to regenerate this file.  It'll overwrite
 ;; whatever is there, so make sure it's going to the right place:
 #+(or)
-(make-util:make-util '(game-utils "util.rpav-1") :package "UTIL.RPAV-1"
+(make-util:make-util '(lgj-2016-q2 :src "util.rpav-1") :package "UTIL.RPAV-1"
                      :symbols
-                     '(laconic:string-join laconic:string+ laconic:substr)
+                     '(laconic:string-join laconic:string+ laconic:substr
+                                           laconic:aval laconic:akey)
                      :exportp t)
 
 ;; ===================================================================
@@ -44,3 +45,19 @@ Make a shared substring of `STR` using `MAKE-ARRAY :displaced-to`"
                     str :displaced-index-offset start)))))
 
 (export 'substr)
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (unless (fboundp 'aval)
+    (defun aval (akey alist &key (key 'identity) (test 'eq))
+      "Get the value for key `KEY` in `ALIST`"
+      (cdr (assoc akey alist :key key :test test)))))
+
+(export 'aval)
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (unless (fboundp 'akey)
+    (defun akey (val alist &key (key 'identity) (test 'eq))
+      "Get the key for value `VAL` in `ALIST`"
+      (car (rassoc val alist :key key :test test)))))
+
+(export 'akey)

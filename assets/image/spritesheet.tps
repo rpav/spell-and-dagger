@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.0</string>
         <key>fileName</key>
-        <string>/home/rpav/vcs/git/common-lisp/lgj-2016-q2/res/image/spritesheet.tps</string>
+        <string>/home/rpav/vcs/git/common-lisp/lgj-2016-q2/assets/image/spritesheet.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -180,7 +180,7 @@
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
-            <false/>
+            <true/>
             <key>defaultPivotPoint</key>
             <point_f>0.5,0.5</point_f>
             <key>writePivotPoints</key>
@@ -188,30 +188,70 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">build/Hero/swing_down_0.png</key>
-            <key type="filename">build/Hero/swing_down_1.png</key>
-            <key type="filename">build/Hero/swing_left_0.png</key>
-            <key type="filename">build/Hero/swing_left_1.png</key>
-            <key type="filename">build/Hero/swing_right_0.png</key>
-            <key type="filename">build/Hero/swing_right_1.png</key>
-            <key type="filename">build/Hero/swing_up_0.png</key>
-            <key type="filename">build/Hero/swing_up_1.png</key>
-            <key type="filename">build/Hero/walk_down_0.png</key>
-            <key type="filename">build/Hero/walk_down_1.png</key>
-            <key type="filename">build/Hero/walk_down_2.png</key>
-            <key type="filename">build/Hero/walk_down_3.png</key>
-            <key type="filename">build/Hero/walk_left_0.png</key>
-            <key type="filename">build/Hero/walk_left_1.png</key>
-            <key type="filename">build/Hero/walk_left_2.png</key>
-            <key type="filename">build/Hero/walk_left_3.png</key>
-            <key type="filename">build/Hero/walk_right_0.png</key>
-            <key type="filename">build/Hero/walk_right_1.png</key>
-            <key type="filename">build/Hero/walk_right_2.png</key>
-            <key type="filename">build/Hero/walk_right_3.png</key>
-            <key type="filename">build/Hero/walk_up_0.png</key>
-            <key type="filename">build/Hero/walk_up_1.png</key>
-            <key type="filename">build/Hero/walk_up_2.png</key>
-            <key type="filename">build/Hero/walk_up_3.png</key>
+            <key type="filename">build/ranger-f/atk_down_008.png</key>
+            <key type="filename">build/ranger-f/atk_down_009.png</key>
+            <key type="filename">build/ranger-f/atk_down_010.png</key>
+            <key type="filename">build/ranger-f/atk_down_011.png</key>
+            <key type="filename">build/ranger-f/atk_left_012.png</key>
+            <key type="filename">build/ranger-f/atk_left_013.png</key>
+            <key type="filename">build/ranger-f/atk_left_014.png</key>
+            <key type="filename">build/ranger-f/atk_left_015.png</key>
+            <key type="filename">build/ranger-f/atk_right_004.png</key>
+            <key type="filename">build/ranger-f/atk_right_005.png</key>
+            <key type="filename">build/ranger-f/atk_right_006.png</key>
+            <key type="filename">build/ranger-f/atk_right_007.png</key>
+            <key type="filename">build/ranger-f/atk_up_000.png</key>
+            <key type="filename">build/ranger-f/atk_up_001.png</key>
+            <key type="filename">build/ranger-f/atk_up_002.png</key>
+            <key type="filename">build/ranger-f/atk_up_003.png</key>
+            <key type="filename">build/ranger-f/walk_down_008.png</key>
+            <key type="filename">build/ranger-f/walk_down_009.png</key>
+            <key type="filename">build/ranger-f/walk_down_010.png</key>
+            <key type="filename">build/ranger-f/walk_down_011.png</key>
+            <key type="filename">build/ranger-f/walk_left_012.png</key>
+            <key type="filename">build/ranger-f/walk_left_013.png</key>
+            <key type="filename">build/ranger-f/walk_left_014.png</key>
+            <key type="filename">build/ranger-f/walk_left_015.png</key>
+            <key type="filename">build/ranger-f/walk_right_004.png</key>
+            <key type="filename">build/ranger-f/walk_right_005.png</key>
+            <key type="filename">build/ranger-f/walk_right_006.png</key>
+            <key type="filename">build/ranger-f/walk_right_007.png</key>
+            <key type="filename">build/ranger-f/walk_up_000.png</key>
+            <key type="filename">build/ranger-f/walk_up_001.png</key>
+            <key type="filename">build/ranger-f/walk_up_002.png</key>
+            <key type="filename">build/ranger-f/walk_up_003.png</key>
+            <key type="filename">build/ranger-m/atk_down_008.png</key>
+            <key type="filename">build/ranger-m/atk_down_009.png</key>
+            <key type="filename">build/ranger-m/atk_down_010.png</key>
+            <key type="filename">build/ranger-m/atk_down_011.png</key>
+            <key type="filename">build/ranger-m/atk_left_012.png</key>
+            <key type="filename">build/ranger-m/atk_left_013.png</key>
+            <key type="filename">build/ranger-m/atk_left_014.png</key>
+            <key type="filename">build/ranger-m/atk_left_015.png</key>
+            <key type="filename">build/ranger-m/atk_right_004.png</key>
+            <key type="filename">build/ranger-m/atk_right_005.png</key>
+            <key type="filename">build/ranger-m/atk_right_006.png</key>
+            <key type="filename">build/ranger-m/atk_right_007.png</key>
+            <key type="filename">build/ranger-m/atk_up_000.png</key>
+            <key type="filename">build/ranger-m/atk_up_001.png</key>
+            <key type="filename">build/ranger-m/atk_up_002.png</key>
+            <key type="filename">build/ranger-m/atk_up_003.png</key>
+            <key type="filename">build/ranger-m/walk_down_008.png</key>
+            <key type="filename">build/ranger-m/walk_down_009.png</key>
+            <key type="filename">build/ranger-m/walk_down_010.png</key>
+            <key type="filename">build/ranger-m/walk_down_011.png</key>
+            <key type="filename">build/ranger-m/walk_left_012.png</key>
+            <key type="filename">build/ranger-m/walk_left_013.png</key>
+            <key type="filename">build/ranger-m/walk_left_014.png</key>
+            <key type="filename">build/ranger-m/walk_left_015.png</key>
+            <key type="filename">build/ranger-m/walk_right_004.png</key>
+            <key type="filename">build/ranger-m/walk_right_005.png</key>
+            <key type="filename">build/ranger-m/walk_right_006.png</key>
+            <key type="filename">build/ranger-m/walk_right_007.png</key>
+            <key type="filename">build/ranger-m/walk_up_000.png</key>
+            <key type="filename">build/ranger-m/walk_up_001.png</key>
+            <key type="filename">build/ranger-m/walk_up_002.png</key>
+            <key type="filename">build/ranger-m/walk_up_003.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
