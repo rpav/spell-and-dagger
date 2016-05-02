@@ -151,21 +151,22 @@
 (defun map-tilemap-layer (function tm layer)
   (with-slots (size layers mergeset) tm
     (let ((layer (aref layers layer)))
-      (with-slots (tiles) layer
+      (with-slots (tiles props) layer
         (loop for idx across tiles
               for i from 0
+              as key = (or (aval :layer props) i)
               as tile = (tms-find mergeset idx)
               as x = (truncate (mod i (vx size)))
               as y = (- (vy size) (truncate (/ i (vx size))))
-              do (funcall function tile x y))))))
+              do (funcall function tile x y key))))))
 
 #++
 (map-tilemap-layer
- (lambda (tile x y)
+ (lambda (tile x y key)
    (when tile
-     (:say x y (tile-image tile))))
+     (:say x y (tile-image tile) key)))
  (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))
- 0)
+ 1)
 
  ;; GK-TILEMAP
 
@@ -182,11 +183,11 @@
     (let ((layer-count (length (tilemap-layers tilemap))))
       (loop for i from 0 below layer-count
             do (map-tilemap-layer
-                (lambda (tile x y)
+                (lambda (tile x y key)
                   (when tile
                     (let ((sprite (make-instance 'sprite
                                     :sheet sheet
-                                    :key i
+                                    :key key
                                     :name (tile-image tile)
                                     :pos (gk-vec3 (+ 8 (* 16 x)) (- (* 16 y) 8.0) 0))))
                       (vector-push-extend sprite sprites))))
