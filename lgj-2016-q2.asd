@@ -23,6 +23,7 @@
 
      (:file "entity")
      (:file "physics")
+     (:file "anim")
 
      (:file "phase")
      (:module #:phases
