@@ -1,0 +1,7 @@
+Author:  surt
+License: CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+Source:  http://opengameart.org/content/town-tiles
+
+Notes:   The original spritesheet was cut by ImageMagick's convert,
+         frames renamed by animation sequence, and repackaged using
+         TexturePacker.

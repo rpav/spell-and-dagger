@@ -9,7 +9,8 @@
   :license "GPL2"
   :version "0.0"
 
-  :depends-on (:alexandria :defpackage-plus :cl-ppcre :sdl2kit :gamekernel)
+  :depends-on (:alexandria :defpackage-plus
+               :cl-json :cl-ppcre :sdl2kit :gamekernel)
   :serial t
 
   :components
@@ -24,6 +25,7 @@
      (:file "entity")
      (:file "physics")
      (:file "anim")
+     (:file "tilemap")
 
      (:file "phase")
      (:module #:phases
@@ -53,4 +55,10 @@
      (:module #:font
       :pathname "font"
       :components
-      ((:static-file "hardpixel.ttf")))))))
+      ((:static-file "hardpixel.ttf")))
+     (:module #:map
+      :pathname "map"
+      :components
+      ((:static-file "tm-town.json")
+       (:static-file "tm-town-solid.json")
+       (:static-file "test.json")))))))
