@@ -1,10 +1,20 @@
 # Lisp Game Jam 2016 Q2 entry
 
-Current status: Not much!  It loads, and displays a sprite.
+Current status:
 
-Current screenshot ([video here](https://www.youtube.com/embed/sbWiGE59PDw)):
+* A fair bit of internal structure
+* Animations
+* Test entity with sprite, walking around and swinging arm on input
 
-<img src="http://ogmo.mephle.net/lgj/lgs-shot.png">
+Up next:
+
+* Better input handling
+* Sword
+* Maps/collision
+
+Current screenshot:
+
+<img src="http://ogmo.mephle.net/lgj/current-20160502-1106.gif">
 
 ## Building
 
