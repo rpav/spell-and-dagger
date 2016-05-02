@@ -118,9 +118,21 @@
                                             :initial-contents data))
       layer)))
 
+(defclass object-layer ()
+  ((props :initform nil :initarg :props :accessor props)
+   (objects :initform nil :reader object-layer-objects)))
+
+(defun object-layer-parse (json)
+  (let ((layer (make-instance 'object-layer
+                 :props (aval :properties json)))
+        (objects (aval :objects json)))
+    (setf (slot-value layer 'objects) objects)
+    layer))
+
 (defclass tilemap ()
   ((size :initform nil :reader tilemap-size :initarg :size)
    (layers :initform nil :reader tilemap-layers)
+   (layer-names :initform (make-hash-table :test 'equal))
    (mergeset :initform nil :initarg :mergeset :reader tilemap-mergeset)
    (render-order :initform nil :initarg :render-order :reader tilemap-render-order)))
 
@@ -141,32 +153,46 @@
                                 (aval :height json))
                  :layercount (length layers)
                  :render-order (make-keyword (string-upcase (aval :renderorder json)))
-                 :mergeset mergeset)))
+                 :mergeset mergeset))
+           (names (slot-value tm 'layer-names)))
       (loop for layer in layers
             for i from 0
-            do (setf (aref (tilemap-layers tm) i)
-                     (tile-layer-parse layer)))
+            do (setf (gethash (aval :name layer) names) i
+                     (aref (tilemap-layers tm) i)
+                     (cond
+                       ((aval :data layer) (tile-layer-parse layer))
+                       ((aval :objects layer) (object-layer-parse layer)))))
       tm)))
 
-(defun map-tilemap-layer (function tm layer)
+(defun tilemap-find-layer (tm name)
+  (with-slots (layers layer-names) tm
+    (when-let (i (gethash name layer-names))
+      (aref layers i))))
+
+(defun map-tilemap-tiles (function tm layer)
   (with-slots (size layers mergeset) tm
     (let ((layer (aref layers layer)))
-      (with-slots (tiles props) layer
-        (loop for idx across tiles
-              for i from 0
-              as key = (or (aval :layer props) i)
-              as tile = (tms-find mergeset idx)
-              as x = (truncate (mod i (vx size)))
-              as y = (- (vy size) (truncate (/ i (vx size))))
-              do (funcall function tile x y key))))))
+      (when (typep layer 'tile-layer)
+        (with-slots (tiles props) layer
+          (loop for idx across tiles
+                for i from 0
+                as key = (or (aval :layer props) i)
+                as tile = (tms-find mergeset idx)
+                as x = (truncate (mod i (vx size)))
+                as y = (- (vy size) (truncate (/ i (vx size))))
+                do (funcall function tile x y key)))))))
 
 #++
-(map-tilemap-layer
+(map-tilemap-tiles
  (lambda (tile x y key)
    (when tile
      (:say x y (tile-image tile) key)))
  (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))
  1)
+
+#++
+(let ((tm (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))))
+  (tilemap-find-layer tm "objects"))
 
  ;; GK-TILEMAP
 
@@ -182,7 +208,7 @@
   (with-slots (tilemap sprites) gktm
     (let ((layer-count (length (tilemap-layers tilemap))))
       (loop for i from 0 below layer-count
-            do (map-tilemap-layer
+            do (map-tilemap-tiles
                 (lambda (tile x y key)
                   (when tile
                     (let ((sprite (make-instance 'sprite

@@ -37,8 +37,67 @@
          "width":16,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":9,
+         "name":"objects",
+         "objects":[
+                {
+                 "height":16,
+                 "id":5,
+                 "name":"door",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":96
+                }, 
+                {
+                 "ellipse":true,
+                 "height":16,
+                 "id":7,
+                 "name":"circle",
+                 "rotation":0,
+                 "type":"a type",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":112
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"some random bullshit",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-2.5,
+                         "y":51.75
+                        }, 
+                        {
+                         "x":55,
+                         "y":27.5
+                        }],
+                 "rotation":0,
+                 "type":"huh",
+                 "visible":true,
+                 "width":0,
+                 "x":141.25,
+                 "y":64.75
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
