@@ -149,34 +149,50 @@
       tm)))
 
 (defun map-tilemap-layer (function tm layer)
-  (with-slots (layers mergeset) tm
+  (with-slots (size layers mergeset) tm
     (let ((layer (aref layers layer)))
       (with-slots (tiles) layer
         (loop for idx across tiles
+              for i from 0
               as tile = (tms-find mergeset idx)
-              do (funcall function tile))))))
+              as x = (truncate (mod i (vx size)))
+              as y = (- (vy size) (truncate (/ i (vx size))))
+              do (funcall function tile x y))))))
 
 #++
 (map-tilemap-layer
- (lambda (x)
-   (when x
-     (:say (tile-image x))))
+ (lambda (tile x y)
+   (when tile
+     (:say x y (tile-image tile))))
  (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))
- 1)
+ 0)
 
  ;; GK-TILEMAP
 
 (defclass gk-tilemap ()
   ((tilemap :initform nil :initarg :tilemap)
-   (commands :initform nil))
-  (:documentation "This takes a TILEMAP and produces a series of
-quadsprite commands we can queue in GK each frame."))
+   (sprites :initform (make-array 150 :adjustable t :fill-pointer 0))))
 
-(defmethod initialize-instance :after ((gktm gk-tilemap) &key &allow-other-keys)
-  (with-slots (tilemap commands) gktm
-    (let ((layer-count (length (tilemap-layers tilemap)))
-          (tile-count 0))
+;;; This could in theory be done slightly more ideally, but at great
+;;; inconvenience.
+
+(defmethod initialize-instance :after ((gktm gk-tilemap)
+                                       &key sheet &allow-other-keys)
+  (with-slots (tilemap sprites) gktm
+    (let ((layer-count (length (tilemap-layers tilemap))))
       (loop for i from 0 below layer-count
-            do (map-tilemap-layer (lambda (x)
-                                    (when x (incf tile-count)))
-                                  tilemap i)))))
+            do (map-tilemap-layer
+                (lambda (tile x y)
+                  (when tile
+                    (let ((sprite (make-instance 'sprite
+                                    :sheet sheet
+                                    :key i
+                                    :name (tile-image tile)
+                                    :pos (gk-vec3 (+ 8 (* 16 x)) (- (* 16 y) 8.0) 0))))
+                      (vector-push-extend sprite sprites))))
+                tilemap i)))))
+
+(defmethod draw ((gktm gk-tilemap) lists m)
+  (with-slots (sprites) gktm
+    (loop for sprite across sprites
+          do (draw sprite lists m))))

@@ -50,7 +50,7 @@
    anim anim-state))
 
 (defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
-  (with-slots (anim anim-state) g
+  (with-slots (sprite anim anim-state) g
     (setf anim (make-instance 'anim-sprite :name (aval :down *walking*)))
     (setf anim-state (animation-instance anim nil))))
 

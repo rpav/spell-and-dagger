@@ -5,18 +5,17 @@ Current status:
 * A fair bit of internal structure
 * Animations
 * Test entity with sprite, walking around and swinging arm on input
-* Tilemaps load from Tiled (http://www.mapeditor.org/) .json files
+* Tilemaps load and render from Tiled (http://www.mapeditor.org/) .json files
 
 Up next:
 
-* Tilemap rendering
 * Better input handling
 * Sword
 * Collision
 
 Current screenshot:
 
-<img src="http://ogmo.mephle.net/lgj/current-20160502-1106.gif">
+<img src="http://ogmo.mephle.net/lgj/current-20160502-1622.gif">
 
 ## Building
 

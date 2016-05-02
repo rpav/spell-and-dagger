@@ -54,6 +54,7 @@
             (make-instance 'sprite
               :pos (gk-vec4 0 0 0 1)
               :sheet (asset-sheet *assets*)
+              :key 1
               :index 0)))
       (setf (entity-sprite char) sprite))
     (physics-add physics char)
@@ -62,7 +63,8 @@
 (defmethod draw :after ((s test-screen) lists m)
   (with-slots (char physics) s
     (physics-update physics)
-    (draw (entity-sprite char) lists m)))
+    (draw (entity-sprite char) lists m)
+    (draw (asset-tm *assets*) lists m)))
 
 (defmethod key-event ((w test-screen) key state)
   (with-slots (char) w

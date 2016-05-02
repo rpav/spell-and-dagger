@@ -5,13 +5,16 @@
 (defclass sprite ()
   (qs trs))
 
-(defmethod initialize-instance ((s sprite) &key sheet index pos size key)
+(defmethod initialize-instance ((s sprite) &key sheet index name
+                                pos size key)
   (with-slots (qs trs scale) s
-    (setf qs (cmd-quadsprite sheet index))
+    (let ((index (if name
+                     (find-frame sheet name)
+                     index)))
+      (setf qs (cmd-quadsprite sheet index :key key)))
     (setf trs (cmd-tf-trs :out (quadsprite-tfm qs)
                           :translate pos
-                          :scale size
-                          :key key))))
+                          :scale size))))
 
 (defun sprite-pos (s)
   (tf-trs-translate (slot-value s 'trs)))
@@ -25,6 +28,13 @@
 (defun (setf sprite-index) (v s)
   (with-slots (qs) s
     (setf (quadsprite-index qs) v)))
+
+(defun sprite-key (sprite)
+  (cmd-key (slot-value sprite 'qs)))
+
+(defun (setf sprite-key) (v sprite)
+  (with-slots (qs) sprite
+    (setf (cmd-key qs) v)))
 
 (defmethod draw ((sprite sprite) lists m)
   (with-slots (pre-list sprite-list) lists

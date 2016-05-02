@@ -4,14 +4,15 @@
   ((proj :initform (gk-mat4) :reader asset-proj)
    (font :reader asset-font)
    (spritesheet :reader asset-sheet)
-   (anims :reader asset-anims)))
+   (anims :reader asset-anims)
+   (tm :reader asset-tm)))
 
 (defun load-assets (gk)
   (let ((pack (make-instance 'asset-pack)))
-    (with-slots (proj font spritesheet anims) pack
+    (with-slots (proj font spritesheet anims tm) pack
       (with-bundle (b)
         (let* ((config (make-instance 'cmd-list :subsystem :config))
-               (ortho (cmd-tf-ortho proj 0 128 0 72 -10000 10000))
+               (ortho (cmd-tf-ortho proj 0 256 0 144 -10000 10000))
                (load-sprites (cmd-spritesheet-create
                               (autowrap:asdf-path :lgj-2016-q2 :assets :image "spritesheet.json")
                               :gk-ssf-texturepacker-json
@@ -25,5 +26,9 @@
 
           (setf font (font-create-id load-font))
           (setf spritesheet (make-sheet load-sprites))
-          (setf anims (make-instance 'sheet-animations :sheet spritesheet)))))
+          (setf anims (make-instance 'sheet-animations :sheet spritesheet))
+
+          (setf tm (make-instance 'gk-tilemap
+                     :sheet spritesheet
+                     :tilemap (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json")))))))
     pack))

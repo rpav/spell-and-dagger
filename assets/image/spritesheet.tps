@@ -180,11 +180,11 @@
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
-            <true/>
+            <false/>
             <key>defaultPivotPoint</key>
             <point_f>0.5,0.5</point_f>
             <key>writePivotPoints</key>
-            <false/>
+            <true/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
@@ -252,6 +252,36 @@
             <key type="filename">build/ranger-m/walk_up_001.png</key>
             <key type="filename">build/ranger-m/walk_up_002.png</key>
             <key type="filename">build/ranger-m/walk_up_003.png</key>
+            <key type="filename">build/town/solid/t_00.png</key>
+            <key type="filename">build/town/solid/t_01.png</key>
+            <key type="filename">build/town/solid/t_02.png</key>
+            <key type="filename">build/town/solid/t_03.png</key>
+            <key type="filename">build/town/solid/t_04.png</key>
+            <key type="filename">build/town/solid/t_05.png</key>
+            <key type="filename">build/town/solid/t_06.png</key>
+            <key type="filename">build/town/solid/t_12.png</key>
+            <key type="filename">build/town/solid/t_13.png</key>
+            <key type="filename">build/town/solid/t_14.png</key>
+            <key type="filename">build/town/solid/t_15.png</key>
+            <key type="filename">build/town/solid/t_16.png</key>
+            <key type="filename">build/town/solid/t_17.png</key>
+            <key type="filename">build/town/solid/t_18.png</key>
+            <key type="filename">build/town/solid/t_19.png</key>
+            <key type="filename">build/town/solid/t_20.png</key>
+            <key type="filename">build/town/solid/t_21.png</key>
+            <key type="filename">build/town/solid/t_22.png</key>
+            <key type="filename">build/town/solid/t_23.png</key>
+            <key type="filename">build/town/solid/t_24.png</key>
+            <key type="filename">build/town/solid/t_25.png</key>
+            <key type="filename">build/town/solid/t_26.png</key>
+            <key type="filename">build/town/solid/t_27.png</key>
+            <key type="filename">build/town/solid/t_28.png</key>
+            <key type="filename">build/town/solid/t_29.png</key>
+            <key type="filename">build/town/t_07.png</key>
+            <key type="filename">build/town/t_08.png</key>
+            <key type="filename">build/town/t_09.png</key>
+            <key type="filename">build/town/t_10.png</key>
+            <key type="filename">build/town/t_11.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
