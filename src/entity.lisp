@@ -44,25 +44,38 @@
     (:left . "ranger-f/atk-left")
     (:right . "ranger-f/atk-right")))
 
+(defparameter *weapon*
+  '((:up . "weapon/sword_up.png")
+    (:down . "weapon/sword_down.png")
+    (:left . "weapon/sword_left.png")
+    (:right . "weapon/sword_right.png")))
+
 (defclass game-char (entity)
   ((pos :initform (gk-vec2 10 10))
    (facing :initform :down)
-   anim anim-state))
+   (attacking :initform nil)
+   wpn-sprite anim anim-state))
 
 (defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
-  (with-slots (sprite anim anim-state) g
+  (with-slots (sprite wpn-sprite anim anim-state) g
     (setf anim (make-instance 'anim-sprite :name (aval :down *walking*)))
-    (setf anim-state (animation-instance anim nil))))
+    (setf anim-state (animation-instance anim nil))
+    (setf wpn-sprite (make-instance 'sprite :sheet (asset-sheet *assets*) :index 0 :key 2))))
 
 (defmethod entity-action ((e game-char) (a (eql :btn1)))
-  (with-slots (facing anim anim-state) e
+  (with-slots (sprite facing attacking wpn-sprite anim anim-state) e
     (setf (anim-sprite-count anim) 1
           (anim-sprite-frame-length anim) (/ 20 1000.0)
           (anim-sprite-anim anim) (find-anim (asset-anims *assets*)
                                              (aval facing *attacking*))
           (anim-state-on-stop anim-state)
           (lambda (s)
-            (entity-move e +motion-none+)))
+            (entity-move e +motion-none+)
+            (setf attacking nil)))
+    (setf attacking t
+          (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
+                                                (aval facing *weapon*)))
+    (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
     (anim-run *anim-manager* anim-state)))
 
 (defmethod entity-move ((e game-char) m)
@@ -85,3 +98,9 @@
               (find-anim-frame (asset-anims *assets*)
                                (aval facing *walking*) 1))
         (anim-run *anim-manager* anim-state))))
+
+(defmethod draw ((e game-char) lists m)
+  (with-slots (sprite wpn-sprite attacking) e
+    (draw sprite lists m)
+    (when attacking
+      (draw wpn-sprite lists m))))

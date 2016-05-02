@@ -63,7 +63,7 @@
 (defmethod draw :after ((s test-screen) lists m)
   (with-slots (char physics) s
     (physics-update physics)
-    (draw (entity-sprite char) lists m)
+    (draw char lists m)
     (draw (asset-tm *assets*) lists m)))
 
 (defmethod key-event ((w test-screen) key state)

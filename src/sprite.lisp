@@ -69,12 +69,12 @@
   (with-slots (sheet anims) s
     (map-spritesheet
      (lambda (x i)
-       (let* ((m (nth-value 1 (ppcre:scan-to-strings "(.*)_(\\d+)\\.png$" x)))
-              (name (ppcre:regex-replace-all "_" (aref m 0) "-"))
-              #++(num (parse-integer (aref m 1)))
-              (anim (ensure-gethash (nstring-upcase name) anims
-                                    (make-instance 'sprite-anim))))
-         (sprite-anim-append anim i)))
+       (let* ((m (nth-value 1 (ppcre:scan-to-strings "(.*)_(\\d+)\\.png$" x))))
+         (when m
+           (let* ((name (ppcre:regex-replace-all "_" (aref m 0) "-"))
+                  (anim (ensure-gethash (nstring-upcase name) anims
+                                        (make-instance 'sprite-anim))))
+             (sprite-anim-append anim i)))))
      sheet)))
 
 (defun find-anim-frame (animations name frame)

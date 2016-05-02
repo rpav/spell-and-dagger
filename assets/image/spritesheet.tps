@@ -286,6 +286,26 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
             </struct>
+            <key type="filename">build/weapon/sword_down.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,-0.3</point_f>
+            </struct>
+            <key type="filename">build/weapon/sword_left.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>1.27778,0.5</point_f>
+            </struct>
+            <key type="filename">build/weapon/sword_right.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>-0.333333,0.5</point_f>
+            </struct>
+            <key type="filename">build/weapon/sword_up.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,1.3</point_f>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
