@@ -5,12 +5,18 @@
 (defclass physics ()
   ((last-time :initform 0.0)
    (timestep :initform (/ 1.0 60.0))
-   (objects :initform nil)))
+   (objects :initform (make-hash-table))))
 
 (defun physics-add (phys &rest list)
+  (declare (type physics phys))
   (with-slots (objects) phys
     (loop for ob in list
-          do (push ob objects))))
+          do (setf (gethash ob objects) t))))
+
+(defun physics-remove (phys &rest list)
+  (with-slots (objects) phys
+    (loop for ob in list
+          do (remhash ob objects))))
 
 (defun physics-clear (phys)
   (with-slots (objects) phys
@@ -31,5 +37,5 @@
 
 (defun physics-step (phys)
   (with-slots (objects) phys
-    (loop for ob in objects
+    (loop for ob being each hash-key of objects
           do (entity-update ob))))

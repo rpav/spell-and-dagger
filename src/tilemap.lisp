@@ -80,7 +80,7 @@
       (setf s (make-array len
                           :initial-contents
                           (mapcar (lambda (x)
-                                    (load-tileset (autowrap:asdf-path :lgj-2016-q2 :assets :map
+                                    (load-tileset (autowrap:asdf-path :lgj-2016-q2 :assets :maps
                                                                       (aval :source x))))
                                   sets))))))
 
@@ -186,7 +186,8 @@
 ;;; inconvenience.
 
 (defmethod initialize-instance :after ((gktm gk-tilemap)
-                                       &key sheet &allow-other-keys)
+                                       &key (sheet (asset-sheet *assets*))
+                                       &allow-other-keys)
   (with-slots (tilemap sprites) gktm
     (let ((layer-count (length (tilemap-layers tilemap))))
       (loop for i from 0 below layer-count

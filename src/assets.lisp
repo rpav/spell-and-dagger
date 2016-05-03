@@ -4,8 +4,7 @@
   ((proj :initform (gk-mat4) :reader asset-proj)
    (font :reader asset-font)
    (spritesheet :reader asset-sheet)
-   (anims :reader asset-anims)
-   (tm :reader asset-tm)))
+   (anims :reader asset-anims)))
 
 (defun load-assets (gk)
   (let ((pack (make-instance 'asset-pack)))
@@ -26,9 +25,5 @@
 
           (setf font (font-create-id load-font))
           (setf spritesheet (make-sheet load-sprites))
-          (setf anims (make-instance 'sheet-animations :sheet spritesheet))
-
-          (setf tm (make-instance 'gk-tilemap
-                     :sheet spritesheet
-                     :tilemap (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json")))))))
+          (setf anims (make-instance 'sheet-animations :sheet spritesheet)))))
     pack))

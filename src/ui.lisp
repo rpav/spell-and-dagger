@@ -44,12 +44,14 @@
         (screen-closing s)
         (setf (current-screen) nil))))
 
+ ;; TEST-SCREEN
+
 (defclass test-screen (screen)
   ((char :initform (make-instance 'game-char))
-   (physics :initform (make-instance 'physics))))
+   (map :initform nil)))
 
 (defmethod initialize-instance :after ((s test-screen) &key w h &allow-other-keys)
-  (with-slots (char physics) s
+  (with-slots (char map) s
     (let ((sprite
             (make-instance 'sprite
               :pos (gk-vec4 0 0 0 1)
@@ -57,14 +59,16 @@
               :key 1
               :index 0)))
       (setf (entity-sprite char) sprite))
-    (physics-add physics char)
-    (physics-start physics)))
+    (setf map (make-instance 'game-map
+                :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps "test.json")))
+    (map-add map char)))
 
 (defmethod draw :after ((s test-screen) lists m)
-  (with-slots (char physics) s
-    (physics-update physics)
+  (with-slots (char map) s
+    (map-update map)
     (draw char lists m)
-    (draw (asset-tm *assets*) lists m)))
+    (when map
+      (draw map lists m))))
 
 (defmethod key-event ((w test-screen) key state)
   (with-slots (char) w

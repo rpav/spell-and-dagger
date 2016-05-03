@@ -22,10 +22,16 @@
      (:file "util")
      (:file "proto")
 
-     (:file "entity")
      (:file "physics")
      (:file "anim")
      (:file "tilemap")
+
+     (:file "entity")
+     (:module #:entities
+      :pathname "entity"
+      :components
+      ((:file "simple")
+       (:file "game-char")))
 
      (:file "phase")
      (:module #:phases
@@ -56,7 +62,7 @@
       :pathname "font"
       :components
       ((:static-file "hardpixel.ttf")))
-     (:module #:map
+     (:module #:maps
       :pathname "map"
       :components
       ((:static-file "tm-town.json")
