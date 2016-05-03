@@ -39,6 +39,7 @@
          "y":0
         }, 
         {
+         "color":"#00ff00",
          "draworder":"topdown",
          "height":9,
          "name":"objects",
@@ -53,42 +54,52 @@
                  "width":16,
                  "x":48,
                  "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "color":"#800000",
+         "draworder":"topdown",
+         "height":9,
+         "name":"collision",
+         "objects":[
+                {
+                 "height":32,
+                 "id":14,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":16,
+                 "y":80
                 }, 
                 {
-                 "ellipse":true,
-                 "height":16,
-                 "id":7,
-                 "name":"circle",
+                 "height":32,
+                 "id":15,
+                 "name":"",
                  "rotation":0,
-                 "type":"a type",
+                 "type":"",
                  "visible":true,
                  "width":16,
-                 "x":80,
-                 "y":112
+                 "x":64,
+                 "y":80
                 }, 
                 {
-                 "height":0,
-                 "id":8,
-                 "name":"some random bullshit",
-                 "polygon":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-2.5,
-                         "y":51.75
-                        }, 
-                        {
-                         "x":55,
-                         "y":27.5
-                        }],
+                 "height":16,
+                 "id":16,
+                 "name":"",
                  "rotation":0,
-                 "type":"huh",
+                 "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":141.25,
-                 "y":64.75
+                 "width":16,
+                 "x":48,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -97,7 +108,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

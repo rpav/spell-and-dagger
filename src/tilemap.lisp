@@ -97,12 +97,6 @@
                 do (let ((set (aref sets i)))
                      (return-from tms-find (tileset-tile set (- num offset))))))))
 
-#++
-(let ((tms (make-instance 'tile-mergeset
-             :sets '(((:FIRSTGID . 1) (:SOURCE . "tm-town.json"))
-                     ((:FIRSTGID . 6) (:SOURCE . "tm-town-solid.json"))))))
-  (tile-image (tms-find tms 11)))
-
  ;; TILEMAP
 
 (defclass tile-layer ()
@@ -181,18 +175,6 @@
                 as x = (truncate (mod i (vx size)))
                 as y = (- (vy size) (truncate (/ i (vx size))))
                 do (funcall function tile x y key)))))))
-
-#++
-(map-tilemap-tiles
- (lambda (tile x y key)
-   (when tile
-     (:say x y (tile-image tile) key)))
- (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))
- 1)
-
-#++
-(let ((tm (load-tilemap (autowrap:asdf-path :lgj-2016-q2 :assets :map "test.json"))))
-  (tilemap-find-layer tm "objects"))
 
  ;; GK-TILEMAP
 
