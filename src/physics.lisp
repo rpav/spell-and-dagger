@@ -5,7 +5,8 @@
 (defclass physics ()
   ((last-time :initform 0.0)
    (timestep :initform (/ 1.0 60.0))
-   (objects :initform (make-hash-table))))
+   (objects :initform (make-hash-table))
+   (quadtree :initform nil :initarg :quadtree)))
 
 (defun physics-add (phys &rest list)
   (declare (type physics phys))

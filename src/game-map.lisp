@@ -3,17 +3,16 @@
 (defclass game-map ()
   ((tilemap :initform nil)
    (gktm :initform nil)
-   (physics :initform (make-instance 'physics))
-   (quadtree :initform nil)))
+   (physics :initform (make-instance 'physics))))
 
 (defmethod initialize-instance :after ((gm game-map) &key map)
-  (with-slots (tilemap physics quadtree gktm) gm
+  (with-slots (tilemap physics gktm) gm
     (let* ((tm (load-tilemap map))
            (size (tilemap-size tm))
-           (max (max (vx size) (vy size)))
-           (qt (make-instance 'quadtree :size max :x 0 :y 0)))
+           (max (max (vx size) (vy size))))
       (setf tilemap tm
-            quadtree qt
+            physics (make-instance 'physics
+                      :quadtree (make-instance 'quadtree :size max :x 0 :y 0))
             gktm (make-instance 'gk-tilemap :tilemap tm))
       (physics-start physics))))
 

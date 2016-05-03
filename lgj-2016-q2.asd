@@ -25,6 +25,7 @@
      (:file "physics")
      (:file "anim")
      (:file "tilemap")
+     (:file "game-map")
 
      (:file "entity")
      (:module #:entities
