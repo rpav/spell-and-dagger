@@ -48,4 +48,4 @@
 
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
-    (map-tilemap-objects 'gm-add-object tm "collision")))
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")))

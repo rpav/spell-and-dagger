@@ -14,6 +14,10 @@
    (motion :initform (gk-vec2 0 0) :accessor entity-motion)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)))
 
+(defmethod initialize-instance :after ((e entity) &key &allow-other-keys)
+  (with-slots (box pos size) e
+    (setf box (cons pos size))))
+
 (defgeneric entity-update (entity)
   (:method (e)
     (with-slots (pos motion sprite) e
