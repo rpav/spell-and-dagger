@@ -53,9 +53,19 @@ of 0..1.0"
   (decf (vx (cdr box)) (vx offset))
   (decf (vy (cdr box)) (vy offset)))
 
-(defun box-intersect-p (box-a box-b)
+(defun box-intersect-p (box-a box-b offs-a offs-b)
   (with-box (ax0 ay0 ax1 ay1) box-a
+    (when offs-a
+      (incf ax0 (vx offs-a))
+      (incf ay0 (vy offs-a))
+      (incf ax1 (vx offs-a))
+      (incf ay1 (vy offs-a)))
     (with-box (bx0 by0 bx1 by1) box-b
+      (when offs-b
+        (incf bx0 (vx offs-b))
+        (incf by0 (vy offs-b))
+        (incf bx1 (vx offs-b))
+        (incf by1 (vy offs-b)))
       (and (<  ax0 bx1) (<  ay0 by1)
            (>= ax1 bx0) (>= ay1 by0)))))
 
@@ -86,6 +96,10 @@ of 0..1.0"
 (defgeneric quadtree-delete (quadtree item)
   (:documentation "Delete `ITEM` from `QUADTREE`."))
 
+(defgeneric quadtree-select (quadtree box &optional offs)
+  (:documentation "Select items from `QUADTREE` inside `BOX` with
+optional offset, `OFFS`"))
+
 (defun point-quad (x y qt-node &optional (test #'<))
   "Return the quadrant `POINT` would occupy."
   (with-slots ((c center-point)) qt-node
@@ -97,14 +111,20 @@ of 0..1.0"
         (x< 2)
         (t 3)))))
 
-(defun rect-quad (rect qt-node)
+(defun rect-quad (rect offs qt-node)
   "Return the quadrant `RECT` should occupy, or `NIL` if it does not
 fit into any single quad"
-  (let ((q1 (point-quad (vx (car rect)) (vy (car rect)) qt-node))
-        (q2 (point-quad (vx (cdr rect)) (vy (cdr rect)) qt-node #'<=)))
-    (if (= q1 q2)
-        q1
-        nil)))
+  (with-box (x0 y0 x1 y1) rect
+    (when offs
+      (incf x0 (vx offs))
+      (incf y0 (vy offs))
+      (incf x1 (vx offs))
+      (incf y1 (vx offs)))
+    (let ((q1 (point-quad x0 y0 qt-node))
+          (q2 (point-quad x0 y0 qt-node #'<=)))
+      (if (= q1 q2)
+          q1
+          nil))))
 
 (defun qn-pos (qn qt-node)
   (with-slots ((at center-point) size) qt-node
@@ -117,8 +137,8 @@ fit into any single quad"
         (2 (gk-vec2 (- x offset) (+ y offset)))
         (3 (gk-vec2 (+ x offset) (+ y offset)))))))
 
-(defun ensure-rect-quad (rect qt-node)
-  (let ((qn (rect-quad rect qt-node)))
+(defun ensure-rect-quad (rect offs qt-node)
+  (let ((qn (rect-quad rect offs qt-node)))
     (if qn
         (with-slots (quads size) qt-node
           (or (aref quads qn)
@@ -128,19 +148,20 @@ fit into any single quad"
                                    :size (/ size 2.0)))))
         qt-node)))
 
-(defun next-node (rect qt-node)
+(defun next-node (rect offs qt-node)
   "Return the next (child) node that `RECT` fits into in `QT-NODE`,
 or `NIL`"
   (with-slots (quads) qt-node
-    (let ((qn (rect-quad rect qt-node)))
+    (let ((qn (rect-quad rect offs qt-node)))
       (when qn (aref quads qn)))))
 
 (defmethod quadtree-add ((qt quadtree) item)
   (with-slots (top-node object-node max-depth key-fun) qt
-    (let ((rect (funcall key-fun item)))
+    (multiple-value-bind (rect offs)
+        (funcall key-fun item)
       (loop for depth from 0 below max-depth
             as last-node = nil then node
-            as node = top-node then (ensure-rect-quad rect node)
+            as node = top-node then (ensure-rect-quad rect offs node)
             while (not (eq node last-node))
             finally (push item (slot-value node 'objects))
                     (setf (gethash item object-node) node))))
@@ -163,22 +184,24 @@ itself."
           (funcall function (slot-value child 'objects))
           (map-all-subtrees function child)))
 
-(defun map-matching-subtrees (box function qt-node)
+(defun map-matching-subtrees (box offs function qt-node)
   "Call `FUNCTION` on `QT-NODE` and any children of `QT-NODE` which
 `BOX` fits in exactly.  Return the last node `BOX` fits in."
   (funcall function (slot-value qt-node 'objects))
-  (if-let ((next-node (next-node box qt-node)))
-    (map-matching-subtrees box function next-node)
+  (if-let ((next-node (next-node box offs qt-node)))
+    (map-matching-subtrees box offs function next-node)
     qt-node))
 
-(defmethod quadtree-select ((qt quadtree) box)
+(defmethod quadtree-select ((qt quadtree) box &optional offs)
   "Select all objects which overlap with `BOX`"
   (let (overlaps)
     (with-slots (top-node object-node key-fun) qt
       (flet ((select (objects)
                (loop for object in objects
-                     when (box-intersect-p box (funcall key-fun object))
-                       do (push object overlaps))))
-        (let ((subtree (map-matching-subtrees box #'select top-node)))
+                     when
+                     (multiple-value-bind (box1 offs1) (funcall key-fun object)
+                       (box-intersect-p box box1 offs offs1))
+                     do (push object overlaps))))
+        (let ((subtree (map-matching-subtrees box offs #'select top-node)))
           (map-all-subtrees #'select subtree))
         overlaps))))

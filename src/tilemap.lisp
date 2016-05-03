@@ -215,7 +215,7 @@
                                     :sheet sheet
                                     :key key
                                     :name (tile-image tile)
-                                    :pos (print (gk-vec3 (* 16 x) (* 16 y) 0)))))
+                                    :pos (gk-vec3 (* 16 x) (* 16 y) 0))))
                       (vector-push-extend sprite sprites))))
                 tilemap i)))))
 

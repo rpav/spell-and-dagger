@@ -51,16 +51,17 @@
         (quadtree-delete quadtree ob)
         (gk:nv2+ pos (entity-motion ob))
         ;; check to see if anything is at the new position
-        (let ((collisions (quadtree-select quadtree (entity-box ob)))
-              (collides-p nil))
-          (loop for c in collisions
-                do (when (entity-solid-p c)
-                     (setf collides-p t)
-                     (return)))
-          ;; If it can't move there, return it.
-          (when collides-p
-            (gk:set-vec2f pos x y))
-          (quadtree-add quadtree ob))))))
+        (multiple-value-bind (box offs) (entity-box ob)
+          (let ((collisions (quadtree-select quadtree box offs))
+                (collides-p nil))
+            (loop for c in collisions
+                  do (when (entity-solid-p c)
+                       (setf collides-p t)
+                       (return)))
+            ;; If it can't move there, return it.
+            (when collides-p
+              (gk:set-vec2f pos x y))
+            (quadtree-add quadtree ob)))))))
 
 (defun physics-step (phys)
   (declare (type physics phys))

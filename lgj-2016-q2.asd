@@ -22,12 +22,12 @@
      (:file "util")
      (:file "proto")
 
+     (:file "entity")
      (:file "physics")
      (:file "anim")
      (:file "tilemap")
      (:file "game-map")
 
-     (:file "entity")
      (:module #:entities
       :pathname "entity"
       :components
