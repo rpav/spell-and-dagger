@@ -22,6 +22,10 @@
     (:left . "weapon/sword_left.png")
     (:right . "weapon/sword_right.png")))
 
+(defparameter +game-char-bbox+
+  (cons (gk-vec2 4 1)
+        (gk-vec2 12 14)))
+
 (defclass game-char (entity)
   ((pos :initform (gk-vec2 0 0))
    (facing :initform :down)
@@ -33,6 +37,10 @@
     (setf anim (make-instance 'anim-sprite :name (aval :down *walking*)))
     (setf anim-state (animation-instance anim nil))
     (setf wpn-sprite (make-instance 'sprite :sheet (asset-sheet *assets*) :index 0 :key 2))))
+
+(defmethod entity-box ((e game-char))
+  (with-slots (pos) e
+    (values +game-char-bbox+ pos)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn1)))
   (with-slots (sprite facing attacking wpn-sprite anim anim-state) e
