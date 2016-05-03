@@ -10,6 +10,7 @@
 (defclass entity ()
   ((pos :initform (gk-vec2 0 0) :initarg :pos :reader entity-pos)
    (size :initform (gk-vec2 16 16) :initarg :size :reader entity-size)
+   (box :initform nil :reader entity-box)
    (motion :initform (gk-vec2 0 0) :accessor entity-motion)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)))
 

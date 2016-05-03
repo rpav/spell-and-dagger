@@ -12,18 +12,18 @@
 
 (defmacro with-box ((x0 y0 x1 y1) box &body body)
   (once-only (box)
-    `(let ((,x0 (vx (car ,box)))
-           (,y0 (vy (car ,box)))
-           (,x1 (vx (cdr ,box)))
-           (,y1 (vx (cdr ,box))))
+    `(let* ((,x0 (vx (car ,box)))
+            (,y0 (vy (car ,box)))
+            (,x1 (+ ,x0 (vx (cdr ,box))))
+            (,y1 (+ ,y0 (vy (cdr ,box)))))
        ,@body)))
 
 (defmacro with-int-box ((x0 y0 x1 y1) box &body body)
   (once-only (box)
-    `(let ((,x0 (truncate (vx (car ,box))))
-           (,y0 (truncate (vy (car ,box))))
-           (,x1 (truncate (vx (cdr ,box))))
-           (,y1 (truncate (vx (cdr ,box)))))
+    `(let* ((,x0 (truncate (vx (car ,box))))
+            (,y0 (truncate (vy (car ,box))))
+            (,x1 (truncate (+ ,x0 (vx (cdr ,box)))))
+            (,y1 (truncate (+ ,y0 (vy (cdr ,box))))))
        ,@body)))
 
 (defmacro with-point ((x y) point &body body)
@@ -59,18 +59,6 @@ of 0..1.0"
       (and (<  ax0 bx1) (<  ay0 by1)
            (>= ax1 bx0) (>= ay1 by0)))))
 
- ;; Points
-
-(declaim (inline x< y<))
-
-(defun x< (point-a point-b &optional (test #'<))
-  "Test whether the `X` of `POINT-A` is less than the `X` of `POINT-B`."
-  (funcall test (vx point-a) (vy point-b)))
-
-(defun y< (point-a point-b &optional (test #'<))
-  "Test whether the `Y` of `POINT-A` is less than the `Y` of `POINT-B`."
-  (funcall test (vx point-a) (vy point-b)))
-
  ;; Quadtree
 
 (defclass qt-node ()
@@ -88,7 +76,9 @@ of 0..1.0"
 (defmethod initialize-instance :after
     ((qt quadtree) &key x y size &allow-other-keys)
   (with-slots (top-node) qt
-    (setf top-node (make-instance 'qt-node :at (gk-vec2 x y) :size size))))
+    (let ((x (or x (/ size 2.0)))
+          (y (or y (/ size 2.0))))
+      (setf top-node (make-instance 'qt-node :at (gk-vec2 x y) :size size)))))
 
 (defgeneric quadtree-add (quadtree item)
   (:documentation "Add `ITEM` to `QUADTREE`."))
@@ -96,11 +86,11 @@ of 0..1.0"
 (defgeneric quadtree-delete (quadtree item)
   (:documentation "Delete `ITEM` from `QUADTREE`."))
 
-(defun point-quad (point qt-node &optional (test #'<))
+(defun point-quad (x y qt-node &optional (test #'<))
   "Return the quadrant `POINT` would occupy."
   (with-slots ((c center-point)) qt-node
-    (let ((x< (x< point c test))
-          (y< (y< point c test)))
+    (let ((x< (funcall test x (vx c)))
+          (y< (funcall test y (vy c))))
       (cond
         ((and x< y<) 0)
         (y< 1)
@@ -110,8 +100,8 @@ of 0..1.0"
 (defun rect-quad (rect qt-node)
   "Return the quadrant `RECT` should occupy, or `NIL` if it does not
 fit into any single quad"
-  (let ((q1 (point-quad (car rect) qt-node))
-        (q2 (point-quad (cdr rect) qt-node #'<=)))
+  (let ((q1 (point-quad (vx (car rect)) (vy (car rect)) qt-node))
+        (q2 (point-quad (vx (cdr rect)) (vy (cdr rect)) qt-node #'<=)))
     (if (= q1 q2)
         q1
         nil)))

@@ -165,7 +165,9 @@
 
 (defun map-tilemap-tiles (function tm layer)
   (with-slots (size layers mergeset) tm
-    (let ((layer (aref layers layer)))
+    (let ((layer (if (stringp layer)
+                     (tilemap-find-layer tm layer)
+                     (aref layers layer))))
       (when (typep layer 'tile-layer)
         (with-slots (tiles props) layer
           (loop for idx across tiles
@@ -175,6 +177,16 @@
                 as x = (truncate (mod i (vx size)))
                 as y = (- (vy size) (truncate (/ i (vx size))))
                 do (funcall function tile x y key)))))))
+
+(defun map-tilemap-objects (function tm layer)
+  (with-slots (size layers) tm
+    (let ((layer (if (stringp layer)
+                     (tilemap-find-layer tm layer)
+                     (aref layers layer))))
+      (when (typep layer 'object-layer)
+        (with-slots (objects) layer
+          (loop for ob in objects
+                do (funcall function ob)))))))
 
  ;; GK-TILEMAP
 
