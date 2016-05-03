@@ -116,10 +116,15 @@
   ((props :initform nil :initarg :props :accessor props)
    (objects :initform nil :reader object-layer-objects)))
 
-(defun object-layer-parse (json)
+(defun object-layer-parse (tm json)
   (let ((layer (make-instance 'object-layer
                  :props (aval :properties json)))
-        (objects (aval :objects json)))
+        (objects (aval :objects json))
+        (size (tilemap-size tm)))
+    (loop for object in objects
+          do (setf (aval :y object) (- (* 16 (vy size))
+                                       (+ (aval :height object)
+                                          (aval :y object)))))
     (setf (slot-value layer 'objects) objects)
     layer))
 
@@ -155,7 +160,7 @@
                      (aref (tilemap-layers tm) i)
                      (cond
                        ((aval :data layer) (tile-layer-parse layer))
-                       ((aval :objects layer) (object-layer-parse layer)))))
+                       ((aval :objects layer) (object-layer-parse tm layer)))))
       tm)))
 
 (defun tilemap-find-layer (tm name)
@@ -175,7 +180,7 @@
                 as key = (or (aval :layer props) i)
                 as tile = (tms-find mergeset idx)
                 as x = (truncate (mod i (vx size)))
-                as y = (- (vy size) (truncate (/ i (vx size))))
+                as y = (- (vy size) (truncate (/ i (vx size))) 1)
                 do (funcall function tile x y key)))))))
 
 (defun map-tilemap-objects (function tm layer)
@@ -210,7 +215,7 @@
                                     :sheet sheet
                                     :key key
                                     :name (tile-image tile)
-                                    :pos (gk-vec3 (+ 8 (* 16 x)) (- (* 16 y) 8.0) 0))))
+                                    :pos (print (gk-vec3 (* 16 x) (* 16 y) 0)))))
                       (vector-push-extend sprite sprites))))
                 tilemap i)))))
 

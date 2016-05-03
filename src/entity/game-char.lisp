@@ -23,7 +23,7 @@
     (:right . "weapon/sword_right.png")))
 
 (defclass game-char (entity)
-  ((pos :initform (gk-vec2 10 10))
+  ((pos :initform (gk-vec2 0 0))
    (facing :initform :down)
    (attacking :initform nil)
    wpn-sprite anim anim-state))
@@ -42,7 +42,7 @@
                                              (aval facing *attacking*))
           (anim-state-on-stop anim-state)
           (lambda (s)
-            (entity-move e +motion-none+)
+            (setf (entity-motion e) +motion-none+)
             (setf attacking nil)))
     (setf attacking t
           (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
@@ -50,8 +50,7 @@
     (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
     (anim-run *anim-manager* anim-state)))
 
-(defmethod entity-move ((e game-char) m)
-  (call-next-method)
+(defmethod (setf entity-motion) :after (m (e game-char))
   (with-slots (sprite facing anim anim-state) e
     (switch (m)
       (+motion-none+ nil)

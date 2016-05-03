@@ -12,7 +12,9 @@
            (max (* 16.0 (max (vx size) (vy size)))))
       (setf tilemap tm
             physics (make-instance 'physics
-                      :quadtree (make-instance 'quadtree :size max))
+                      :quadtree (make-instance 'quadtree
+                                  :key #'entity-box
+                                  :size max))
             gktm (make-instance 'gk-tilemap :tilemap tm))
       (gm-setup-physics gm)
       (physics-start physics))))

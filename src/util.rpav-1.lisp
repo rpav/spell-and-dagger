@@ -6,7 +6,8 @@
 (make-util:make-util '(lgj-2016-q2 :src "util.rpav-1") :package "UTIL.RPAV-1"
                      :symbols
                      '(laconic:string-join laconic:string+ laconic:substr
-                                           laconic:aval laconic:akey)
+                                           laconic:aval laconic:akey
+                                           (setf laconic:aval))
                      :exportp t)
 
 ;; ===================================================================
@@ -61,3 +62,8 @@ Make a shared substring of `STR` using `MAKE-ARRAY :displaced-to`"
       (car (rassoc val alist :key key :test test)))))
 
 (export 'akey)
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (unless (fboundp '(setf aval))
+    (defun (setf aval) (v val alist &key (key 'identity) (test 'eq))
+      (setf (cdr (assoc val alist :key key :test test)) v))))
