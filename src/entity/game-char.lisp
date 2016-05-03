@@ -24,7 +24,7 @@
 
 (defparameter +game-char-bbox+
   (cons (gk-vec2 4 1)
-        (gk-vec2 12 14)))
+        (gk-vec2 8 14)))
 
 (defclass game-char (entity)
   ((pos :initform (gk-vec2 0 0))
