@@ -12,29 +12,29 @@
 
 (defmacro with-box ((x0 y0 x1 y1) box &body body)
   (once-only (box)
-    `(let ((,x0 (caar ,box))
-           (,y0 (cdar ,box))
-           (,x1 (cadr ,box))
-           (,y1 (cddr ,box)))
+    `(let ((,x0 (vx (car ,box)))
+           (,y0 (vy (car ,box)))
+           (,x1 (vx (cdr ,box)))
+           (,y1 (vx (cdr ,box))))
        ,@body)))
 
 (defmacro with-int-box ((x0 y0 x1 y1) box &body body)
   (once-only (box)
-    `(let ((,x0 (truncate (caar ,box)))
-           (,y0 (truncate (cdar ,box)))
-           (,x1 (truncate (cadr ,box)))
-           (,y1 (truncate (cddr ,box))))
+    `(let ((,x0 (truncate (vx (car ,box))))
+           (,y0 (truncate (vy (car ,box))))
+           (,x1 (truncate (vx (cdr ,box))))
+           (,y1 (truncate (vx (cdr ,box)))))
        ,@body)))
 
 (defmacro with-point ((x y) point &body body)
   (once-only (point)
-    `(let ((,x (car ,point))
-           (,y (cdr ,point)))
+    `(let ((,x (vx ,point))
+           (,y (vy ,point)))
        ,@body)))
 
 (declaim (inline box box/16))
 (defun box (x0 y0 x1 y1)
-  (cons (cons x0 y0) (cons x1 y1)))
+  (cons (gk-vec2 x0 y0) (gk-vec2 x1 y1)))
 
 (defun box/16 (x0 y0 x1 y1)
   "Like BOX, but scaled to 0..16 so pixels may be specified instead
@@ -42,16 +42,16 @@ of 0..1.0"
   (box (/ x0 16.0) (/ y0 16.0) (/ x1 16.0) (/ y1 16.0)))
 
 (defun box+ (box offset)
-  (incf (caar box) (car offset))
-  (incf (cadr box) (car offset))
-  (incf (cdar box) (cdr offset))
-  (incf (cddr box) (cdr offset)))
+  (incf (vx (car box)) (vx offset))
+  (incf (vy (car box)) (vy offset))
+  (incf (vx (cdr box)) (vx offset))
+  (incf (vy (cdr box)) (vy offset)))
 
 (defun box- (box offset)
-  (decf (caar box) (car offset))
-  (decf (cadr box) (car offset))
-  (decf (cdar box) (cdr offset))
-  (decf (cddr box) (cdr offset)))
+  (decf (vx (car box)) (vx offset))
+  (decf (vy (car box)) (vy offset))
+  (decf (vx (cdr box)) (vx offset))
+  (decf (vy (cdr box)) (vy offset)))
 
 (defun box-intersect-p (box-a box-b)
   (with-box (ax0 ay0 ax1 ay1) box-a
@@ -65,29 +65,11 @@ of 0..1.0"
 
 (defun x< (point-a point-b &optional (test #'<))
   "Test whether the `X` of `POINT-A` is less than the `X` of `POINT-B`."
-  (funcall test (car point-a) (car point-b)))
+  (funcall test (vx point-a) (vy point-b)))
 
 (defun y< (point-a point-b &optional (test #'<))
   "Test whether the `Y` of `POINT-A` is less than the `Y` of `POINT-B`."
-  (funcall test (cdr point-a) (cdr point-b)))
-
-(defun point+ (point offset)
-  (let ((x (car offset))
-        (y (cdr offset)))
-    (incf (car point) x)
-    (incf (cdr point) y)
-    point))
-
-(defun point- (point offset)
-  (let ((x (car offset))
-        (y (cdr offset)))
-    (decf (car point) x)
-    (decf (cdr point) y)
-    point))
-
-(defun point-delta (point1 point2)
-  (cons (- (car point2) (car point1))
-        (- (cdr point2) (cdr point1))))
+  (funcall test (vx point-a) (vy point-b)))
 
  ;; Quadtree
 
@@ -106,7 +88,7 @@ of 0..1.0"
 (defmethod initialize-instance :after
     ((qt quadtree) &key x y size &allow-other-keys)
   (with-slots (top-node) qt
-    (setf top-node (make-instance 'qt-node :at (cons x y) :size size))))
+    (setf top-node (make-instance 'qt-node :at (gk-vec2 x y) :size size))))
 
 (defgeneric quadtree-add (quadtree item)
   (:documentation "Add `ITEM` to `QUADTREE`."))
@@ -137,13 +119,13 @@ fit into any single quad"
 (defun qn-pos (qn qt-node)
   (with-slots ((at center-point) size) qt-node
     (let ((offset (/ size 4.0))
-          (x (car at))
-          (y (cdr at)))
+          (x (vx at))
+          (y (vy at)))
       (ecase qn
-        (0 (cons (- x offset) (- y offset)))
-        (1 (cons (+ x offset) (- y offset)))
-        (2 (cons (- x offset) (+ y offset)))
-        (3 (cons (+ x offset) (+ y offset)))))))
+        (0 (gk-vec2 (- x offset) (- y offset)))
+        (1 (gk-vec2 (+ x offset) (- y offset)))
+        (2 (gk-vec2 (- x offset) (+ y offset)))
+        (3 (gk-vec2 (+ x offset) (+ y offset)))))))
 
 (defun ensure-rect-quad (rect qt-node)
   (let ((qn (rect-quad rect qt-node)))
