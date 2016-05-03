@@ -14,19 +14,23 @@
           do (setf (gethash ob objects) t))))
 
 (defun physics-remove (phys &rest list)
+  (declare (type physics phys))
   (with-slots (objects) phys
     (loop for ob in list
           do (remhash ob objects))))
 
 (defun physics-clear (phys)
+  (declare (type physics phys))
   (with-slots (objects) phys
     (setf objects nil)))
 
 (defun physics-start (phys)
+  (declare (type physics phys))
   (with-slots (last-time) phys
     (setf last-time (current-time))))
 
 (defun physics-update (phys)
+  (declare (type physics phys))
   (with-slots (last-time timestep) phys
     (let* ((diff (- *time* last-time))
            (steps (truncate diff timestep)))
@@ -36,6 +40,7 @@
       (setf last-time *time*))))
 
 (defun physics-step (phys)
+  (declare (type physics phys))
   (with-slots (objects) phys
     (loop for ob being each hash-key of objects
           do (entity-update ob))))
