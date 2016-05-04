@@ -75,6 +75,17 @@
                  "width":16,
                  "x":128,
                  "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":18,
+                 "name":"e1",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -129,7 +140,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":18,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
