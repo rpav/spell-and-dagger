@@ -8,15 +8,16 @@ Current status:
 * Tilemaps load and render from Tiled (http://www.mapeditor.org/) .json files
 * Renders weapon
 * Collision and callbacks
+* Phases and map transitions, though map/char will probably remain global
+* Map transitions
 
 Up next:
 
-* Move control to phases to handle map transitions, further gameplay
-  elements
+* Monsters, interactions, actual gameplay.
 
 Current screenshot:
 
-<img src="http://ogmo.mephle.net/lgj/current-20160502-1730.gif">
+<img src="http://ogmo.mephle.net/lgj/current-20160504-1715.gif">
 
 ## Building
 
