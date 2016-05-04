@@ -13,7 +13,8 @@
   ((pos :initform (gk-vec2 0 0) :initarg :pos :reader entity-pos)
    (size :initform (gk-vec2 16 16) :initarg :size :reader entity-size)
    (motion :initform +motion-none+ :accessor entity-motion)
-   (sprite :initform nil :initarg :sprite :accessor entity-sprite)))
+   (sprite :initform nil :initarg :sprite :accessor entity-sprite)
+   (props :initform nil :initarg :props :reader entity-props)))
 
 (defmethod (setf entity-pos) ((v gk-vec2) (e entity))
   (with-slots (pos) e
@@ -37,6 +38,10 @@
 (defgeneric entity-collide (e1 e2)
   (:documentation "Called when `E1` moves and collides with `E2`.")
   (:method (e1 e2)))
+
+(defgeneric entity-property (e name)
+  (:method ((e entity) name)
+    (aval name (slot-value e 'props))))
 
 ;;; A more complex system would allow channels or entity-entity tests
 ;;; or whatnot.  For now this is a simple boolean.  Default is T,

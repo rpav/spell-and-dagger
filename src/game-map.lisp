@@ -43,16 +43,21 @@
   (let ((type (aval :type ob)))
     (if (or (not type) (string= "" type))
         'simple-blocker
-        (string-upcase type))))
+        (intern (string-upcase type) :game))))
 
 (defun gm-add-object (gm ob)
   (with-slots (physics) gm
     (let* ((type (gm-object-type ob))
            (pos (gk-vec2 (aval :x ob) (aval :y ob)))
            (size (gk-vec2 (aval :width ob) (aval :height ob)))
-           (ob (make-instance type :pos pos :size size)))
-      (physics-add physics ob))))
+           (instance
+             (and type
+                  (make-instance type :pos pos :size size
+                    :props (aval :properties ob)))))
+      (when instance
+        (physics-add physics instance)))))
 
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")))
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")))

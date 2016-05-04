@@ -1,5 +1,7 @@
 (in-package :game)
 
+ ;; simple-blocker
+
 (defclass simple-blocker (entity)
   ((box :initform nil)))
 
@@ -9,3 +11,9 @@
 
 (defmethod entity-box ((e simple-blocker))
   (slot-value e 'box))
+
+
+ ;; link
+
+(defclass link (entity) ())
+

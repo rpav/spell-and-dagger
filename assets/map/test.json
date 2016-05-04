@@ -45,11 +45,21 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":16,
+                 "height":4,
                  "id":5,
                  "name":"door",
+                 "properties":
+                    {
+                     "map":"test2",
+                     "target":"e1"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string",
+                     "target":"string"
+                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"link",
                  "visible":true,
                  "width":16,
                  "x":48,
@@ -60,7 +70,7 @@
                  "id":17,
                  "name":"start",
                  "rotation":0,
-                 "type":"",
+                 "type":"nil",
                  "visible":true,
                  "width":16,
                  "x":128,

@@ -84,3 +84,7 @@
     (when attacking
       (draw wpn-sprite lists m))))
 
+(defmethod entity-collide ((e game-char) (c link))
+  (let ((map (entity-property c :map))
+        (target (entity-property c :target)))
+    (format t "Move to ~S@~S~%" map target)))
