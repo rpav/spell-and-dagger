@@ -42,7 +42,7 @@
       (setf assets (load-assets gk))
 
       (with-game-state (win)
-        (setf screen (make-instance 'test-screen :w w :h h)))
+        (setf screen (make-instance 'map-screen :w w :h h)))
 
       (let ((pre-pass (pass 1))
             (sprite-pass (pass 2 :asc))

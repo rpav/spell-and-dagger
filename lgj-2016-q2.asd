@@ -43,7 +43,8 @@
      (:file "ui")
      (:module #:uis
       :pathname "ui"
-      :components nil)
+      :components
+      ((:file "map-screen")))
 
 
      (:file "sprite")
