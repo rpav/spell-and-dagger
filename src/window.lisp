@@ -22,6 +22,15 @@
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
 
+(defmacro with-game-state ((gamewin) &body body)
+  (once-only (gamewin)
+    `(let ((*assets* (slot-value ,gamewin 'assets))
+           (*window* ,gamewin)
+           (*time* (current-time))
+           (*anim-manager* (slot-value ,gamewin 'anim-manager))
+           (*ps* (slot-value ,gamewin 'phase-stack)))
+       ,@body)))
+
 (defmethod initialize-instance :after ((win game-window) &key &allow-other-keys)
   (with-slots (gk assets render-bundle render-lists) win
     (with-slots (pass-list pre-list sprite-list ui-list) render-lists
@@ -85,15 +94,6 @@
 
  ;; Utility
 
-(defmacro with-game-state ((gamewin) &body body)
-  (once-only (gamewin)
-    `(let ((*assets* (slot-value ,gamewin 'assets))
-           (*window* ,gamewin)
-           (*time* (current-time))
-           (*anim-manager* (slot-value ,gamewin 'anim-manager))
-           (*ps* (slot-value ,gamewin 'phase-stack)))
-       ,@body)))
-
 (defun current-screen ()
   (and *window* (game-window-screen *window*)))
 
@@ -119,6 +119,8 @@
       (map-remove cur char))
     (setf (current-map)
           (make-instance 'game-map
-            :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps map)))
+            :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps
+                                     (string+ map ".json"))))
     (setf (entity-pos char) (map-find-start (current-map) target))
+    (setf (entity-motion char) +motion-none+)
     (map-add (current-map) char)))

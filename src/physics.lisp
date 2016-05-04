@@ -6,6 +6,7 @@
   ((last-time :initform 0.0)
    (timestep :initform (/ 1.0 60.0))
    (objects :initform (make-hash-table))
+   (rect :initform (box 0 0 0 0))
    (quadtree :initform nil :initarg :quadtree)))
 
 (defun physics-add (phys &rest list)
@@ -44,23 +45,23 @@
 ;;; This is probably horribly inefficient.
 (defun physics-move-object (physics ob)
   (unless (eq +motion-none+ (entity-motion ob))
-    (with-slots (quadtree) physics
-      (let* ((pos (entity-pos ob))
-             (x (vx pos))
-             (y (vy pos)))
+    (with-slots (quadtree rect) physics
+      (let* ((rect rect))
         (quadtree-delete quadtree ob)
-        (gk:nv2+ pos (entity-motion ob))
         ;; check to see if anything is at the new position
         (multiple-value-bind (box offs) (entity-box ob)
-          (let ((collisions (quadtree-select quadtree box offs))
+          (set-vec2 (car rect) (car box))
+          (set-vec2 (cdr rect) (cdr box))
+          (gk:nv2+ (car rect) (entity-motion ob))
+          (let ((collisions (quadtree-select quadtree rect offs))
                 (collides-p nil))
             (loop for c in collisions
                   do (when (entity-solid-p c)
                        (setf collides-p t)
                        (entity-collide ob c)))
             ;; If it can't move there, return it.
-            (when collides-p
-              (gk:set-vec2f pos x y))
+            (unless collides-p
+              (gk:nv2+ (entity-pos ob) (entity-motion ob)))
             (quadtree-add quadtree ob)))))))
 
 (defun physics-step (phys)

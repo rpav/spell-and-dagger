@@ -10,13 +10,12 @@
                :pos (gk-vec4 0 0 0 1)
                :sheet (asset-sheet *assets*)
                :key 1
-               :index 0)))
+               :index (find-anim-frame (asset-anims *assets*) "ranger-f/walk-down" 1))))
       (setf (current-char)
             (make-instance 'game-char :sprite sprite))
-      (map-change "test.json"))))
+      (map-change "test"))))
 
 (defmethod phase-resume ((p map-phase))
   (ps-incref *ps*)
   (with-slots (map-screen) p
     (setf (ui-visible map-screen) t)))
-

@@ -1,19 +1,21 @@
 (in-package :game)
 
- ;; simple-blocker
+ ;; simple-entity
 
-(defclass simple-blocker (entity)
+(defclass simple-entity (entity)
   ((box :initform nil)))
 
-(defmethod initialize-instance :after ((e simple-blocker) &key &allow-other-keys)
+(defmethod initialize-instance :after ((e simple-entity) &key &allow-other-keys)
   (with-slots (box) e
     (setf box (cons (entity-pos e) (entity-size e)))))
 
-(defmethod entity-box ((e simple-blocker))
-  (slot-value e 'box))
+(defmethod entity-box ((e simple-entity)) (slot-value e 'box))
 
+ ;; simple-blocker
+
+(defclass simple-blocker (simple-entity) ())
 
  ;; link
 
-(defclass link (entity) ())
+(defclass link (simple-entity) ())
 

@@ -119,9 +119,9 @@ fit into any single quad"
       (incf x0 (vx offs))
       (incf y0 (vy offs))
       (incf x1 (vx offs))
-      (incf y1 (vx offs)))
+      (incf y1 (vy offs)))
     (let ((q1 (point-quad x0 y0 qt-node))
-          (q2 (point-quad x0 y0 qt-node #'<=)))
+          (q2 (point-quad x1 y1 qt-node #'<=)))
       (if (= q1 q2)
           q1
           nil))))

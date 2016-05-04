@@ -29,7 +29,7 @@
 
 (defgeneric entity-update (entity)
   (:method (e)
-    (with-slots (pos motion sprite) e
+    (with-slots (pos sprite) e
       (when sprite
         (setf (sprite-pos sprite) pos)))))
 

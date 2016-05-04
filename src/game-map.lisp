@@ -21,7 +21,7 @@
 
 (defun map-find-start (map &optional target)
   (with-slots (tilemap) map
-    (let ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
+    (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
       (gk-vec2 (aval :x ob) (aval :y ob)))))
 
 (defun map-add (map &rest objects)

@@ -68,5 +68,6 @@
       :pathname "map"
       :components
       ((:static-file "tm-town.json")
-       (:static-file "tm-town-solid.json")
-       (:static-file "test.json")))))))
+       (:static-file "tm-indoor.json")
+       (:static-file "test.json")
+       (:static-file "test2.json")))))))
