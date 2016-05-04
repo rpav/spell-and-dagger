@@ -76,15 +76,15 @@
     (if (eq state :keydown)
         (progn
           (case key
-            (:scancode-right (setf (entity-motion char) +motion-right+))
-            (:scancode-left (setf (entity-motion char) +motion-left+))
-            (:scancode-up (setf (entity-motion char) +motion-up+))
-            (:scancode-down (setf (entity-motion char) +motion-down+))
+            (:scancode-right (set-motion-bit char :right))
+            (:scancode-left (set-motion-bit char :left))
+            (:scancode-up (set-motion-bit char :up))
+            (:scancode-down (set-motion-bit char :down))
             (:scancode-z (entity-action char :btn1))
             (:scancode-a (entity-action char :btn2))))
         (progn
           (case key
-            (:scancode-right (setf (entity-motion char) +motion-none+))
-            (:scancode-left (setf (entity-motion char) +motion-none+))
-            (:scancode-up (setf (entity-motion char) +motion-none+))
-            (:scancode-down (setf (entity-motion char) +motion-none+)))))))
+            (:scancode-right (clear-motion-bit char :right))
+            (:scancode-left (clear-motion-bit char :left))
+            (:scancode-up (clear-motion-bit char :up))
+            (:scancode-down (clear-motion-bit char :down)))))))

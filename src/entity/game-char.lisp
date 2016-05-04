@@ -26,10 +26,24 @@
   (cons (gk-vec2 4 1)
         (gk-vec2 8 14)))
 
+(defparameter +motion-mask+
+  '((:left  . #b1000)
+    (:right . #b0001)
+    (:up    . #b0100)
+    (:down  . #b0010)))
+
+;;; Note how trivial it is to add diagonals here
+(defparameter +motion-mask-to-vector+
+  `((#b1000 . ,+motion-left+)
+    (#b0001 . ,+motion-right+)
+    (#b0100 . ,+motion-up+)
+    (#b0010 . ,+motion-down+)))
+
 (defclass game-char (entity)
   ((pos :initform (gk-vec2 0 0))
    (facing :initform :down)
-   (attacking :initform nil)
+   (state :initform :moving)
+   (motion-mask :initform 0)
    wpn-sprite anim anim-state))
 
 (defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
@@ -43,22 +57,51 @@
     (values +game-char-bbox+ pos)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn1)))
-  (with-slots (sprite facing attacking wpn-sprite anim anim-state) e
-    (setf (anim-sprite-count anim) 1
-          (anim-sprite-frame-length anim) (/ 20 1000.0)
-          (anim-sprite-anim anim) (find-anim (asset-anims *assets*)
-                                             (aval facing *attacking*))
-          (anim-state-on-stop anim-state)
-          (lambda (s)
-            (setf (entity-motion e) +motion-none+)
-            (setf attacking nil)))
-    (setf attacking t
-          (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
-                                                (aval facing *weapon*)))
-    (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
-    (anim-run *anim-manager* anim-state)))
+  (with-slots () e
+    (setf (entity-state e) :attacking)
+    (game-char-play-attack e)))
+
+(defmethod entity-motion ((e game-char))
+  (with-slots (state motion) e
+    (case state
+      (:attacking +motion-none+)
+      (otherwise motion))))
 
 (defmethod (setf entity-motion) :after (m (e game-char))
+  (game-char-play-motion e m))
+
+(defmethod draw ((e game-char) lists m)
+  (with-slots (sprite wpn-sprite) e
+    (draw sprite lists m)
+    (case (entity-state e)
+      (:attacking (draw wpn-sprite lists m)))))
+
+(defmethod entity-collide ((e game-char) (c link))
+  (let ((map (entity-property c :map))
+        (target (entity-property c :target)))
+    (format t "Move to ~S@~S~%" map target)))
+
+(defun game-char-update-motion (e)
+  (with-slots (motion-mask) e
+    (setf (entity-motion e)
+          (or (aval motion-mask +motion-mask-to-vector+)
+              +motion-none+))))
+
+(defun set-motion-bit (e direction)
+  (with-slots (motion-mask) e
+    (let ((mask (aval direction +motion-mask+)))
+      (setf motion-mask (logior motion-mask mask)))
+    (game-char-update-motion e)))
+
+(defun clear-motion-bit (e direction)
+  (with-slots (motion-mask) e
+    (let ((mask (aval direction +motion-mask+)))
+      (setf motion-mask (logandc2 motion-mask mask)))
+    (game-char-update-motion e)))
+
+ ;; util
+
+(defun game-char-play-motion (e m)
   (with-slots (sprite facing anim anim-state) e
     (switch (m)
       (+motion-none+ nil)
@@ -78,13 +121,21 @@
                                (aval facing *walking*) 1))
         (anim-run *anim-manager* anim-state))))
 
-(defmethod draw ((e game-char) lists m)
-  (with-slots (sprite wpn-sprite attacking) e
-    (draw sprite lists m)
-    (when attacking
-      (draw wpn-sprite lists m))))
+(defun game-char-play-attack (e)
+  (with-slots (sprite facing wpn-sprite anim anim-state) e
+    (setf (anim-sprite-count anim) 1
+          (anim-sprite-frame-length anim) (/ 20 1000.0)
+          (anim-sprite-anim anim) (find-anim (asset-anims *assets*)
+                                             (aval facing *attacking*))
+          (anim-state-on-stop anim-state) (lambda (s)
+                                            (declare (ignore s))
+                                            (game-char-end-attack e)))
+    (setf (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
+                                                (aval facing *weapon*)))
+    (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
+    (anim-run *anim-manager* anim-state)))
 
-(defmethod entity-collide ((e game-char) (c link))
-  (let ((map (entity-property c :map))
-        (target (entity-property c :target)))
-    (format t "Move to ~S@~S~%" map target)))
+(defun game-char-end-attack (e)
+  (with-slots () e
+    (setf (entity-state e) :moving)
+    (game-char-update-motion e)))

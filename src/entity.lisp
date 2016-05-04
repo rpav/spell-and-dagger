@@ -13,6 +13,7 @@
   ((pos :initform (gk-vec2 0 0) :initarg :pos :reader entity-pos)
    (size :initform (gk-vec2 16 16) :initarg :size :reader entity-size)
    (motion :initform +motion-none+ :accessor entity-motion)
+   (state :initform nil :accessor entity-state)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)
    (props :initform nil :initarg :props :reader entity-props)))
 
