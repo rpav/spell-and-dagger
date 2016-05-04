@@ -1,0 +1,7 @@
+Author:  Art by Stephen Challener (Redshrike). Commissioned by OpenGameArt.org (http://opengameart.org)
+License: CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Source:  http://opengameart.org/content/16x16-indoor-rpg-tileset-the-baseline
+
+Notes:   The original spritesheet was cut by ImageMagick's convert,
+         frames renamed by animation sequence, and repackaged using
+         TexturePacker.
