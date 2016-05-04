@@ -69,3 +69,8 @@
     (loop for ob being each hash-key of objects
           do (physics-move-object phys ob)
              (entity-update ob))))
+
+(defun physics-map (function phys)
+  (with-slots (objects) phys
+    (loop for ob being each hash-key of objects
+          do (funcall function ob))))

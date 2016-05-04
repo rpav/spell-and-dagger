@@ -14,27 +14,13 @@
 
 (defclass game-window (kit.sdl2:gl-window)
   (gk assets
+   (map :initform nil :accessor game-window-map)
+   (char :initform nil :accessor game-window-char)
    (anim-manager :initform (make-instance 'anim-manager))
    (screen :initform nil :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
-
-(defmacro with-game-state ((gamewin) &body body)
-  (once-only (gamewin)
-    `(let ((*assets* (slot-value ,gamewin 'assets))
-           (*window* ,gamewin)
-           (*time* (current-time))
-           (*anim-manager* (slot-value ,gamewin 'anim-manager))
-           (*ps* (slot-value ,gamewin 'phase-stack)))
-       ,@body)))
-
-(defun current-screen ()
-  (and *window* (game-window-screen *window*)))
-
-(defun (setf current-screen) (v)
-  (when *window*
-    (setf (game-window-screen *window*) v)))
 
 (defmethod initialize-instance :after ((win game-window) &key &allow-other-keys)
   (with-slots (gk assets render-bundle render-lists) win
@@ -96,3 +82,43 @@
   (make-instance 'game-window :w w :h h))
 
 ;;; (run)
+
+ ;; Utility
+
+(defmacro with-game-state ((gamewin) &body body)
+  (once-only (gamewin)
+    `(let ((*assets* (slot-value ,gamewin 'assets))
+           (*window* ,gamewin)
+           (*time* (current-time))
+           (*anim-manager* (slot-value ,gamewin 'anim-manager))
+           (*ps* (slot-value ,gamewin 'phase-stack)))
+       ,@body)))
+
+(defun current-screen ()
+  (and *window* (game-window-screen *window*)))
+
+(defun (setf current-screen) (v)
+  (setf (game-window-screen *window*) v))
+
+(defun current-map ()
+  (and *window* (game-window-map *window*)))
+
+(defun (setf current-map) (v)
+  (setf (game-window-map *window*) v))
+
+(defun current-char ()
+  (and *window* (game-window-char *window*)))
+
+(defun (setf current-char) (v)
+  (setf (game-window-char *window*) v))
+
+(defun map-change (map &optional target)
+  (let ((cur (current-map))
+        (char (current-char)))
+    (when cur
+      (map-remove cur char))
+    (setf (current-map)
+          (make-instance 'game-map
+            :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps map)))
+    (setf (entity-pos char) (map-find-start (current-map) target))
+    (map-add (current-map) char)))

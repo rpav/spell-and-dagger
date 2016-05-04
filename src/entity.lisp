@@ -44,6 +44,10 @@
   (:method ((e entity) name)
     (aval name (slot-value e 'props))))
 
+(defmethod draw ((e entity) lists m)
+  (with-slots (sprite) e
+    (when sprite (draw sprite lists m))))
+
 ;;; A more complex system would allow channels or entity-entity tests
 ;;; or whatnot.  For now this is a simple boolean.  Default is T,
 ;;; because it it seems there are more solid than non-solid entities.

@@ -8,7 +8,9 @@
 (defclass game-phase () ())
 
 ;;; When the phase begins after being pushed or ends before being popped
-(defgeneric phase-start (game-phase) (:method ((p game-phase))))
+(defgeneric phase-start (game-phase)
+  (:method ((p game-phase))
+    (phase-resume p)))
 (defgeneric phase-finish (game-phase) (:method ((p game-phase))))
 
 ;;; When the phase is paused or resumed
@@ -83,3 +85,6 @@
                    (when (and (not (ps-has-up-phase ps))
                               (ps-has-down-phase ps))
                      (phase-resume (ps-cur-phase ps))))))))
+
+(defun cur-phase (&optional (ps *ps*))
+  (ps-cur-phase ps))

@@ -2,19 +2,15 @@
 
  ;; MAP-SCREEN
 
-(defclass map-screen (screen)
-  ((map :initform nil :initarg :map :accessor map-screen-map)
-   (char :initform nil :initarg :map :accessor map-screen-char)))
+(defclass map-screen (screen) ())
 
 (defmethod draw :after ((s map-screen) lists m)
-  (with-slots (char map) s
+  (when-let (map (current-map))
     (map-update map)
-    (draw char lists m)
-    (when map
-      (draw map lists m))))
+    (draw map lists m)))
 
 (defmethod key-event ((w map-screen) key state)
-  (with-slots (char) w
+  (when-let (char (current-char))
     (if (eq state :keydown)
         (progn
           (case key

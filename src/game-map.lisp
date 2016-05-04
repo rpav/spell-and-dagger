@@ -19,9 +19,9 @@
       (gm-setup-physics gm)
       (physics-start physics))))
 
-(defun map-find-start (map)
+(defun map-find-start (map &optional target)
   (with-slots (tilemap) map
-    (let ((ob (tilemap-find-object tilemap "objects" "start")))
+    (let ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
       (gk-vec2 (aval :x ob) (aval :y ob)))))
 
 (defun map-add (map &rest objects)
@@ -29,13 +29,19 @@
     (loop for ob in objects
           do (physics-add physics ob))))
 
+(defun map-remove (map &rest objects)
+  (with-slots (physics) map
+    (apply 'physics-remove physics objects)))
+
 (defun map-update (map)
   (with-slots (physics) map
     (physics-update physics)))
 
 (defmethod draw ((gm game-map) lists m)
-  (with-slots (gktm) gm
-    (draw gktm lists m)))
+  (with-slots (gktm physics) gm
+    (draw gktm lists m)
+    (physics-map (lambda (ob) (draw ob lists m))
+                 physics)))
 
  ;;
 

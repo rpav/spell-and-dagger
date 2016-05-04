@@ -79,7 +79,8 @@
 (defmethod entity-collide ((e game-char) (c link))
   (let ((map (entity-property c :map))
         (target (entity-property c :target)))
-    (format t "Move to ~S@~S~%" map target)))
+    (format t "Move to ~S@~S~%" map target)
+    (map-change map target)))
 
 (defun game-char-update-motion (e)
   (with-slots (motion-mask) e
