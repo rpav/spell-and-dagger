@@ -26,14 +26,60 @@
    (cur :initform -1 :reader ps-cur)
    (phase-refs :initform 0)))
 
+(defun ps-incref (ps)
+  (incf (slot-value ps 'phase-refs)))
+
+(defun ps-decref (ps)
+  (decf (slot-value ps 'phase-refs))
+  (ps-update ps))
+
 (defun ps-top (ps)
   (aref (slot-value ps 'phases) (ps-cur ps)))
 
+(defun ps-cur-phase (ps)
+  (with-slots (cur phases) ps
+    (when (>= cur 0)
+      (aref phases cur))))
+
 (defun ps-push (ps new-phase)
   (with-slots (phases cur) ps
-    (vector-push-extend phases new-phase)))
+    (vector-push-extend new-phase phases)
+    (ps-update ps)))
 
 (defun ps-pop (ps)
   (with-slots (phases cur) ps
     (vector-pop phases)))
 
+(defun ps-has-up-phase (ps)
+  (with-slots (cur phases) ps
+    (< cur (length phases))))
+
+(defun ps-has-down-phase (ps)
+  (>= (ps-cur ps) 0))
+
+(defun ps-step-up-phase (ps)
+  (with-slots (cur phases) ps
+    (when-let (phase (ps-cur-phase ps))
+      (when phase
+        (phase-pause phase)))
+    (incf cur)
+    (when-let (new-phase (ps-cur-phase ps))
+      (phase-start new-phase))))
+
+(defun ps-step-down-phase (ps)
+  (with-slots (cur phases) ps
+    (when-let (phase (ps-cur-phase ps))
+      (decf cur)
+      (vector-pop phases)
+      (phase-finish phase))))
+
+(defun ps-update (ps)
+  (with-slots (phase-refs) ps
+    (loop while (= 0 phase-refs)
+          do (if (ps-has-up-phase ps)
+                 (ps-step-up-phase ps)
+                 (progn
+                   (ps-step-down-phase ps)
+                   (when (and (not (ps-has-up-phase ps))
+                              (ps-has-down-phase ps))
+                     (phase-resume (ps-cur-phase ps))))))))

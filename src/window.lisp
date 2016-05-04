@@ -15,7 +15,7 @@
 (defclass game-window (kit.sdl2:gl-window)
   (gk assets
    (anim-manager :initform (make-instance 'anim-manager))
-   (screen :accessor game-window-screen)
+   (screen :initform nil :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
    (render-bundle :initform (make-instance 'bundle))
    (render-lists :initform (make-instance 'game-lists))))
@@ -25,7 +25,8 @@
     `(let ((*assets* (slot-value ,gamewin 'assets))
            (*window* ,gamewin)
            (*time* (current-time))
-           (*anim-manager* (slot-value ,gamewin 'anim-manager)))
+           (*anim-manager* (slot-value ,gamewin 'anim-manager))
+           (*ps* (slot-value ,gamewin 'phase-stack)))
        ,@body)))
 
 (defun current-screen ()
@@ -35,14 +36,15 @@
   (when *window*
     (setf (game-window-screen *window*) v)))
 
-(defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
-  (with-slots (gk assets screen render-bundle render-lists) win
+(defmethod initialize-instance :after ((win game-window) &key &allow-other-keys)
+  (with-slots (gk assets render-bundle render-lists) win
     (with-slots (pass-list pre-list sprite-list ui-list) render-lists
       (setf gk (gk:create :gl3))
       (setf assets (load-assets gk))
 
       (with-game-state (win)
-        (setf screen (make-instance 'map-screen :w w :h h)))
+        (let ((phase (make-instance 'map-phase)))
+          (ps-push *ps* phase)))
 
       (let ((pre-pass (pass 1))
             (sprite-pass (pass 2 :asc))
@@ -64,12 +66,13 @@
 (defmethod kit.sdl2:render ((w game-window))
   (gl:clear-color 0.0 0.0 0.0 1.0)
   (gl:clear :color-buffer-bit :stencil-buffer-bit)
-  (with-slots (gk assets screen render-bundle render-lists) w
+  (with-slots (gk assets render-bundle render-lists) w
     (game-lists-clear render-lists)
     (with-game-state (w)
-      (anim-update *anim-manager*)
-      (draw screen render-lists (asset-proj *assets*))
-      (gk:process gk render-bundle))))
+      (when-let (screen (current-screen))
+        (anim-update *anim-manager*)
+        (draw screen render-lists (asset-proj *assets*))
+        (gk:process gk render-bundle)))))
 
 (defgeneric key-event (ob key state) (:method (ob key state)))
 

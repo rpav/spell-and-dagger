@@ -12,6 +12,9 @@
 (defvar *window* nil
   "The current game-window")
 
+(defvar *ps* nil
+  "The phase stack")
+
 (defvar *anim-manager* nil
   "The animation manager")
 
