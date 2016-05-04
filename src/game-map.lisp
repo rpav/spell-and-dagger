@@ -19,6 +19,11 @@
       (gm-setup-physics gm)
       (physics-start physics))))
 
+(defun map-find-start (map)
+  (with-slots (tilemap) map
+    (let ((ob (tilemap-find-object tilemap "objects" "start")))
+      (gk-vec2 (aval :x ob) (aval :y ob)))))
+
 (defun map-add (map &rest objects)
   (with-slots (physics) map
     (loop for ob in objects

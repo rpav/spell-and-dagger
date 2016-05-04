@@ -15,6 +15,10 @@
    (motion :initform +motion-none+ :accessor entity-motion)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)))
 
+(defmethod (setf entity-pos) ((v gk-vec2) (e entity))
+  (with-slots (pos) e
+    (set-vec2 pos v)))
+
 (defgeneric entity-box (entity)
   (:documentation "Return a `BOX` or `(values BOX OFFSET)` for `ENTITY`")
   (:method ((e entity))
@@ -29,6 +33,10 @@
 
 (defgeneric entity-action (entity action)
   (:method (e a)))
+
+(defgeneric entity-collide (e1 e2)
+  (:documentation "Called when `E1` moves and collides with `E2`.")
+  (:method (e1 e2)))
 
 ;;; A more complex system would allow channels or entity-entity tests
 ;;; or whatnot.  For now this is a simple boolean.  Default is T,

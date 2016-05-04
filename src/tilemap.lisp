@@ -114,17 +114,21 @@
 
 (defclass object-layer ()
   ((props :initform nil :initarg :props :accessor props)
-   (objects :initform nil :reader object-layer-objects)))
+   (objects :initform nil :reader object-layer-objects)
+   (names :initform (make-hash-table :test 'equal))))
 
 (defun object-layer-parse (tm json)
-  (let ((layer (make-instance 'object-layer
-                 :props (aval :properties json)))
-        (objects (aval :objects json))
-        (size (tilemap-size tm)))
+  (let* ((layer (make-instance 'object-layer
+                  :props (aval :properties json)))
+         (names (slot-value layer 'names))
+         (objects (aval :objects json))
+         (size (tilemap-size tm)))
     (loop for object in objects
           do (setf (aval :y object) (- (* 16 (vy size))
                                        (+ (aval :height object)
-                                          (aval :y object)))))
+                                          (aval :y object))))
+             (when-let (name (aval :name object))
+               (setf (gethash name names) object)))
     (setf (slot-value layer 'objects) objects)
     layer))
 
@@ -165,14 +169,14 @@
 
 (defun tilemap-find-layer (tm name)
   (with-slots (layers layer-names) tm
-    (when-let (i (gethash name layer-names))
-      (aref layers i))))
+    (typecase name
+      (string (when-let (i (gethash name layer-names))
+                (aref layers i)))
+      (integer (aref layers name)))))
 
 (defun map-tilemap-tiles (function tm layer)
   (with-slots (size layers mergeset) tm
-    (let ((layer (if (stringp layer)
-                     (tilemap-find-layer tm layer)
-                     (aref layers layer))))
+    (let ((layer (tilemap-find-layer tm layer)))
       (when (typep layer 'tile-layer)
         (with-slots (tiles props) layer
           (loop for idx across tiles
@@ -185,13 +189,17 @@
 
 (defun map-tilemap-objects (function tm layer)
   (with-slots (size layers) tm
-    (let ((layer (if (stringp layer)
-                     (tilemap-find-layer tm layer)
-                     (aref layers layer))))
+    (let ((layer (tilemap-find-layer tm layer)))
       (when (typep layer 'object-layer)
         (with-slots (objects) layer
           (loop for ob in objects
                 do (funcall function ob)))))))
+
+(defun tilemap-find-object (tm layer name)
+  (with-slots (layers) tm
+    (let ((layer (tilemap-find-layer tm layer)))
+      (when (typep layer 'object-layer)
+        (gethash name (slot-value layer 'names))))))
 
  ;; GK-TILEMAP
 

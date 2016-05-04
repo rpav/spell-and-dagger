@@ -83,3 +83,4 @@
     (draw sprite lists m)
     (when attacking
       (draw wpn-sprite lists m))))
+

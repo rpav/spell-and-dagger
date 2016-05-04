@@ -61,6 +61,7 @@
       (setf (entity-sprite char) sprite))
     (setf map (make-instance 'game-map
                 :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps "test.json")))
+    (setf (entity-pos char) (map-find-start map))
     (map-add map char)))
 
 (defmethod draw :after ((s test-screen) lists m)

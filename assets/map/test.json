@@ -54,6 +54,17 @@
                  "width":16,
                  "x":48,
                  "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":17,
+                 "name":"start",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -69,7 +80,7 @@
          "name":"collision",
          "objects":[
                 {
-                 "height":32,
+                 "height":20,
                  "id":14,
                  "name":"",
                  "rotation":0,
@@ -80,7 +91,7 @@
                  "y":80
                 }, 
                 {
-                 "height":32,
+                 "height":20,
                  "id":15,
                  "name":"",
                  "rotation":0,
@@ -108,7 +119,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

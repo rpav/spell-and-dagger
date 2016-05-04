@@ -57,7 +57,7 @@
             (loop for c in collisions
                   do (when (entity-solid-p c)
                        (setf collides-p t)
-                       (return)))
+                       (entity-collide ob c)))
             ;; If it can't move there, return it.
             (when collides-p
               (gk:set-vec2f pos x y))
