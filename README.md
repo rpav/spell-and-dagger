@@ -7,15 +7,12 @@ Current status:
 * Test entity with sprite, walking around and swinging arm on input
 * Tilemaps load and render from Tiled (http://www.mapeditor.org/) .json files
 * Renders weapon
+* Collision and callbacks
 
 Up next:
 
-* Collision
-
-Should probably:
-
-* Better input handling and structure all around, a number of things
-  are rather hackish at this point.
+* Move control to phases to handle map transitions, further gameplay
+  elements
 
 Current screenshot:
 
