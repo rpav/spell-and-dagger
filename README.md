@@ -11,7 +11,7 @@ Current status:
 * Phases and map transitions, though map/char will probably remain global
 * Map transitions
 * Interactions: simple textboxes.
-* Simple monster spawn / hit / death.
+* Simple monster spawn / hit / death, now with effects.
 
 Up next:
 
@@ -29,7 +29,7 @@ Needs work:
 Current screenshots:
 
 <img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
-<img src="http://ogmo.mephle.net/lgj/monsters.gif">
+<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif">
 
 ## Building
 
