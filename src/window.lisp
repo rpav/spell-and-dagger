@@ -114,10 +114,7 @@
   (setf (game-window-char *window*) v))
 
 (defun map-change (map &optional target)
-  (let ((cur (current-map))
-        (char (current-char)))
-    (when cur
-      (map-remove cur char))
+  (let ((char (current-char)))
     (setf (current-map)
           (make-instance 'game-map
             :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps
