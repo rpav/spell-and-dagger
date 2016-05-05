@@ -87,4 +87,4 @@
                      (phase-resume (ps-cur-phase ps))))))))
 
 (defun ps-back (&optional (ps *ps*))
-  (phase-back (cur-phase ps)))
+  (phase-back (ps-cur-phase ps)))

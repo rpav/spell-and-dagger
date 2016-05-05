@@ -45,7 +45,7 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":4,
+                 "height":16,
                  "id":5,
                  "name":"door",
                  "properties":
@@ -101,7 +101,7 @@
          "name":"collision",
          "objects":[
                 {
-                 "height":20,
+                 "height":32,
                  "id":14,
                  "name":"",
                  "rotation":0,
@@ -112,7 +112,7 @@
                  "y":80
                 }, 
                 {
-                 "height":20,
+                 "height":32,
                  "id":15,
                  "name":"",
                  "rotation":0,
@@ -182,8 +182,40 @@
          "width":16,
          "x":0,
          "y":0
+        }, 
+        {
+         "color":"#ff0000",
+         "draworder":"topdown",
+         "height":9,
+         "name":"spawners",
+         "objects":[
+                {
+                 "height":16,
+                 "id":21,
+                 "name":"Shrooms",
+                 "properties":
+                    {
+                     "type":"shroom"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":48
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":21,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

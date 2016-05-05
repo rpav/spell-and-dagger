@@ -55,20 +55,24 @@
         'simple-blocker
         (intern (string-upcase type) :game))))
 
+(defun gm-make-instance (ob)
+  (let* ((type (gm-object-type ob))
+         (pos (gk-vec2 (aval :x ob) (aval :y ob)))
+         (size (gk-vec2 (aval :width ob) (aval :height ob))))
+    (and type
+         (make-instance type
+           :name (aval :name ob)
+           :pos pos :size size
+           :props (aval :properties ob)))))
+
 (defun gm-add-object (gm ob)
   (with-slots (physics) gm
-    (let* ((type (gm-object-type ob))
-           (pos (gk-vec2 (aval :x ob) (aval :y ob)))
-           (size (gk-vec2 (aval :width ob) (aval :height ob)))
-           (instance
-             (and type
-                  (make-instance type :pos pos :size size
-                    :props (aval :properties ob)))))
-      (when instance
-        (physics-add physics instance)))))
+    (when-let (instance (gm-make-instance ob))
+      (physics-add physics instance))))
 
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "interacts")))
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "interacts")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "spawners")))

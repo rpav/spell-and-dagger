@@ -43,15 +43,11 @@ of 0..1.0"
 
 (defun box+ (box offset)
   (incf (vx (car box)) (vx offset))
-  (incf (vy (car box)) (vy offset))
-  (incf (vx (cdr box)) (vx offset))
-  (incf (vy (cdr box)) (vy offset)))
+  (incf (vy (car box)) (vy offset)))
 
 (defun box- (box offset)
   (decf (vx (car box)) (vx offset))
-  (decf (vy (car box)) (vy offset))
-  (decf (vx (cdr box)) (vx offset))
-  (decf (vy (cdr box)) (vy offset)))
+  (decf (vy (car box)) (vy offset)))
 
 (defun box-intersect-p (box-a box-b offs-a offs-b)
   (with-box (ax0 ay0 ax1 ay1) box-a

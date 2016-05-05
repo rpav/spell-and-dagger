@@ -8,9 +8,10 @@
 (defmethod initialize-instance ((s sprite) &key sheet index name
                                 pos size key)
   (with-slots (qs trs scale) s
-    (let ((index (if name
-                     (find-frame sheet name)
-                     index)))
+    (let* ((sheet (or sheet (asset-sheet *assets*)))
+           (index (if name
+                      (find-frame sheet name)
+                      index)))
       (setf qs (cmd-quadsprite sheet index :key key)))
     (setf trs (cmd-tf-trs :out (quadsprite-tfm qs)
                           :translate pos

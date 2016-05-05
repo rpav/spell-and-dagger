@@ -31,7 +31,10 @@
      (:module #:entities
       :pathname "entity"
       :components
-      ((:file "simple")
+      ((:file "actor")
+       (:file "simple")
+       (:file "simple-mob")
+       (:file "spawner")
        (:file "game-char")))
 
      (:file "phase")
@@ -65,8 +68,7 @@
      (:module #:font
       :pathname "font"
       :components
-      ((:static-file "hardpixel.ttf")
-       (:static-file "black_chancery.ttf")))
+      ((:static-file "hardpixel.ttf")))
      (:module #:maps
       :pathname "map"
       :components

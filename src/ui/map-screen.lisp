@@ -14,18 +14,18 @@
     (if (eq state :keydown)
         (progn
           (case key
-            (:scancode-right (set-motion-bit char :right))
-            (:scancode-left (set-motion-bit char :left))
-            (:scancode-up (set-motion-bit char :up))
-            (:scancode-down (set-motion-bit char :down))
+            (:scancode-right (set-motion-bit char +motion-right+))
+            (:scancode-left (set-motion-bit char +motion-left+))
+            (:scancode-up (set-motion-bit char +motion-up+))
+            (:scancode-down (set-motion-bit char +motion-down+))
             (:scancode-z (entity-action char :btn1))
             (:scancode-a (entity-action char :btn2))))
         (progn
           (case key
-            (:scancode-right (clear-motion-bit char :right))
-            (:scancode-left (clear-motion-bit char :left))
-            (:scancode-up (clear-motion-bit char :up))
-            (:scancode-down (clear-motion-bit char :down)))))))
+            (:scancode-right (clear-motion-bit char +motion-right+))
+            (:scancode-left (clear-motion-bit char +motion-left+))
+            (:scancode-up (clear-motion-bit char +motion-up+))
+            (:scancode-down (clear-motion-bit char +motion-down+)))))))
 
  ;; TEXT-SCREEN
 

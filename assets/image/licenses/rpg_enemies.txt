@@ -1,0 +1,5 @@
+Author:  Stephen Challener (Redshrike), hosted by OpenGameArt.org
+License: CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Source:  http://opengameart.org/content/16x16-16x24-32x32-rpg-enemies-updated
+
+Notes: Desires sprites were picked, cut, and repacked.
