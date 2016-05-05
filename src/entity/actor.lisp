@@ -23,7 +23,7 @@ attack, take damage, etc., i.e. the character or a mob."))
   (with-slots (hit-time) e
     (setf hit-time *time*)
     (setf (entity-motion e) (actor-facing a))
-    (nv2* (entity-motion e) 8.0)))
+    (nv2* (entity-motion e) 2.0)))
 
 (defmethod entity-attacked :after ((e actor) a w)
   (with-slots (life) e
@@ -34,5 +34,5 @@ attack, take damage, etc., i.e. the character or a mob."))
   (with-slots (hit-time) e
     (when hit-time
       (let ((delta (- *time* hit-time)))
-        (when (> delta 0.005)
+        (when (> delta 0.1)
           (setf (entity-motion e) +motion-none+))))))
