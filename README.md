@@ -11,18 +11,25 @@ Current status:
 * Phases and map transitions, though map/char will probably remain global
 * Map transitions
 * Interactions: simple textboxes.
+* Simple monster spawn / hit / death.
 
 Up next:
 
-* Monsters, more interactions, actual gameplay, UI.
+* UI, player stats.
+* Player damage, death.
 
 Needs work:
 
 * Should abstract keybindings at least slightly.
+* Sprites handling their own animations
+* Better weapon display handling
+* Hit/death visual effects.
+* Content!
 
-Current screenshot:
+Current screenshots:
 
-<img src="http://ogmo.mephle.net/lgj/current-20160505-1009.png">
+<img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
+<img src="http://ogmo.mephle.net/lgj/monsters.gif">
 
 ## Building
 
