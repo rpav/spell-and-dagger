@@ -6,7 +6,16 @@
 (defclass simple-mob (actor)
   ((life :initform 3)
    (state :initform :starting)
-   (act-start :initform 0)))
+   (act-start :initform 0)
+   (anim :initform nil)
+   (anim-state :initform nil)))
+
+(defmethod initialize-instance :after ((a simple-mob) &key name &allow-other-keys)
+  (with-slots (anim anim-state sprite) a
+    (when name
+      (setf anim (make-instance 'anim-sprite :name name))
+      (setf anim-state (animation-instance anim sprite))
+      (anim-run *anim-manager* anim-state))))
 
 (defmethod entity-attacked ((e simple-mob) a w)
   (call-next-method)

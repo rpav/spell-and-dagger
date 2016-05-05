@@ -195,7 +195,7 @@
                  "name":"Shrooms",
                  "properties":
                     {
-                     "type":"shroom"
+                     "type":"rpg-enemies\/shroom"
                     },
                  "propertytypes":
                     {
