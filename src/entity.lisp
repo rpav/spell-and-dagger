@@ -18,12 +18,18 @@
 ;;; May convert this to be prototypey later
 (defclass entity ()
   ((name :initform nil :initarg :name :accessor entity-name)
-   (pos :initform (gk-vec3 0 0 0) :initarg :pos :reader entity-pos)
-   (size :initform (gk-vec2 16 16) :initarg :size :reader entity-size)
+   (pos :initform (gk-vec3 0 0 0) :reader entity-pos)
+   (size :initform (gk-vec2 16 16) :reader entity-size)
    (motion :initform (gk-vec2 0 0) :reader entity-motion)
    (state :initform nil :accessor entity-state)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)
    (props :initform nil :initarg :props :reader entity-props)))
+
+(defmethod initialize-instance :after ((e entity) &key pos size &allow-other-keys)
+  (with-slots ((_pos pos) (_size size)) e
+    ;; Using set-vec2 makes it so everyone can specify them.  We don't use Z.
+    (when pos (set-vec2 _pos pos))
+    (when size (set-vec2 _size size))))
 
 (defmethod print-object ((e entity) s)
   (with-slots (name pos size) e

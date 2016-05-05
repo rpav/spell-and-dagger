@@ -9,8 +9,13 @@
   (:documentation "An actor is something that can move with animation,
 attack, take damage, etc., i.e. the character or a mob."))
 
+(defgeneric actor-dead-p (actor)
+  (:documentation "True if `ACTOR` is dead and should be (or is) removed.")
+  (:method ((a actor))
+    (<= (slot-value a 'life) 0)))
+
 (defgeneric actor-died (actor)
-  (:documentation "Called after `ENTITY-ATTACKED` when `(<= life 0)`.")
+  (:documentation "Called after `ENTITY-ATTACKED` when `ACTOR-DEAD-P`.")
   (:method ((a actor))))
 
 (defmethod entity-motion ((e actor))
@@ -26,9 +31,8 @@ attack, take damage, etc., i.e. the character or a mob."))
     (nv2* (entity-motion e) 2.0)))
 
 (defmethod entity-attacked :after ((e actor) a w)
-  (with-slots (life) e
-    (when (<= life 0)
-      (actor-died e))))
+  (when (actor-dead-p e)
+    (actor-died e)))
 
 (defmethod entity-update :after ((e actor))
   (with-slots (hit-time) e
