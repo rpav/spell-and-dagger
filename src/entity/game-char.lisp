@@ -34,8 +34,7 @@
     (,+motion-down+  . #b0010)))
 
 (defclass game-char (actor)
-  ((pos :initform (gk-vec2 0 0))
-   (state :initform :moving)
+  ((state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
    (wpn-pos :initform (gk-vec2 0 0))

@@ -18,9 +18,10 @@
 
 (defun physics-remove (phys &rest list)
   (declare (type physics phys))
-  (with-slots (objects) phys
+  (with-slots (objects quadtree) phys
     (loop for ob in list
-          do (remhash ob objects))))
+          do (quadtree-delete quadtree ob)
+             (remhash ob objects))))
 
 (defun physics-clear (phys)
   (declare (type physics phys))

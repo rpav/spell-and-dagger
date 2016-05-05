@@ -18,7 +18,7 @@
 ;;; May convert this to be prototypey later
 (defclass entity ()
   ((name :initform nil :initarg :name :accessor entity-name)
-   (pos :initform (gk-vec2 0 0) :initarg :pos :reader entity-pos)
+   (pos :initform (gk-vec3 0 0 0) :initarg :pos :reader entity-pos)
    (size :initform (gk-vec2 16 16) :initarg :size :reader entity-size)
    (motion :initform (gk-vec2 0 0) :reader entity-motion)
    (state :initform nil :accessor entity-state)
