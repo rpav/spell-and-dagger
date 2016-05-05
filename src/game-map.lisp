@@ -57,7 +57,7 @@
 
 (defun gm-make-instance (ob)
   (let* ((type (gm-object-type ob))
-         (pos (gk-vec2 (aval :x ob) (aval :y ob)))
+         (pos (gk-vec3 (aval :x ob) (aval :y ob) 0))
          (size (gk-vec2 (aval :width ob) (aval :height ob))))
     (and type
          (make-instance type
@@ -75,4 +75,14 @@
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "interacts")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "spawners")))
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "spawners")
+
+    ;; Map boundaries .. we should fill map/target props in from map props
+    (physics-add physics (make-instance 'link
+                           :pos (gk-vec3 -1 -1 0) :size (gk-vec2 256 1)))
+    (physics-add physics (make-instance 'link
+                           :pos (gk-vec3 -1 -1 0) :size (gk-vec2 1 144)))
+    (physics-add physics (make-instance 'link
+                           :pos (gk-vec3 -1 144 0) :size (gk-vec2 256 1)))
+    (physics-add physics (make-instance 'link
+                           :pos (gk-vec3 256 -1 0) :size (gk-vec2 1 144)))))

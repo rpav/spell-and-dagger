@@ -35,4 +35,3 @@
  ;; link
 
 (defclass link (simple-entity) ())
-
