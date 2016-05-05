@@ -17,15 +17,17 @@
 
 (defun spawner-spawn (s)
   (with-slots (last-dead-time mob type) s
-    (when type
-      (setf last-dead-time nil)
-      (setf mob (make-instance 'simple-mob
-                  :sprite (make-instance 'sprite
-                            :index (find-anim-frame (asset-anims *assets*) type 0)
-                            :key 1)
-                  :name type
-                  :pos (entity-pos s)))
-      (map-add (current-map) mob))))
+    (if (delete s (map-find-in-box (current-map) (entity-box s) (entity-pos s)))
+        (setf last-dead-time *time*)    ; Don't continuously try
+        (when type
+          (setf last-dead-time nil)
+          (setf mob (make-instance 'simple-mob
+                      :sprite (make-instance 'sprite
+                                :index (find-anim-frame (asset-anims *assets*) type 0)
+                                :key 1)
+                      :name type
+                      :pos (entity-pos s)))
+          (map-add (current-map) mob)))))
 
 (defmethod entity-update ((e spawner))
   (with-slots (type last-dead-time mob) e

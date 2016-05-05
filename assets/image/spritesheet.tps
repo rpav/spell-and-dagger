@@ -188,6 +188,11 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">build/fx/splat_0.png</key>
+            <key type="filename">build/fx/splat_1.png</key>
+            <key type="filename">build/fx/splat_3.png</key>
+            <key type="filename">build/fx/splat_4.png</key>
+            <key type="filename">build/fx/splat_5.png</key>
             <key type="filename">build/indoor/t1_00.png</key>
             <key type="filename">build/indoor/t1_01.png</key>
             <key type="filename">build/indoor/t1_02.png</key>
@@ -386,6 +391,8 @@
             <key type="filename">build/rpg_enemies/shroom_00.png</key>
             <key type="filename">build/rpg_enemies/shroom_01.png</key>
             <key type="filename">build/rpg_enemies/shroom_02.png</key>
+            <key type="filename">build/rpg_enemies/shroom_hit_00.png</key>
+            <key type="filename">build/rpg_enemies/shroom_hit_01.png</key>
             <key type="filename">build/town/solid/t_00.png</key>
             <key type="filename">build/town/solid/t_01.png</key>
             <key type="filename">build/town/solid/t_02.png</key>
