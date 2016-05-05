@@ -20,7 +20,9 @@
     (when type
       (setf last-dead-time nil)
       (setf mob (make-instance 'simple-mob
-                  :sprite (make-instance 'sprite :index 0 :key 1)
+                  :sprite (make-instance 'sprite
+                            :index (find-anim-frame (asset-anims *assets*) type 0)
+                            :key 1)
                   :name type
                   :pos (entity-pos s)))
       (map-add (current-map) mob))))
