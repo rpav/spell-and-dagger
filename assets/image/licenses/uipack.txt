@@ -1,0 +1,6 @@
+Author:  Kenney <http://www.kenney.nl>
+License: CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+Source:  http://opengameart.org/content/ui-pack-rpg-extension
+
+Notes: Specific sprites were cut with ImageMagick and repacked with
+TexturePacker.

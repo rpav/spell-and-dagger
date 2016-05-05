@@ -10,14 +10,19 @@ Current status:
 * Collision and callbacks
 * Phases and map transitions, though map/char will probably remain global
 * Map transitions
+* Interactions: simple textboxes.
 
 Up next:
 
-* Monsters, interactions, actual gameplay.
+* Monsters, more interactions, actual gameplay, UI.
+
+Needs work:
+
+* Should abstract keybindings at least slightly.
 
 Current screenshot:
 
-<img src="http://ogmo.mephle.net/lgj/current-20160504-1715.gif">
+<img src="http://ogmo.mephle.net/lgj/current-20160505-1009.png">
 
 ## Building
 

@@ -37,6 +37,10 @@
   (with-slots (physics) map
     (physics-update physics)))
 
+(defun map-find-in-box (map box &optional offs)
+  (with-slots (physics) map
+    (physics-find physics box offs)))
+
 (defmethod draw ((gm game-map) lists m)
   (with-slots (gktm physics) gm
     (draw gktm lists m)
@@ -66,4 +70,5 @@
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
     (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")))
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "interacts")))

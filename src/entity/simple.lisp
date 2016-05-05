@@ -15,6 +15,23 @@
 
 (defclass simple-blocker (simple-entity) ())
 
+ ;; simple-text
+
+(defclass simple-text (simple-entity)
+  ((text :initform "")))
+
+(defmethod initialize-instance :after ((e simple-text) &key props &allow-other-keys)
+  (with-slots (text) e
+    (if-let (str (aval :text props))
+      (setf text str)
+      (format t "Warning: String not specified for SIMPLE-TEXT"))))
+
+(defmethod entity-solid-p ((e simple-text)) nil)
+
+(defmethod entity-interact ((e simple-text) a)
+  (with-slots (text) e
+    (show-textbox text)))
+
  ;; link
 
 (defclass link (simple-entity) ())

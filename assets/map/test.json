@@ -132,6 +132,49 @@
                  "width":16,
                  "x":48,
                  "y":80
+                }, 
+                {
+                 "height":8,
+                 "id":19,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":12.5,
+                 "x":2,
+                 "y":135.25
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "color":"#ffff00",
+         "draworder":"topdown",
+         "height":9,
+         "name":"interacts",
+         "objects":[
+                {
+                 "height":16,
+                 "id":20,
+                 "name":"tree",
+                 "properties":
+                    {
+                     "text":"It's just a tree."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"simple-text",
+                 "visible":true,
+                 "width":16,
+                 "x":0,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -140,7 +183,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":19,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

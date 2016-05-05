@@ -36,6 +36,10 @@
 (defgeneric entity-action (entity action)
   (:method (e a)))
 
+(defgeneric entity-interact (entity actor)
+  (:method (e a))
+  (:documentation "Called when `ACTOR` interacts with `ENTITY`."))
+
 (defgeneric entity-collide (e1 e2)
   (:documentation "Called when `E1` moves and collides with `E2`.")
   (:method (e1 e2)))

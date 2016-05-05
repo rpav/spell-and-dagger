@@ -19,3 +19,13 @@
   (ps-incref *ps*)
   (with-slots (map-screen) p
     (setf (ui-visible map-screen) t)))
+
+(defmethod phase-pause ((p map-phase))
+  (clear-motion-bits (current-char)))
+
+(defmethod phase-show-textbox ((phase map-phase) text)
+  (ps-push (make-instance 'text-phase :text text))
+  (ps-decref))
+
+(defun show-textbox (text)
+  (phase-show-textbox (ps-cur-phase) text))

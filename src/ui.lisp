@@ -25,7 +25,7 @@
 (defmethod draw ((ui ui) lists m)
   (with-slots ((c children)) ui
     (loop for child being each hash-key in c
-          do (draw c lists m))))
+          do (draw child lists m))))
 
  ;; SCREEN
 

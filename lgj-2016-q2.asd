@@ -38,13 +38,15 @@
      (:module #:phases
       :pathname "phases"
       :components
-      ((:file "map-phase")))
+      ((:file "map-phase")
+       (:file "text-phase")))
 
      (:file "ui")
      (:module #:uis
       :pathname "ui"
       :components
-      ((:file "map-screen")))
+      ((:file "textbox")
+       (:file "map-screen")))
 
 
      (:file "sprite")
@@ -63,7 +65,8 @@
      (:module #:font
       :pathname "font"
       :components
-      ((:static-file "hardpixel.ttf")))
+      ((:static-file "hardpixel.ttf")
+       (:static-file "black_chancery.ttf")))
      (:module #:maps
       :pathname "map"
       :components

@@ -61,6 +61,15 @@
     (setf (entity-state e) :attacking)
     (game-char-play-attack e)))
 
+(defmethod entity-action ((e game-char) (a (eql :btn2)))
+  (multiple-value-bind (b o) (entity-box e)
+    (let* ((map (current-map))
+           (matches (delete e (map-find-in-box map b o))))
+      (if matches
+          (loop for ob in matches
+                do (entity-interact ob e))
+          (show-textbox "Nothing here.")))))
+
 (defmethod entity-motion ((e game-char))
   (with-slots (state motion) e
     (case state
@@ -99,6 +108,10 @@
     (let ((mask (aval direction +motion-mask+)))
       (setf motion-mask (logandc2 motion-mask mask)))
     (game-char-update-motion e)))
+
+(defun clear-motion-bits (e)
+  (setf (slot-value e 'motion-mask) 0)
+  (game-char-update-motion e))
 
  ;; util
 

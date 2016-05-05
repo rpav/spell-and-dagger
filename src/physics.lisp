@@ -75,3 +75,7 @@
   (with-slots (objects) phys
     (loop for ob being each hash-key of objects
           do (funcall function ob))))
+
+(defun physics-find (phys box &optional offs)
+  (with-slots (quadtree) phys
+    (quadtree-select quadtree box offs)))

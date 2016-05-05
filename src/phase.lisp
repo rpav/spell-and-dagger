@@ -28,33 +28,33 @@
    (cur :initform -1 :reader ps-cur)
    (phase-refs :initform 0)))
 
-(defun ps-incref (ps)
+(defun ps-incref (&optional (ps *ps*))
   (incf (slot-value ps 'phase-refs)))
 
-(defun ps-decref (ps)
+(defun ps-decref (&optional (ps *ps*))
   (decf (slot-value ps 'phase-refs))
   (ps-update ps))
 
 (defun ps-top (ps)
   (aref (slot-value ps 'phases) (ps-cur ps)))
 
-(defun ps-cur-phase (ps)
+(defun ps-cur-phase (&optional (ps *ps*))
   (with-slots (cur phases) ps
     (when (>= cur 0)
       (aref phases cur))))
 
-(defun ps-push (ps new-phase)
+(defun ps-push (new-phase &optional (ps *ps*))
   (with-slots (phases cur) ps
     (vector-push-extend new-phase phases)
     (ps-update ps)))
 
-(defun ps-pop (ps)
+(defun ps-pop (&optional (ps *ps*))
   (with-slots (phases cur) ps
     (vector-pop phases)))
 
 (defun ps-has-up-phase (ps)
   (with-slots (cur phases) ps
-    (< cur (length phases))))
+    (< cur (1- (length phases)))))
 
 (defun ps-has-down-phase (ps)
   (>= (ps-cur ps) 0))
@@ -86,5 +86,5 @@
                               (ps-has-down-phase ps))
                      (phase-resume (ps-cur-phase ps))))))))
 
-(defun cur-phase (&optional (ps *ps*))
-  (ps-cur-phase ps))
+(defun ps-back (&optional (ps *ps*))
+  (phase-back (cur-phase ps)))

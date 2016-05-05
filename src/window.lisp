@@ -4,7 +4,7 @@
   ((pass-list :initform (make-instance 'cmd-list :subsystem :config))
    (pre-list :initform (make-instance 'cmd-list :prealloc 100 :subsystem :config))
    (sprite-list :initform (make-instance 'cmd-list :prealloc 100 :subsystem :gl))
-   (ui-list :initform (make-instance 'cmd-list :subsystem :nvg))))
+   (ui-list :initform nil)))
 
 (defun game-lists-clear (game-lists)
   (with-slots (pre-list sprite-list ui-list) game-lists
@@ -31,7 +31,7 @@
            (*ps* (slot-value ,gamewin 'phase-stack)))
        ,@body)))
 
-(defmethod initialize-instance :after ((win game-window) &key &allow-other-keys)
+(defmethod initialize-instance :after ((win game-window) &key w h &allow-other-keys)
   (with-slots (gk assets render-bundle render-lists) win
     (with-slots (pass-list pre-list sprite-list ui-list) render-lists
       (setf gk (gk:create :gl3))
@@ -39,11 +39,12 @@
 
       (with-game-state (win)
         (let ((phase (make-instance 'map-phase)))
-          (ps-push *ps* phase)))
+          (ps-push phase)))
 
       (let ((pre-pass (pass 1))
             (sprite-pass (pass 2 :asc))
             (ui-pass (pass 3)))
+        (setf ui-list (make-instance 'cmd-list-nvg :width w :height h))
         (cmd-list-append pass-list pre-pass sprite-pass ui-pass)
         (bundle-append render-bundle
                        pass-list        ; 0
@@ -124,3 +125,12 @@
     (setf (entity-pos char) (map-find-start (current-map) target))
     (setf (entity-motion char) +motion-none+)
     (map-add (current-map) char)))
+
+(defun window-size ()
+  (kit.sdl2:window-size *window*))
+
+(defun window-width ()
+  (kit.sdl2:window-width *window*))
+
+(defun window-height ()
+  (kit.sdl2:window-height *window*))
