@@ -15,21 +15,22 @@ Current status:
 
 Up next:
 
-* UI, player stats.
-* Player damage, death.
+* More work on HUD, ui, player damage, effects, death/continue
+* Title screen
+* Save/continue?
 
 Needs work:
 
 * Should abstract keybindings at least slightly.
 * Sprites handling their own animations
 * Better weapon display handling
-* Hit/death visual effects.
 * Content!
 
 Current screenshots:
 
 <img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
 <img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif">
+<img src="http://ogmo.mephle.net/lgj/damage.gif">
 
 ## Building
 
