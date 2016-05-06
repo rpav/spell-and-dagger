@@ -81,7 +81,8 @@
         (target (entity-property c :target)))
     (when map
       (format t "Move to ~S@~S~%" map target)
-      (map-change map target))))
+      (map-change map target)
+      (game-char-update-motion e))))
 
 (defmethod entity-collide ((e game-char) (c simple-mob))
   (with-slots (life hit-start) e
