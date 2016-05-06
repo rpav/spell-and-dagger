@@ -12,12 +12,14 @@ Current status:
 * Map transitions
 * Interactions: simple textboxes.
 * Simple monster spawn / hit / death, now with effects.
+* Player damage, hit effects, powerups, death
 
 Up next:
 
-* More work on HUD, ui, player damage effects, death/continue
-* Title screen
-* Save/continue?
+* Spells, map-state effects
+* Death/continue/save
+* Official name, title screen
+* UI as necessary
 
 Needs work:
 
@@ -30,7 +32,7 @@ Current screenshots:
 
 <img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
 <img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif"><br>
-<img src="http://ogmo.mephle.net/lgj/damage2.gif">
+<img src="http://ogmo.mephle.net/lgj/powerups.gif">
 
 ## Building
 
