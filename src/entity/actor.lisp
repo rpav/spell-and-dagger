@@ -25,15 +25,17 @@ attack, take damage, etc., i.e. the character or a mob."))
       (:attacking +motion-none+)
       (otherwise motion))))
 
-(defun actor-knock-back (actor direction)
+(defun actor-knock-back (actor pos)
   (with-slots (hit-start) actor
     (setf hit-start *time*)
-    (setf (entity-motion actor) direction)
+    (setf (entity-motion actor) (entity-pos actor))
+    (nv2- (entity-motion actor) pos)
+    (nnorm-v2 (entity-motion actor))
     (nv2* (entity-motion actor) (actor-knockback-speed actor))
     (actor-knockback-begin actor)))
 
 (defmethod entity-attacked ((e actor) a w)
-  (actor-knock-back e (actor-facing a)))
+  (actor-knock-back e (entity-pos a)))
 
 (defmethod entity-update :after ((e actor))
   (with-slots (hit-start) e

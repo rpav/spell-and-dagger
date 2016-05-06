@@ -42,6 +42,9 @@
           (anim-run *anim-manager* anim-state)
           (call-next-method)))))
 
+(defmethod entity-collide ((e simple-mob) (g game-char))
+  (entity-collide g e))
+
 (defmethod actor-died ((a actor))
   (map-remove (current-map) a))
 

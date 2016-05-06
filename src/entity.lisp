@@ -46,6 +46,10 @@
   (with-slots (motion) e
     (set-vec2 motion v)))
 
+(defmethod (setf entity-motion) ((v gk-vec3) (e entity))
+  (with-slots (motion) e
+    (set-vec2 motion v)))
+
 (defgeneric entity-box (entity)
   (:documentation "Return a `BOX` or `(values BOX OFFSET)` for `ENTITY`")
   (:method ((e entity))

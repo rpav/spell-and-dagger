@@ -46,7 +46,10 @@
   (with-slots (sprite wpn-sprite anim anim-state) g
     (setf anim (make-instance 'anim-sprite :name (aval +motion-down+ *walking*)))
     (setf anim-state (animation-instance anim nil))
-    (setf wpn-sprite (make-instance 'sprite :sheet (asset-sheet *assets*) :index 0 :key 2))))
+    (setf wpn-sprite (make-instance 'sprite
+                       :sheet (asset-sheet *assets*)
+                       :index 0
+                       :key 2))))
 
 (defmethod entity-box ((e game-char))
   (with-slots (pos) e
@@ -86,7 +89,7 @@
       (decf life)
       (if (actor-dead-p e)
           (game-over)
-          (actor-knock-back e (aval (actor-facing e) +reverse-motion+))))))
+          (actor-knock-back e (entity-pos c))))))
 
 (defmethod actor-knockback-end ((a game-char))
   (game-char-update-motion a))
