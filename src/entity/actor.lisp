@@ -28,9 +28,7 @@ attack, take damage, etc., i.e. the character or a mob."))
 (defun actor-knock-back (actor pos)
   (with-slots (hit-start) actor
     (setf hit-start *time*)
-    (setf (entity-motion actor) (entity-pos actor))
-    (nv2- (entity-motion actor) pos)
-    (nnorm-v2 (entity-motion actor))
+    (setf (entity-motion actor) (relative-motion pos (entity-pos actor)))
     (nv2* (entity-motion actor) (actor-knockback-speed actor))
     (actor-knockback-begin actor)))
 

@@ -13,6 +13,15 @@
     (,+motion-left+ . ,+motion-right+)
     (,+motion-right+ . ,+motion-left+)))
 
+(defun relative-motion (a b)
+  "Return the \"direction\" of `B` in relation to `A`, e.g.,
+if `B` is \"left of\" `A`, return `+motion-left+`."
+  (let ((dx (- (vx a) (vx b)))
+        (dy (- (vy a) (vy b))))
+    (if (< (abs dy) (abs dx))
+        (if (< dx 0.0) +motion-right+ +motion-left+)
+        (if (< dy 0.0) +motion-up+ +motion-down+))))
+
 (defparameter +default-box+ (cons (gk-vec2 0 0) (gk-vec2 16 16)))
 
 ;;; May convert this to be prototypey later
