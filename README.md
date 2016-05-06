@@ -15,7 +15,7 @@ Current status:
 
 Up next:
 
-* More work on HUD, ui, player damage, effects, death/continue
+* More work on HUD, ui, player damage effects, death/continue
 * Title screen
 * Save/continue?
 
@@ -29,8 +29,8 @@ Needs work:
 Current screenshots:
 
 <img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
-<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif">
-<img src="http://ogmo.mephle.net/lgj/damage.gif">
+<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif"><br>
+<img src="http://ogmo.mephle.net/lgj/damage2.gif">
 
 ## Building
 
