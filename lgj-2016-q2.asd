@@ -52,7 +52,7 @@
       ((:file "textbox")
        (:file "map-screen")
        (:file "hud")
-       (:file "game-over")))
+       (:file "game-over-screen")))
 
 
      (:file "sprite")
