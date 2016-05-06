@@ -32,6 +32,7 @@
       :pathname "entity"
       :components
       ((:file "actor")
+       (:file "powerup")
        (:file "simple")
        (:file "simple-mob")
        (:file "spawner")

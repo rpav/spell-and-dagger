@@ -300,6 +300,9 @@
             <key type="filename">build/indoor/t2_81.png</key>
             <key type="filename">build/indoor/t2_82.png</key>
             <key type="filename">build/indoor/t2_83.png</key>
+            <key type="filename">build/nosprite.png</key>
+            <key type="filename">build/powerup/crystal-blue.png</key>
+            <key type="filename">build/powerup/crystal-red.png</key>
             <key type="filename">build/ranger-f/atk_down_008.png</key>
             <key type="filename">build/ranger-f/atk_down_009.png</key>
             <key type="filename">build/ranger-f/atk_down_010.png</key>

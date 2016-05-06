@@ -12,7 +12,8 @@
   (with-slots (qs trs scale) s
     (let* ((sheet (or sheet (asset-sheet *assets*)))
            (index (if name
-                      (find-frame sheet name)
+                      (or (find-frame sheet name)
+                          (find-frame sheet "nosprite.png"))
                       index)))
       (setf qs (cmd-quadsprite sheet index :key key)))
     (setf trs (cmd-tf-trs :out (quadsprite-tfm qs)

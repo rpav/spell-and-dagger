@@ -1,8 +1,5 @@
 (in-package :game)
 
-(defparameter +motions+
-  (list +motion-up+ +motion-down+ +motion-left+ +motion-right+))
-
 (defclass simple-mob (actor)
   ((life :initform 3)
    (state :initform :starting)
@@ -19,34 +16,35 @@
             hit-name (string+ name "-hit"))
       (setf anim (make-instance 'anim-sprite :name name))
       (setf anim-state (animation-instance anim sprite))
-      (anim-run *anim-manager* anim-state))))
+      (anim-play *anim-manager* anim-state))))
 
 (defmethod entity-attacked ((e simple-mob) a w)
   (with-slots (anim anim-state life hit-name) e
     (decf life)
     (if (actor-dead-p e)
         (unless (eq (entity-state e) :die)
+          (map-add (current-map) (make-instance 'powerup-life
+                                   :bounce-in t
+                                   :pos (entity-pos e)))
           (setf (entity-state e) :die
                 (entity-motion e) +motion-none+
                 (anim-sprite-anim anim) (find-anim (asset-anims *assets*) "fx/splat")
                 (anim-sprite-frame-length anim) (/ 100 1000.0)
                 (anim-sprite-count anim) 1
-                (anim-state-on-stop anim-state)
-                (lambda (s)
-                  (map-remove (current-map) e)))
-          (anim-run *anim-manager* anim-state))
+                (anim-state-on-stop anim-state) (lambda (s) (mob-died e)))
+          (anim-play *anim-manager* anim-state))
         (progn
           (setf (anim-sprite-anim anim) (find-anim (asset-anims *assets*) hit-name)
                 (anim-sprite-frame-length anim) (/ 20 1000.0)
                 (anim-sprite-debug anim) nil)
-          (anim-run *anim-manager* anim-state)
+          (anim-play *anim-manager* anim-state)
           (call-next-method)))))
+
+(defmethod mob-died ((m simple-mob))
+  (map-remove (current-map) m))
 
 (defmethod entity-collide ((e simple-mob) (g game-char))
   (entity-collide g e))
-
-(defmethod actor-died ((a actor))
-  (map-remove (current-map) a))
 
 (defmethod actor-knockback-end :after ((a simple-mob))
   (with-slots (anim name) a

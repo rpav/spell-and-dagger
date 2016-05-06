@@ -6,6 +6,9 @@
 (defvar +motion-left+  (gk-vec2 -1  0))
 (defvar +motion-right+ (gk-vec2  1  0))
 
+(defparameter +motions+
+  (list +motion-up+ +motion-down+ +motion-left+ +motion-right+))
+
 (defparameter +reverse-motion+
   `((,+motion-none+ . ,+motion-none+)
     (,+motion-up+ . ,+motion-down+)
@@ -84,6 +87,11 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
 
 (defgeneric entity-collide (e1 e2)
   (:documentation "Called when `E1` moves and collides with `E2`.")
+  (:method (e1 e2)))
+
+(defgeneric entity-touch (e1 e2)
+  (:documentation "Called when `E1` moves and touches `E2`.  This happens
+only when `E2` is not `ENTITY-SOLID-P`.")
   (:method (e1 e2)))
 
 (defgeneric entity-property (e name)

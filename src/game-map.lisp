@@ -33,6 +33,12 @@
   (with-slots (physics) map
     (apply 'physics-remove physics objects)))
 
+(defun map-move (map object new-pos)
+  (with-slots (physics) map
+    (physics-remove physics object)
+    (setf (entity-pos object) new-pos)
+    (physics-add physics object)))
+
 (defun map-update (map)
   (with-slots (physics) map
     (physics-update physics)))

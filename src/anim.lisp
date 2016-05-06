@@ -4,9 +4,6 @@
 ;;; implements "doing" the animation, etc
 (defclass animation () ())
 
-(defclass animation-periodic (animation)
-  ((duration :initform 0 :initarg :duration)))
-
 (defgeneric animation-instance (animation object &key &allow-other-keys)
   (:documentation "Create an appropriate ANIM-STATE for ANIMATION,
 given `OBJECT` to be animated and any other optional parameters.")
@@ -24,8 +21,21 @@ given `OBJECT` to be animated and any other optional parameters.")
    (start-time :initform 0 :accessor anim-state-start-time)
    (on-stop :initform nil :initarg :on-stop :accessor anim-state-on-stop)))
 
+(defgeneric anim-delta-time (anim-state)
+  (:documentation "Return the current delta-time for `ANIM-STATE`")
+  (:method ((s anim-state))
+    (with-slots (start-time) s (- *time* start-time))))
+
+(defgeneric anim-normal-time (anim-state)
+  (:documentation "Return the normalized time for `ANIM-STATE`, if
+its animation has a duration, or `NIL`.")
+  (:method ((s anim-state))
+    (with-slots ((a animation)) s
+      (with-slots ((dur duration)) a
+        (when dur (/ (anim-delta-time s) dur))))))
+
 (defgeneric animation-begin (anim anim-state)
-  (:documentation "Called when the animation ANIM is started by ANIM-RUN.")
+  (:documentation "Called when the animation ANIM is started by ANIM-PLAY.")
   (:method ((a animation) state)
     (setf (slot-value state 'start-time) *time*)))
 
@@ -41,12 +51,21 @@ or manually.")
       (when on-stop
         (funcall on-stop s)))))
 
+ ;; ANIMATION-PERIODIC
+
+(defclass animation-periodic (animation)
+  ((duration :initform 0 :initarg :duration)))
+
+(defmethod animation-update ((a animation-periodic) s)
+  (when (>= (anim-normal-time s) 1.0)
+    (anim-stop *anim-manager* s)))
+
  ;; ANIM-MANAGER
 
 (defclass anim-manager ()
   ((animations :initform (make-hash-table))))
 
-(defun anim-run (manager &rest anim-states)
+(defun anim-play (manager &rest anim-states)
   (let ((*anim-manager* manager))
     (with-slots (animations) manager
       (loop for as in anim-states
@@ -101,3 +120,20 @@ or manually.")
               (anim-stop *anim-manager* state)
               (setf (sprite-index object)
                     (sprite-anim-frame anim frame))))))))
+
+ ;; function-anim
+
+(defclass function-anim (animation-periodic)
+  ((function :initform (constantly 0.0) :initarg :function))
+  (:documentation "Call `FUNCTION` every update.  It will be passed
+`OBJECT` and `TIME`.  If `DURATION` is non-NIL, `TIME` will be
+normalized 0..1 over the duration.  Otherwise, it will be the
+delta-time."))
+
+(defmethod animation-update ((a function-anim) s)
+  (with-slots (function) a
+    (with-slots (object) s
+      (let ((time (or (anim-normal-time s)
+                      (anim-delta-time s))))
+        (funcall function object time))))
+  (call-next-method))

@@ -45,9 +45,10 @@
 
 ;;; This is probably horribly inefficient.
 (defun physics-move-object (physics ob)
-  (unless (eq +motion-none+ (entity-motion ob))
+  (unless (v2= +motion-none+ (entity-motion ob))
     (with-slots (quadtree rect) physics
-      (let* ((rect rect))
+      (let* ((rect rect)
+             (solidp (entity-solid-p ob)))
         (quadtree-delete quadtree ob)
         ;; check to see if anything is at the new position
         (multiple-value-bind (box offs) (entity-box ob)
@@ -57,9 +58,11 @@
           (let ((collisions (quadtree-select quadtree rect offs))
                 (collides-p nil))
             (loop for c in collisions
-                  do (when (entity-solid-p c)
-                       (setf collides-p t)
-                       (entity-collide ob c)))
+                  do (if (and solidp (entity-solid-p c))
+                         (progn
+                           (setf collides-p t)
+                           (entity-collide ob c))
+                         (entity-touch ob c)))
             ;; If it can't move there, return it.
             (unless collides-p
               (gk:nv2+ (entity-pos ob) (entity-motion ob)))

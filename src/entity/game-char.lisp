@@ -34,8 +34,10 @@
     (,+motion-down+  . #b0010)))
 
 (defclass game-char (actor)
-  ((life :initform 5)
+  ((life :initform 5 :reader char-life)
    (max-life :initform 5 :accessor char-max-life)
+   (magic :initform 5 :reader char-magic)
+   (max-magic :initform 5 :accessor char-max-magic)
    (state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
@@ -119,6 +121,20 @@
   (setf (slot-value e 'motion-mask) 0)
   (game-char-update-motion e))
 
+(defmethod (setf char-life) (v (c game-char))
+  (with-slots (life max-life) c
+    (setf life v)
+    (when (> life max-life)
+      (setf life max-life))
+    life))
+
+(defmethod (setf char-magic) (v (c game-char))
+  (with-slots (magic max-magic) c
+    (setf magic v)
+    (when (> magic max-magic)
+      (setf magic max-magic))
+    magic))
+
  ;; util
 
 (defun game-char-play-motion (e m)
@@ -136,7 +152,7 @@
         (setf (sprite-index sprite)
               (find-anim-frame (asset-anims *assets*)
                                (aval facing *walking*) 1))
-        (anim-run *anim-manager* anim-state))))
+        (anim-play *anim-manager* anim-state))))
 
 (defun game-char-play-attack (e)
   (with-slots (sprite facing wpn-sprite anim anim-state) e
@@ -150,7 +166,7 @@
     (setf (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
                                                 (aval facing *weapon*)))
     (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
-    (anim-run *anim-manager* anim-state)))
+    (anim-play *anim-manager* anim-state)))
 
 (defun game-char-update-wpn-box (e)
   (with-slots (wpn-box wpn-pos facing) e
