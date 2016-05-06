@@ -4,7 +4,7 @@
 
 (defclass sprite ()
   (qs trs
-   (visiblep :initform t)))
+   (visiblep :initform t :accessor sprite-visible)))
 
 (defmethod initialize-instance ((s sprite) &key sheet index name
                                 pos size key)

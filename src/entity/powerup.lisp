@@ -1,7 +1,7 @@
 (in-package :game)
 
 (defparameter +powerup-bounce+
-  (make-instance 'function-anim
+  (make-instance 'anim-function
     :duration 0.2
     :function
     (lambda (o d)

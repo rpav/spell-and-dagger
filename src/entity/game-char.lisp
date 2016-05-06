@@ -42,12 +42,23 @@
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
    (wpn-pos :initform (gk-vec2 0 0))
-   wpn-sprite anim anim-state))
+   wpn-sprite
+   anim anim-state
+   hit-anim hit-ans))
 
 (defmethod initialize-instance :after ((g game-char) &key &allow-other-keys)
-  (with-slots (sprite wpn-sprite anim anim-state) g
+  (with-slots (sprite wpn-sprite anim anim-state hit-anim hit-ans) g
     (setf anim (make-instance 'anim-sprite :name (aval +motion-down+ *walking*)))
     (setf anim-state (animation-instance anim nil))
+    (setf hit-anim (make-instance 'anim-function
+                     :duration 1.0
+                     :function
+                     (lambda (o d)
+                       (with-slots (sprite) o
+                         (if (< d 1.0)
+                             (setf (sprite-visible sprite) (not (sprite-visible sprite)))
+                             (setf (sprite-visible sprite) t))))))
+    (setf hit-ans (animation-instance hit-anim g))
     (setf wpn-sprite (make-instance 'sprite
                        :sheet (asset-sheet *assets*)
                        :index 0
@@ -87,9 +98,10 @@
       (game-char-update-motion e))))
 
 (defmethod entity-collide ((e game-char) (c simple-mob))
-  (with-slots (life hit-start) e
+  (with-slots (life hit-start hit-ans) e
     (unless hit-start
       (decf life)
+      (anim-play *anim-manager* hit-ans)
       (if (actor-dead-p e)
           (game-over)
           (actor-knock-back e (entity-pos c))))))

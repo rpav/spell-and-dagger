@@ -121,16 +121,16 @@ or manually.")
               (setf (sprite-index object)
                     (sprite-anim-frame anim frame))))))))
 
- ;; function-anim
+ ;; anim-function
 
-(defclass function-anim (animation-periodic)
+(defclass anim-function (animation-periodic)
   ((function :initform (constantly 0.0) :initarg :function))
   (:documentation "Call `FUNCTION` every update.  It will be passed
 `OBJECT` and `TIME`.  If `DURATION` is non-NIL, `TIME` will be
 normalized 0..1 over the duration.  Otherwise, it will be the
 delta-time."))
 
-(defmethod animation-update ((a function-anim) s)
+(defmethod animation-update ((a anim-function) s)
   (with-slots (function) a
     (with-slots (object) s
       (let ((time (or (anim-normal-time s)
