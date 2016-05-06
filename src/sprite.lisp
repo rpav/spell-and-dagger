@@ -3,10 +3,12 @@
 (in-package :game)
 
 (defclass sprite ()
-  (qs trs))
+  (qs trs
+   (visiblep :initform t)))
 
 (defmethod initialize-instance ((s sprite) &key sheet index name
                                 pos size key)
+  (call-next-method)
   (with-slots (qs trs scale) s
     (let* ((sheet (or sheet (asset-sheet *assets*)))
            (index (if name
@@ -39,10 +41,11 @@
 
 (defmethod draw ((sprite sprite) lists m)
   (with-slots (pre-list sprite-list) lists
-    (with-slots (qs trs) sprite
-      (setf (tf-trs-prior trs) m)
-      (cmd-list-append pre-list trs)
-      (cmd-list-append sprite-list qs))))
+    (with-slots (qs trs visiblep) sprite
+      (when visiblep
+        (setf (tf-trs-prior trs) m)
+        (cmd-list-append pre-list trs)
+        (cmd-list-append sprite-list qs)))))
 
  ;; Spritesheet animations
 
