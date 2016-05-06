@@ -25,19 +25,22 @@
   (with-slots (anim anim-state life hit-name) e
     (decf life)
     (if (actor-dead-p e)
-        (setf (entity-state e) :die
-              (anim-sprite-anim anim) (find-anim (asset-anims *assets*) "fx/splat")
-              (anim-sprite-frame-length anim) (/ 100 1000.0)
-              (anim-sprite-count anim) 1
-              (anim-state-on-stop anim-state)
-              (lambda (s)
-                (map-remove (current-map) e)))
+        (unless (eq (entity-state e) :die)
+          (setf (entity-state e) :die
+                (entity-motion e) +motion-none+
+                (anim-sprite-anim anim) (find-anim (asset-anims *assets*) "fx/splat")
+                (anim-sprite-frame-length anim) (/ 100 1000.0)
+                (anim-sprite-count anim) 1
+                (anim-state-on-stop anim-state)
+                (lambda (s)
+                  (map-remove (current-map) e)))
+          (anim-run *anim-manager* anim-state))
         (progn
           (setf (anim-sprite-anim anim) (find-anim (asset-anims *assets*) hit-name)
                 (anim-sprite-frame-length anim) (/ 20 1000.0)
                 (anim-sprite-debug anim) nil)
-          (call-next-method)))
-    (anim-run *anim-manager* anim-state)))
+          (anim-run *anim-manager* anim-state)
+          (call-next-method)))))
 
 (defmethod actor-died ((a actor))
   (map-remove (current-map) a))
