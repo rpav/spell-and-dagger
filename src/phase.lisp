@@ -28,6 +28,13 @@
    (cur :initform -1 :reader ps-cur)
    (phase-refs :initform 0)))
 
+(defmethod print-object ((o phase-stack) s)
+  (print-unreadable-object (o s :type t)
+    (format s "CUR: ~A (~A) PHASE-REFS: ~A"
+            (class-name (class-of (ps-cur-phase o)))
+            (ps-cur o)
+            (slot-value o 'phase-refs))))
+
 (defun ps-incref (&optional (ps *ps*))
   (incf (slot-value ps 'phase-refs)))
 

@@ -29,3 +29,7 @@
 
 (defun show-textbox (text)
   (phase-show-textbox (ps-cur-phase) text))
+
+(defun game-over ()
+  (ps-push (make-instance 'game-over-phase))
+  (ps-decref))

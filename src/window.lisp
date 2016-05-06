@@ -28,6 +28,7 @@
            (*window* ,gamewin)
            (*time* (current-time))
            (*anim-manager* (slot-value ,gamewin 'anim-manager))
+           (*scale* (/ (kit.sdl2:window-width ,gamewin) 256.0))
            (*ps* (slot-value ,gamewin 'phase-stack)))
        ,@body)))
 

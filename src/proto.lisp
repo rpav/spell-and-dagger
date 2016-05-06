@@ -12,6 +12,9 @@
 (defvar *window* nil
   "The current game-window")
 
+(defvar *scale* nil
+  "'Virtual resolution' scale; this represents 1px scaled.")
+
 (defvar *ps* nil
   "The phase stack")
 

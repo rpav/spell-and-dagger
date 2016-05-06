@@ -42,14 +42,17 @@
       :pathname "phases"
       :components
       ((:file "map-phase")
-       (:file "text-phase")))
+       (:file "text-phase")
+       (:file "game-over")))
 
      (:file "ui")
      (:module #:uis
       :pathname "ui"
       :components
       ((:file "textbox")
-       (:file "map-screen")))
+       (:file "map-screen")
+       (:file "hud")
+       (:file "game-over")))
 
 
      (:file "sprite")

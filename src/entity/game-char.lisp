@@ -34,7 +34,8 @@
     (,+motion-down+  . #b0010)))
 
 (defclass game-char (actor)
-  ((state :initform :moving)
+  ((life :initform 3)
+   (state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
    (wpn-pos :initform (gk-vec2 0 0))
@@ -65,10 +66,6 @@
                 do (entity-interact ob e))
           (show-textbox "Nothing here.")))))
 
-(defmethod (setf entity-motion) :after (m (e game-char))
-  (when (eq (entity-state e) :moving)
-    (game-char-play-motion e m)))
-
 (defmethod draw ((e game-char) lists m)
   (with-slots (sprite wpn-sprite wpn-box wpn-pos) e
     (draw sprite lists m)
@@ -82,11 +79,24 @@
       (format t "Move to ~S@~S~%" map target)
       (map-change map target))))
 
+(defmethod entity-collide ((e game-char) (c simple-mob))
+  (with-slots (life hit-start) e
+    (unless hit-start
+      (decf life)
+      (if (actor-dead-p e)
+          (game-over)
+          (actor-knock-back e (aval (actor-facing e) +reverse-motion+))))))
+
+(defmethod actor-knockback-end ((a game-char))
+  (game-char-update-motion a))
+
 (defun game-char-update-motion (e)
-  (with-slots (motion-mask) e
-    (setf (entity-motion e)
-          (or (akey motion-mask +motion-mask+)
-              +motion-none+))))
+  (with-slots (motion-mask state) e
+    (when (eq state :moving)
+      (let ((motion (or (akey motion-mask +motion-mask+)
+                        +motion-none+)))
+        (setf (entity-motion e) motion)
+        (game-char-play-motion e motion)))))
 
 (defun set-motion-bit (e direction)
   (with-slots (motion-mask) e

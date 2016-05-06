@@ -2,7 +2,12 @@
 
  ;; MAP-SCREEN
 
-(defclass map-screen (screen) ())
+(defclass map-screen (screen)
+  ((hud :initform (make-instance 'hud))))
+
+(defmethod initialize-instance :after ((ms map-screen) &key &allow-other-keys)
+  (with-slots (hud) ms
+    (ui-add ms hud)))
 
 (defmethod draw :after ((s map-screen) lists m)
   (when-let (map (current-map))
