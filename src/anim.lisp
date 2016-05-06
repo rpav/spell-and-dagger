@@ -95,8 +95,7 @@ or manually.")
 (defclass anim-sprite (animation)
   ((anim :initform nil :accessor anim-sprite-anim)
    (frame-length :initarg :frame-length :initform (/ 180.0 1000) :accessor anim-sprite-frame-length)
-   (count :initform nil :initarg :count :accessor anim-sprite-count)
-   (debug :initform nil :accessor anim-sprite-debug))
+   (count :initform nil :initarg :count :accessor anim-sprite-count))
   (:documentation "OBJECT should be a SPRITE."))
 
 (defmethod initialize-instance :after ((a anim-sprite) &key name &allow-other-keys)
@@ -104,7 +103,7 @@ or manually.")
     (setf anim (find-anim (asset-anims *assets*) name))))
 
 (defmethod animation-update ((a anim-sprite) state)
-  (with-slots (anim count frame-length debug) a
+  (with-slots (anim count frame-length) a
     (with-slots (object start-time) state
       (when object
         (let* ((frame-count (sprite-anim-length anim))
@@ -114,8 +113,6 @@ or manually.")
                   (* frame-count
                      (mod (/ delta (* frame-count frame-length)) 1.0))))
                (c (truncate (/ delta (* frame-count frame-length)))))
-          (when debug
-            (:say frame))
           (if (and count (>= c count))
               (anim-stop *anim-manager* state)
               (setf (sprite-index object)

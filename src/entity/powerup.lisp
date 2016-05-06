@@ -37,5 +37,4 @@
   ((sprite :initform (make-instance 'sprite :key 0 :name "powerup/crystal-red.png"))))
 
 (defmethod entity-touch ((g game-char) (e powerup))
-  (:say "ding!")
   (incf (char-life g) 2))

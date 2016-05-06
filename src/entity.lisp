@@ -77,8 +77,12 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
 (defgeneric entity-action (entity action)
   (:method (e a)))
 
+(defun default-interact (e a)
+  (declare (ignorable e a))
+  (show-textbox "Nothing here."))
+
 (defgeneric entity-interact (entity actor)
-  (:method (e a))
+  (:method (e a) (default-interact e a))
   (:documentation "Called when `ACTOR` interacts with `ENTITY`."))
 
 (defgeneric entity-attacked (entity actor weapon)

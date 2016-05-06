@@ -51,7 +51,7 @@
     (setf anim (make-instance 'anim-sprite :name (aval +motion-down+ *walking*)))
     (setf anim-state (animation-instance anim nil))
     (setf hit-anim (make-instance 'anim-function
-                     :duration 1.0
+                     :duration 0.3
                      :function
                      (lambda (o d)
                        (with-slots (sprite) o
@@ -62,7 +62,8 @@
     (setf wpn-sprite (make-instance 'sprite
                        :sheet (asset-sheet *assets*)
                        :index 0
-                       :key 2))))
+                       :key 2))
+    (game-char-play-motion g +motion-none+)))
 
 (defmethod entity-box ((e game-char))
   (with-slots (pos) e
@@ -74,6 +75,9 @@
     (game-char-play-attack e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn2)))
+  )
+
+(defmethod entity-action ((e game-char) (a (eql :btn3)))
   (with-slots (wpn-box wpn-pos) e
     (game-char-update-wpn-box e)
     (let* ((map (current-map))
@@ -81,7 +85,7 @@
       (if matches
           (loop for ob in matches
                 do (entity-interact ob e))
-          (show-textbox "Nothing here.")))))
+          (default-interact e nil)))))
 
 (defmethod draw ((e game-char) lists m)
   (with-slots (sprite wpn-sprite wpn-box wpn-pos) e

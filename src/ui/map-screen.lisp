@@ -24,7 +24,9 @@
             (:scancode-up (set-motion-bit char +motion-up+))
             (:scancode-down (set-motion-bit char +motion-down+))
             (:scancode-z (entity-action char :btn1))
-            (:scancode-a (entity-action char :btn2))))
+            (:scancode-a (entity-action char :btn2))
+            (:scancode-x (entity-action char :btn3))
+            (:scancode-s (entity-action char :btn4))))
         (progn
           (case key
             (:scancode-right (clear-motion-bit char +motion-right+))
@@ -60,4 +62,6 @@
   (when (eq state :keydown)
     (case key
       (:scancode-z (ps-back))
-      (:scancode-a (ps-back)))))
+      (:scancode-a (ps-back))
+      (:scancode-x (ps-back))
+      (:scancode-s (ps-back)))))
