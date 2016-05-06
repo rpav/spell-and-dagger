@@ -17,15 +17,14 @@
         (setf health (cmd-path
                       (list
                        :begin
-                       :tf-translate *scale* *scale*
-                       :rect (* fsize 2) (* 1.5 m) (* *scale* 4) (* 4 *scale*)
-                       :fill-color-rgba 0 0 0 255
+                       :rect fsize (* 1.2 m) 0 (* 4 *scale*)
+                       :fill-color-rgba 255 0 0 255
                        :fill
                        :begin
-                       :tf-identity
-                       :rect (* fsize 2) (* 1.5 m) (* *scale* 4) (* 4 *scale*)
-                       :fill-color-rgba 255 0 0 255
-                       :fill)))
+                       :rect fsize (* 1.2 m) 0 (* 4 *scale*)
+                       :stroke-color-rgba 255 255 255 255
+                       :stroke-width *scale*
+                       :stroke)))
 
         (setf p1 (cmd-path
                   (list
@@ -38,13 +37,14 @@
               fs2 (cmd-font-style :size fsize))
         (appendf text-cmds
                  (list
-                  (cmd-text "Life" :x m :y (+ m (/ fsize 2.0)))))))))
+                  (cmd-text "L" :x m :y (+ m (/ fsize 2.0)))))))))
 
 (defun hud-update (hud)
   (with-slots (health) hud
-    (let ((player-health (* *scale* (actor-life (current-char)))))
-      (setf (cmd-path-elt health 7) player-health
-            (cmd-path-elt health 20) player-health))))
+    (let ((player-health (* *scale* (actor-life (current-char))))
+          (max-health (* *scale* (char-max-life (current-char)))))
+      (setf (cmd-path-elt health 4) player-health
+            (cmd-path-elt health 16) max-health))))
 
 (defmethod draw ((hud hud) lists m)
   (hud-update hud)

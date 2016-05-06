@@ -34,7 +34,8 @@
     (,+motion-down+  . #b0010)))
 
 (defclass game-char (actor)
-  ((life :initform 3)
+  ((life :initform 5)
+   (max-life :initform 5 :accessor char-max-life)
    (state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
