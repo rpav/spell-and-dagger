@@ -35,16 +35,12 @@
           (anim-play *anim-manager* anim-state))
         (progn
           (setf (anim-sprite-anim anim) (find-anim (asset-anims *assets*) hit-name)
-                (anim-sprite-frame-length anim) (/ 20 1000.0)
-                (anim-sprite-debug anim) nil)
+                (anim-sprite-frame-length anim) (/ 20 1000.0))
           (anim-play *anim-manager* anim-state)
           (call-next-method)))))
 
 (defmethod mob-died ((m simple-mob))
   (map-remove (current-map) m))
-
-(defmethod entity-collide ((e simple-mob) (g game-char))
-  (entity-collide g e))
 
 (defmethod actor-knockback-end :after ((a simple-mob))
   (with-slots (anim name) a

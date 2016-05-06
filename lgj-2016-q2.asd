@@ -32,11 +32,11 @@
       :pathname "entity"
       :components
       ((:file "actor")
-       (:file "powerup")
        (:file "simple")
        (:file "simple-mob")
        (:file "spawner")
-       (:file "game-char")))
+       (:file "game-char")
+       (:file "powerup")))
 
      (:file "phase")
      (:module #:phases

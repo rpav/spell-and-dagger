@@ -110,6 +110,9 @@
           (game-over)
           (actor-knock-back e (entity-pos c))))))
 
+(defmethod entity-collide ((e simple-mob) (g game-char))
+  (entity-collide g e))
+
 (defmethod actor-knockback-end ((a game-char))
   (game-char-update-motion a))
 
