@@ -2,21 +2,16 @@
 
 Current status:
 
-* A fair bit of internal structure
-* Animations
-* Test entity with sprite, walking around and swinging arm on input
+* Basics: Structure, animations, render loop, "physics"/collision
 * Tilemaps load and render from Tiled (http://www.mapeditor.org/) .json files
-* Renders weapon
-* Collision and callbacks
-* Phases and map transitions, though map/char will probably remain global
-* Map transitions
 * Interactions: simple textboxes.
 * Simple monster spawn / hit / death, now with effects.
 * Player damage, hit effects, powerups, death
+* Demo spell with cast animations
 
 Up next:
 
-* Spells, map-state effects
+* Map-state effects, spell interactions
 * Death/continue/save
 * Official name, title screen
 * UI as necessary
