@@ -39,7 +39,7 @@
       (setf assets (load-assets gk))
 
       (with-game-state (win)
-        (let ((phase (make-instance 'map-phase)))
+        (let ((phase (make-instance 'title-phase)))
           (ps-push phase)))
 
       (let ((pre-pass (pass 1))

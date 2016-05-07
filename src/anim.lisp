@@ -54,11 +54,12 @@ or manually.")
  ;; ANIMATION-PERIODIC
 
 (defclass animation-periodic (animation)
-  ((duration :initform 0 :initarg :duration)))
+  ((duration :initform nil :initarg :duration)))
 
 (defmethod animation-update ((a animation-periodic) s)
-  (when (>= (anim-normal-time s) 1.0)
-    (anim-stop *anim-manager* s)))
+  (with-slots (duration) a
+    (when (and duration (>= (anim-normal-time s) 1.0))
+      (anim-stop *anim-manager* s))))
 
  ;; ANIM-MANAGER
 

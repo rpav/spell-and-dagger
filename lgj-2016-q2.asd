@@ -43,7 +43,8 @@
      (:module #:phases
       :pathname "phases"
       :components
-      ((:file "map-phase")
+      ((:file "title")
+       (:file "map-phase")
        (:file "text-phase")
        (:file "game-over")))
 
@@ -52,6 +53,7 @@
       :pathname "ui"
       :components
       ((:file "textbox")
+       (:file "title-screen")
        (:file "map-screen")
        (:file "hud")
        (:file "game-over-screen")))
@@ -65,12 +67,13 @@
    (:module #:assets
     :pathname "assets"
     :components
-    ((:module #:image
+    ((:module #:images
       :pathname "image"
       :components
       ((:static-file "spritesheet.json")
-       (:static-file "spritesheet.png")))
-     (:module #:font
+       (:static-file "spritesheet.png")
+       (:static-file "title.png")))
+     (:module #:fonts
       :pathname "font"
       :components
       ((:static-file "hardpixel.ttf")))
