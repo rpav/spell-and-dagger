@@ -61,7 +61,9 @@
     (unless brokenp
       (let ((break-name (entity-property e :broken)))
         (setf (sprite-name sprite) break-name
-              brokenp t)))))
+              brokenp t)
+        (map-add (current-map) (make-instance 'powerup-life
+                                 :pos (entity-pos e)))))))
 
 (defmethod entity-interact ((e breakable) a)
   (with-slots (brokenp props) e

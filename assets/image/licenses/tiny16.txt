@@ -1,0 +1,7 @@
+Author:  Lanea Zimmerman. The anti-DRM clause of CC-BY 3.0 is waved.
+License: CC-BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+Source:  http://opengameart.org/content/tiny-16-basic
+
+Notes:   The original spritesheet was cut by ImageMagick's convert,
+         frames renamed by animation sequence, and repackaged using
+         TexturePacker.
