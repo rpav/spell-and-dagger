@@ -7,27 +7,26 @@ Current status:
 * Interactions: simple textboxes.
 * Simple monster spawn / hit / death, now with effects.
 * Player damage, hit effects, powerups, death
-* Demo spell with cast animations
+* Simple break spell, breakable objects
 
 Up next:
 
-* Map-state effects, spell interactions
-* Death/continue/save
 * Official name, title screen
-* UI as necessary
+* Death/continue/save
+* Content!
 
 Needs work:
 
 * Should abstract keybindings at least slightly.
 * Sprites handling their own animations
 * Better weapon display handling
-* Content!
 
 Current screenshots:
 
-<img src="http://ogmo.mephle.net/lgj/interact.gif"><br>
-<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif"><br>
+<img src="http://ogmo.mephle.net/lgj/interact.gif">
+<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif">
 <img src="http://ogmo.mephle.net/lgj/powerups.gif">
+<img src="http://ogmo.mephle.net/lgj/breakable.gif">
 
 ## Building
 
