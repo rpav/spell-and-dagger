@@ -16,6 +16,12 @@
     (,+motion-left+ . "ranger-f/atk-left")
     (,+motion-right+ . "ranger-f/atk-right")))
 
+(defparameter *casting*
+  `((,+motion-up+ . "ranger-f/cast-up")
+    (,+motion-down+ . "ranger-f/cast-down")
+    (,+motion-left+ . "ranger-f/cast-left")
+    (,+motion-right+ . "ranger-f/cast-right")))
+
 (defparameter *weapon*
   `((,+motion-up+ . "weapon/sword_up.png")
     (,+motion-down+ . "weapon/sword_down.png")
@@ -69,13 +75,21 @@
   (with-slots (pos) e
     (values +game-char-bbox+ pos)))
 
+(defmethod entity-motion ((e actor))
+  (with-slots (state motion) e
+    (case state
+      (:attacking +motion-none+)
+      (:casting +motion-none+)
+      (otherwise motion))))
+
 (defmethod entity-action ((e game-char) (a (eql :btn1)))
   (with-slots () e
     (setf (entity-state e) :attacking)
     (game-char-play-attack e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn2)))
-  )
+  (setf (entity-state e) :casting)
+  (game-char-play-cast e))
 
 (defmethod entity-action ((e game-char) (a (eql :btn3)))
   (with-slots (wpn-box wpn-pos) e
@@ -187,6 +201,20 @@
     (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
     (anim-play *anim-manager* anim-state)))
 
+(defun game-char-play-cast (e)
+  (with-slots (sprite facing wpn-sprite anim anim-state) e
+    (setf (anim-sprite-count anim) 1
+          (anim-sprite-frame-length anim) (/ 80 1000.0)
+          (anim-sprite-anim anim) (find-anim (asset-anims *assets*)
+                                             (aval facing *casting*))
+          (anim-state-on-stop anim-state) (lambda (s)
+                                            (declare (ignore s))
+                                            (game-char-end-cast e)))
+    (setf (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
+                                                (aval facing *weapon*)))
+    (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
+    (anim-play *anim-manager* anim-state)))
+
 (defun game-char-update-wpn-box (e)
   (with-slots (wpn-box wpn-pos facing) e
     (set-vec2 wpn-pos facing)
@@ -201,7 +229,18 @@
       (loop for ob in hits
             do (entity-attacked ob e nil)))))
 
+(defun game-char-do-cast (e)
+  (let ((spell (make-instance 'spell-explode)))
+    (setf (entity-motion spell) (actor-facing e)
+          (entity-pos spell) (entity-pos e))
+    (map-add (current-map) spell)))
+
 (defun game-char-end-attack (e)
   (game-char-do-attack e)
+  (setf (entity-state e) :moving)
+  (game-char-update-motion e))
+
+(defun game-char-end-cast (e)
+  (game-char-do-cast e)
   (setf (entity-state e) :moving)
   (game-char-update-motion e))

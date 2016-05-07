@@ -36,7 +36,8 @@
        (:file "simple-mob")
        (:file "spawner")
        (:file "game-char")
-       (:file "powerup")))
+       (:file "powerup")
+       (:file "spell")))
 
      (:file "phase")
      (:module #:phases

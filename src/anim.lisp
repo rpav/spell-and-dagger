@@ -102,6 +102,18 @@ or manually.")
   (with-slots (anim) a
     (setf anim (find-anim (asset-anims *assets*) name))))
 
+(defmethod print-object ((a anim-sprite) s)
+  (with-slots (anim) a
+    (print-unreadable-object (a s :type t)
+      (format s "(FIRST-INDEX: ~A)"
+              (sprite-anim-frame anim 0)))))
+
+(defmethod animation-begin ((a anim-sprite) s)
+  (call-next-method)
+  (with-slots (anim) a
+    (with-slots (object) s
+      (setf (sprite-index object) (sprite-anim-frame anim 0)))))
+
 (defmethod animation-update ((a anim-sprite) state)
   (with-slots (anim count frame-length) a
     (with-slots (object start-time) state

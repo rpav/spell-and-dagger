@@ -14,7 +14,8 @@
            (index (if name
                       (or (find-frame sheet name)
                           (find-frame sheet "nosprite.png"))
-                      index)))
+                      (or index
+                          (find-frame sheet "nosprite.png")))))
       (setf qs (cmd-quadsprite sheet index :key key)))
     (setf trs (cmd-tf-trs :out (quadsprite-tfm qs)
                           :translate pos
@@ -51,7 +52,7 @@
  ;; Spritesheet animations
 
 (defclass sprite-anim ()
-  ((indexes :initform (make-array 2 :element-type '(unsigned-byte 8) :adjustable t :fill-pointer 0)
+  ((indexes :initform (make-array 2 :element-type '(unsigned-byte 16) :adjustable t :fill-pointer 0)
             :reader sprite-anim-indexes)))
 
 (defun sprite-anim-append (sa index)

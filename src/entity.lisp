@@ -54,6 +54,10 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
   (with-slots (pos) e
     (set-vec2 pos v)))
 
+(defmethod (setf entity-pos) ((v gk-vec3) (e entity))
+  (with-slots (pos) e
+    (set-vec2 pos v)))
+
 (defmethod (setf entity-motion) ((v gk-vec2) (e entity))
   (with-slots (motion) e
     (set-vec2 motion v)))
@@ -97,6 +101,10 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
   (:documentation "Called when `E1` moves and touches `E2`.  This happens
 only when `E2` is not `ENTITY-SOLID-P`.")
   (:method (e1 e2)))
+
+(defgeneric entity-added-to-map (map entity)
+  (:documentation "Called when `ENTITY` has been added to `MAP`")
+  (:method (m e)))
 
 (defgeneric entity-property (e name)
   (:method ((e entity) name)

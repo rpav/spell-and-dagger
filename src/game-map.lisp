@@ -26,8 +26,8 @@
 
 (defun map-add (map &rest objects)
   (with-slots (physics) map
-    (loop for ob in objects
-          do (physics-add physics ob))))
+    (apply 'physics-add physics objects)
+    (apply 'entity-added-to-map map objects)))
 
 (defun map-remove (map &rest objects)
   (with-slots (physics) map

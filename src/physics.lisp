@@ -20,7 +20,8 @@
   (declare (type physics phys))
   (with-slots (objects quadtree) phys
     (loop for ob in list
-          do (quadtree-delete quadtree ob)
+          do (when (quadtree-contains quadtree ob)
+               (quadtree-delete quadtree ob))
              (remhash ob objects))))
 
 (defun physics-clear (phys)
@@ -46,7 +47,7 @@
 ;;; This is probably horribly inefficient.
 (defun physics-move-object (physics ob)
   (unless (v2= +motion-none+ (entity-motion ob))
-    (with-slots (quadtree rect) physics
+    (with-slots (objects quadtree rect) physics
       (let* ((rect rect)
              (solidp (entity-solid-p ob)))
         (quadtree-delete quadtree ob)
@@ -63,10 +64,12 @@
                            (setf collides-p t)
                            (entity-collide ob c))
                          (entity-touch ob c)))
-            ;; If it can't move there, return it.
-            (unless collides-p
-              (gk:nv2+ (entity-pos ob) (entity-motion ob)))
-            (quadtree-add quadtree ob)))))))
+            ;; Only move it if it didn't collide, and hasn't
+            ;; been removed in the interim
+            (when (gethash ob objects)
+              (unless (or collides-p)
+                (gk:nv2+ (entity-pos ob) (entity-motion ob)))
+              (quadtree-add quadtree ob))))))))
 
 (defun physics-step (phys)
   (declare (type physics phys))

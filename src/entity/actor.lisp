@@ -19,12 +19,6 @@ attack, take damage, etc., i.e. the character or a mob."))
 (defgeneric actor-knockback-begin (actor) (:method ((a actor))))
 (defgeneric actor-knockback-end (actor) (:method ((a actor))))
 
-(defmethod entity-motion ((e actor))
-  (with-slots (state motion) e
-    (case state
-      (:attacking +motion-none+)
-      (otherwise motion))))
-
 (defun actor-knock-back (actor pos)
   (with-slots (hit-start) actor
     (setf hit-start *time*)

@@ -96,6 +96,10 @@ of 0..1.0"
   (:documentation "Select items from `QUADTREE` inside `BOX` with
 optional offset, `OFFS`"))
 
+(defun quadtree-contains (quadtree object)
+  (with-slots (object-node) quadtree
+    (nth-value 1 (gethash object object-node))))
+
 (defun point-quad (x y qt-node &optional (test #'<))
   "Return the quadrant `POINT` would occupy."
   (with-slots ((c center-point)) qt-node
