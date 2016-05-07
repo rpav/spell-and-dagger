@@ -13,21 +13,19 @@
 
  ;; simple-text
 
-(defclass simple-text (simple-entity)
-  ((text :initform "")))
+(defclass simple-text (simple-entity) ())
 
 (defmethod initialize-instance :after ((e simple-text) &key props &allow-other-keys)
   (with-slots (text) e
-    (if-let (str (aval :text props))
-      (setf text str)
-      (format t "Warning: String not specified for ~A"
+    (unless (aval :text props)
+      (format t "Warning: String not specified for ~A~%"
               (class-name (class-of e))))))
 
 (defmethod entity-solid-p ((e simple-text)) nil)
 
 (defmethod entity-interact ((e simple-text) a)
-  (with-slots (text) e
-    (show-textbox text)))
+  (with-slots (props) e
+    (show-textbox (aval :text props))))
 
  ;; simple-blocker
 
@@ -38,9 +36,15 @@
 
 (defclass link (simple-entity) ())
 
+ ;; map-link
+
+(defclass map-link (simple-entity)
+  ((map :initarg :map :initform nil :reader map-link-map)
+   (direction :initarg :direction :initform nil :reader map-link-direction)))
+
  ;; breakable
 
-(defclass breakable (simple-entity)
+(defclass breakable (simple-text)
   ((brokenp :initform nil :reader breakable-brokenp)))
 
 (defmethod initialize-instance :after ((e breakable) &key sprite-name props &allow-other-keys)
@@ -58,3 +62,9 @@
       (let ((break-name (entity-property e :broken)))
         (setf (sprite-name sprite) break-name
               brokenp t)))))
+
+(defmethod entity-interact ((e breakable) a)
+  (with-slots (brokenp props) e
+    (if brokenp
+        (show-textbox (aval :btext props))
+        (call-next-method))))

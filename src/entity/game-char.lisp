@@ -110,9 +110,23 @@
   (let ((map (entity-property c :map))
         (target (entity-property c :target)))
     (when map
-      (format t "Move to ~S@~S~%" map target)
+      (format t "Move via LINK to ~S@~S~%" map target)
       (map-change map target)
       (game-char-update-motion e))))
+
+(defmethod entity-collide ((e game-char) (c map-link))
+  (with-slots (pos) e
+    (let ((map (map-link-map c)))
+      (when map
+        (let ((target (gk-vec2 (vx pos) (vy pos))))
+          ;; Could we do this smarter? Probably.
+          (case (map-link-direction c)
+            (:n (setf (vy target) 0.0))
+            (:s (setf (vy target) (- 144 16.0)))
+            (:e (setf (vx target) 0.0))
+            (:w (setf (vx target) (- 256 16.0))))
+          (map-change map target)
+          (game-char-update-motion e))))))
 
 (defmethod entity-collide ((e game-char) (c simple-mob))
   (with-slots (life hit-start hit-ans) e

@@ -21,8 +21,11 @@
 
 (defun map-find-start (map &optional target)
   (with-slots (tilemap) map
-    (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
-      (gk-vec2 (aval :x ob) (aval :y ob)))))
+    ;; This should probably be done via GF, but
+    (typecase target
+      (gk-vec2 target)
+      (t (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
+           (gk-vec2 (aval :x ob) (aval :y ob)))))))
 
 (defun map-add (map &rest objects)
   (with-slots (physics) map
@@ -88,11 +91,19 @@
     (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "spawners")
 
     ;; Map boundaries .. we should fill map/target props in from map props
-    (physics-add physics (make-instance 'link
+    (physics-add physics (make-instance 'map-link
+                           :map (tilemap-property tm :s)
+                           :direction :s
                            :pos (gk-vec3 -1 -1 0) :size (gk-vec2 256 1)))
-    (physics-add physics (make-instance 'link
+    (physics-add physics (make-instance 'map-link
+                           :map (tilemap-property tm :w)
+                           :direction :w
                            :pos (gk-vec3 -1 -1 0) :size (gk-vec2 1 144)))
-    (physics-add physics (make-instance 'link
+    (physics-add physics (make-instance 'map-link
+                           :map (tilemap-property tm :n)
+                           :direction :n
                            :pos (gk-vec3 -1 144 0) :size (gk-vec2 256 1)))
-    (physics-add physics (make-instance 'link
+    (physics-add physics (make-instance 'map-link
+                           :map (tilemap-property tm :e)
+                           :direction :e
                            :pos (gk-vec3 256 -1 0) :size (gk-vec2 1 144)))))

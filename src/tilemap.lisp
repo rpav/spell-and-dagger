@@ -134,7 +134,8 @@
     layer))
 
 (defclass tilemap ()
-  ((size :initform nil :reader tilemap-size :initarg :size)
+  ((props :initform nil :reader tilemap-props :initarg :props)
+   (size :initform nil :reader tilemap-size :initarg :size)
    (layers :initform nil :reader tilemap-layers)
    (layer-names :initform (make-hash-table :test 'equal))
    (mergeset :initform nil :initarg :mergeset :reader tilemap-mergeset)
@@ -153,6 +154,7 @@
            (mergeset (make-instance 'tile-mergeset
                        :sets (aval :tilesets json)))
            (tm (make-instance 'tilemap
+                 :props (aval :properties json)
                  :size (gk-vec2 (aval :width json)
                                 (aval :height json))
                  :layercount (length layers)
@@ -206,6 +208,10 @@
   (when gid
     (with-slots (mergeset) tm
       (tms-find mergeset gid))))
+
+(defun tilemap-property (tm name)
+  (with-slots (props) tm
+    (aval name props)))
 
  ;; GK-TILEMAP
 

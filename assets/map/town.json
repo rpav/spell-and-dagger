@@ -91,6 +91,14 @@
                  "height":96,
                  "id":27,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -102,6 +110,14 @@
                  "height":32,
                  "id":28,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -113,6 +129,14 @@
                  "height":16,
                  "id":29,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -124,6 +148,14 @@
                  "height":16,
                  "id":30,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"It's a tree.  You remember attempting to climb this one."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -135,6 +167,14 @@
                  "height":16,
                  "id":31,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"It's a well.  You've drawn water from here many times."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -146,6 +186,14 @@
                  "height":16,
                  "id":32,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"It's a bush."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -157,6 +205,14 @@
                  "height":32,
                  "id":36,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -165,31 +221,17 @@
                  "y":80
                 }, 
                 {
-                 "height":32,
-                 "id":37,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":80
-                }, 
-                {
-                 "height":16,
-                 "id":38,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":80
-                }, 
-                {
                  "height":16,
                  "id":39,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"It's a tree."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -199,8 +241,54 @@
                 }, 
                 {
                  "height":16,
-                 "id":40,
+                 "id":53,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A tree."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":54,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A bush."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":58,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -209,31 +297,17 @@
                  "y":112
                 }, 
                 {
-                 "height":16,
-                 "id":41,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":208,
-                 "y":0
-                }, 
-                {
-                 "height":32,
-                 "id":42,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":224,
-                 "y":16
-                }, 
-                {
                  "height":96,
-                 "id":43,
+                 "id":59,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -243,8 +317,16 @@
                 }, 
                 {
                  "height":16,
-                 "id":44,
+                 "id":60,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -253,20 +335,93 @@
                  "y":128
                 }, 
                 {
-                 "height":32,
-                 "id":45,
+                 "height":48,
+                 "id":61,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":176,
+                 "x":224,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":62,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":63,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
                  "y":80
                 }, 
                 {
                  "height":16,
-                 "id":46,
+                 "id":64,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":65,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -276,8 +431,35 @@
                 }, 
                 {
                  "height":32,
-                 "id":47,
+                 "id":66,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":176,
+                 "y":80
+                }, 
+                {
+                 "height":32,
+                 "id":67,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -286,47 +468,60 @@
                  "y":80
                 }, 
                 {
-                 "height":32,
-                 "id":48,
+                 "height":16,
+                 "id":68,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":160,
-                 "y":16
-                }, 
-                {
-                 "height":16,
-                 "id":49,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
                  "x":176,
                  "y":16
                 }, 
                 {
-                 "height":16,
-                 "id":50,
+                 "height":32,
+                 "id":69,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
                  "x":192,
-                 "y":32
+                 "y":16
                 }, 
                 {
                  "height":32,
-                 "id":51,
+                 "id":70,
                  "name":"",
+                 "properties":
+                    {
+                     "text":"A house."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":144,
+                 "x":160,
                  "y":16
                 }],
          "opacity":1,
@@ -349,11 +544,15 @@
                  "name":"",
                  "properties":
                     {
-                     "broken":"town\/solid\/t_19.png"
+                     "broken":"town\/solid\/t_19.png",
+                     "btext":"A broken barrel.",
+                     "text":"A barrel."
                     },
                  "propertytypes":
                     {
-                     "broken":"string"
+                     "broken":"string",
+                     "btext":"string",
+                     "text":"string"
                     },
                  "rotation":0,
                  "type":"breakable",
@@ -382,8 +581,16 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":52,
+ "nextobjectid":71,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "n":"town-n"
+    },
+ "propertytypes":
+    {
+     "n":"string"
+    },
  "renderorder":"right-up",
  "tileheight":16,
  "tilesets":[
