@@ -106,6 +106,10 @@ only when `E2` is not `ENTITY-SOLID-P`.")
   (:documentation "Called when `ENTITY` has been added to `MAP`")
   (:method (m e)))
 
+(defgeneric entity-break (entity)
+  (:documentation "Called to break `ENTITY`.  Not everything can break!")
+  (:method (e)))
+
 (defgeneric entity-property (e name)
   (:method ((e entity) name)
     (aval name (slot-value e 'props))))

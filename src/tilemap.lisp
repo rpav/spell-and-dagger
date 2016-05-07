@@ -124,6 +124,7 @@
          (objects (aval :objects json))
          (size (tilemap-size tm)))
     (loop for object in objects
+          as y-before = (aval :y object)
           do (setf (aval :y object) (- (* 16 (vy size))
                                        (+ (aval :height object)
                                           (aval :y object))))
@@ -200,6 +201,11 @@
     (let ((layer (tilemap-find-layer tm layer)))
       (when (typep layer 'object-layer)
         (gethash name (slot-value layer 'names))))))
+
+(defun tilemap-find-gid (tm gid)
+  (when gid
+    (with-slots (mergeset) tm
+      (tms-find mergeset gid))))
 
  ;; GK-TILEMAP
 

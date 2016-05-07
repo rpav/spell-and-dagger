@@ -61,27 +61,31 @@
         'simple-blocker
         (intern (string-upcase type) :game))))
 
-(defun gm-make-instance (ob)
+(defun gm-make-instance (gm tm ob)
   (let* ((type (gm-object-type ob))
          (pos (gk-vec3 (aval :x ob) (aval :y ob) 0))
-         (size (gk-vec2 (aval :width ob) (aval :height ob))))
+         (size (gk-vec2 (aval :width ob) (aval :height ob)))
+         (sprite-name
+           (when-let (tile (tilemap-find-gid tm (aval :gid ob)))
+             (tile-image tile))))
     (and type
          (make-instance type
            :name (aval :name ob)
+           :sprite-name sprite-name
            :pos pos :size size
            :props (aval :properties ob)))))
 
-(defun gm-add-object (gm ob)
+(defun gm-add-object (gm tm ob)
   (with-slots (physics) gm
-    (when-let (instance (gm-make-instance ob))
+    (when-let (instance (gm-make-instance gm tm ob))
       (physics-add physics instance))))
 
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "collision")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "objects")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "interacts")
-    (map-tilemap-objects (lambda (x) (gm-add-object gm x)) tm "spawners")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "collision")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "objects")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "interacts")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "spawners")
 
     ;; Map boundaries .. we should fill map/target props in from map props
     (physics-add physics (make-instance 'link

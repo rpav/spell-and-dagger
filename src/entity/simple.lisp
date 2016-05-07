@@ -35,3 +35,23 @@
  ;; link
 
 (defclass link (simple-entity) ())
+
+ ;; breakable
+
+(defclass breakable (simple-entity)
+  ((brokenp :initform nil :reader breakable-brokenp)))
+
+(defmethod initialize-instance :after ((e breakable) &key sprite-name props &allow-other-keys)
+  (with-slots (pos sprite) e
+    ;; For some bizarre and unknown reason, sprites in an object layer---
+    ;; nothing else---have their origin at the _lower left_ corner.
+    (incf (vy pos) 16.0)
+    (setf sprite (make-instance 'sprite :key -1 :name sprite-name))))
+
+(defmethod entity-solid-p ((e breakable)) (breakable-brokenp e))
+
+(defmethod entity-break ((e breakable))
+  (with-slots (sprite brokenp) e
+    (unless brokenp
+      (let ((break-name (entity-property e :broken)))
+        (setf (sprite-name sprite) break-name)))))

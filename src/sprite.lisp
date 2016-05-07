@@ -34,6 +34,12 @@
   (with-slots (qs) s
     (setf (quadsprite-index qs) v)))
 
+(defun (setf sprite-name) (name s)
+  (let ((sheet (asset-sheet *assets*)))
+    (setf (sprite-index s)
+          (or (find-frame sheet name)
+              (find-frame sheet "nosprite.png")))))
+
 (defun sprite-key (sprite)
   (cmd-key (slot-value sprite 'qs)))
 

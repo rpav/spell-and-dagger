@@ -175,6 +175,26 @@
                  "width":16,
                  "x":0,
                  "y":128
+                }, 
+                {
+                 "gid":13,
+                 "height":16,
+                 "id":23,
+                 "name":"barrel",
+                 "properties":
+                    {
+                     "broken":"town\/solid\/t_19.png"
+                    },
+                 "propertytypes":
+                    {
+                     "broken":"string"
+                    },
+                 "rotation":0,
+                 "type":"breakable",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -215,9 +235,9 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":23,
+ "nextobjectid":26,
  "orientation":"orthogonal",
- "renderorder":"right-down",
+ "renderorder":"right-up",
  "tileheight":16,
  "tilesets":[
         {

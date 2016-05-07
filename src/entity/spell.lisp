@@ -30,8 +30,10 @@
   (with-slots (anim anim-state) e
     (anim-play *anim-manager* anim-state)))
 
-(defmethod entity-touch ((e spell) (e2 simple-blocker))
-  (map-remove (current-map) e))
+(defmethod entity-touch ((e spell) e2)
+  (when (and (entity-solid-p e2)
+             (not (eq (current-char) e2)))
+    (map-remove (current-map) e)))
 
  ;; SPELL-EXPLODE
 
@@ -42,5 +44,6 @@
                      :frame-length (/ 100 1000.0)
                      :count 1))))
 
-(defmethod entity-touch ((e1 spell) o)
-  )
+(defmethod entity-touch ((e1 spell-explode) o)
+  (entity-break o)
+  (call-next-method))
