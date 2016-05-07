@@ -24,7 +24,6 @@ Needs work:
 Current screenshots:
 
 <img src="http://ogmo.mephle.net/lgj/interact.gif">
-<img src="http://ogmo.mephle.net/lgj/mob-with-fx.gif">
 <img src="http://ogmo.mephle.net/lgj/powerups.gif">
 <img src="http://ogmo.mephle.net/lgj/breakable.gif">
 
