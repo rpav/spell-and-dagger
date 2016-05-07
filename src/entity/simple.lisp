@@ -48,10 +48,11 @@
     (incf (vy pos) 16.0)
     (setf sprite (make-instance 'sprite :key -1 :name sprite-name))))
 
-(defmethod entity-solid-p ((e breakable)) (breakable-brokenp e))
+(defmethod entity-solid-p ((e breakable)) (not (breakable-brokenp e)))
 
 (defmethod entity-break ((e breakable))
   (with-slots (sprite brokenp) e
     (unless brokenp
       (let ((break-name (entity-property e :broken)))
-        (setf (sprite-name sprite) break-name)))))
+        (setf (sprite-name sprite) break-name
+              brokenp t)))))
