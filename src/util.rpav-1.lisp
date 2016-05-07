@@ -3,7 +3,7 @@
 ;; Re-run this command to regenerate this file.  It'll overwrite
 ;; whatever is there, so make sure it's going to the right place:
 #+(or)
-(make-util:make-util '(lgj-2016-q2 :src "util.rpav-1") :package "UTIL.RPAV-1"
+(make-util:make-util '(spell-and-dagger :src "util.rpav-1") :package "UTIL.RPAV-1"
                      :symbols
                      '(laconic:string-join laconic:string+ laconic:substr
                                            laconic:aval laconic:akey

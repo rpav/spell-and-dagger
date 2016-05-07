@@ -1,10 +1,10 @@
-(defpackage :lgj-2016-q2.asdf
+(defpackage :spell-and-dagger.asdf
   (:use #:cl #:asdf))
 
-(in-package :lgj-2016-q2.asdf)
+(in-package :spell-and-dagger.asdf)
 
-(defsystem :lgj-2016-q2
-  :description "Lisp Game Jam 2016 Q2 entry"
+(defsystem :spell-and-dagger
+  :description "Spell & Dagger: Lisp Game Jam 2016 Q2 entry"
   :author "Ryan Pavlik"
   :license "GPL2"
   :version "0.0"
@@ -60,6 +60,7 @@
 
 
      (:file "sprite")
+     (:file "image")
      (:file "assets")
      (:file "window")
      (:file "quadtree")))

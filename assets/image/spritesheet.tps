@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.2.0</string>
         <key>fileName</key>
-        <string>/home/rpav/vcs/git/common-lisp/lgj-2016-q2/assets/image/spritesheet.tps</string>
+        <string>/home/rpav/vcs/git/common-lisp/spell-and-dagger/assets/image/spritesheet.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">

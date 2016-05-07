@@ -80,7 +80,7 @@
       (setf s (make-array len
                           :initial-contents
                           (mapcar (lambda (x)
-                                    (load-tileset (autowrap:asdf-path :lgj-2016-q2 :assets :maps
+                                    (load-tileset (autowrap:asdf-path :spell-and-dagger :assets :maps
                                                                       (aval :source x))))
                                   sets))))))
 

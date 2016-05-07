@@ -118,7 +118,7 @@
   (let ((char (current-char)))
     (setf (current-map)
           (make-instance 'game-map
-            :map (autowrap:asdf-path :lgj-2016-q2 :assets :maps
+            :map (autowrap:asdf-path :spell-and-dagger :assets :maps
                                      (string+ map ".json"))))
     (setf (entity-pos char) (map-find-start (current-map) target))
     (setf (entity-motion char) +motion-none+)

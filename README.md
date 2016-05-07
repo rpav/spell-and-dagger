@@ -1,4 +1,4 @@
-# Lisp Game Jam 2016 Q2 entry
+# Spell & Dagger: Lisp Game Jam 2016 Q2 entry
 
 Current status:
 
@@ -11,7 +11,6 @@ Current status:
 
 Up next:
 
-* Official name, title screen
 * Death/continue/save
 * Content!
 
