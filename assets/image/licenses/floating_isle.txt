@@ -1,0 +1,7 @@
+Author:  Buch (http://blog-buch.rhcloud.com, http://opengameart.org/users/buch)
+License: CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+Source:  http://opengameart.org/content/the-field-of-the-floating-islands
+
+Notes:   The original spritesheet was cut by ImageMagick's convert,
+         frames renamed by animation sequence, and repackaged using
+         TexturePacker.

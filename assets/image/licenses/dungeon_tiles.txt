@@ -1,0 +1,5 @@
+Author:  Buch (http://blog-buch.rhcloud.com, http://opengameart.org/users/buch)
+License: CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+Source:  http://opengameart.org/content/dungeon-tileset
+
+Notes: Cut up and repacked.

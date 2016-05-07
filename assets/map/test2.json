@@ -269,7 +269,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tm-indoor.json"
+         "source":"tm/indoor.json"
         }],
  "tilewidth":16,
  "version":1,

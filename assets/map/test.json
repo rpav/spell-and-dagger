@@ -242,7 +242,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tm-town.json"
+         "source":"tm/town.json"
         }],
  "tilewidth":16,
  "version":1,

@@ -13,7 +13,7 @@
                :index (find-anim-frame (asset-anims *assets*) "ranger-f/walk-down" 1))))
       (setf (current-char)
             (make-instance 'game-char :sprite sprite))
-      (map-change "test"))))
+      (map-change "town"))))
 
 (defmethod phase-resume ((p map-phase))
   (ps-incref *ps*)
