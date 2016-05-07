@@ -11,10 +11,6 @@
 
 (defmethod entity-box ((e simple-entity)) (slot-value e 'box))
 
- ;; simple-blocker
-
-(defclass simple-blocker (simple-entity) ())
-
  ;; simple-text
 
 (defclass simple-text (simple-entity)
@@ -24,13 +20,19 @@
   (with-slots (text) e
     (if-let (str (aval :text props))
       (setf text str)
-      (format t "Warning: String not specified for SIMPLE-TEXT"))))
+      (format t "Warning: String not specified for ~A"
+              (class-name (class-of e))))))
 
 (defmethod entity-solid-p ((e simple-text)) nil)
 
 (defmethod entity-interact ((e simple-text) a)
   (with-slots (text) e
     (show-textbox text)))
+
+ ;; simple-blocker
+
+(defclass simple-blocker (simple-text) ())
+(defmethod entity-solid-p ((e simple-blocker)) t)
 
  ;; link
 

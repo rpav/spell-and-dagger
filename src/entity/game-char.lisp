@@ -97,8 +97,7 @@
     (let* ((map (current-map))
            (matches (delete e (map-find-in-box map wpn-box wpn-pos))))
       (if matches
-          (loop for ob in matches
-                do (entity-interact ob e))
+          (entity-interact (car matches) e)
           (default-interact e nil)))))
 
 (defmethod draw ((e game-char) lists m)
