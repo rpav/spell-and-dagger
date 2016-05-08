@@ -25,7 +25,8 @@
     (typecase target
       (gk-vec2 target)
       (t (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
-           (gk-vec2 (aval :x ob) (aval :y ob)))))))
+           (values (gk-vec2 (aval :x ob) (aval :y ob))
+                   (aval :properties ob)))))))
 
 (defun map-add (map &rest objects)
   (with-slots (physics) map
@@ -85,10 +86,12 @@
 
 (defun gm-setup-physics (gm)
   (with-slots ((tm tilemap) physics) gm
+    ;; Really just need to iterate all object layers...
     (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "collision")
     (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "objects")
     (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "interacts")
     (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "spawners")
+    (map-tilemap-objects (lambda (x) (gm-add-object gm tm x)) tm "npcs")
 
     ;; Map boundaries .. we should fill map/target props in from map props
     (physics-add physics (make-instance 'map-link

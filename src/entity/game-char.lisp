@@ -88,11 +88,6 @@
     (game-char-play-attack e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn2)))
-  (when (game-value :has-spell)
-    (setf (entity-state e) :casting)
-    (game-char-play-cast e)))
-
-(defmethod entity-action ((e game-char) (a (eql :btn3)))
   (with-slots (wpn-box wpn-pos) e
     (game-char-update-wpn-box e)
     (let* ((map (current-map))
@@ -100,6 +95,11 @@
       (if matches
           (entity-interact (car matches) e)
           (default-interact e nil)))))
+
+(defmethod entity-action ((e game-char) (a (eql :btn3)))
+  (when t #++ (game-value :has-spell)
+    (setf (entity-state e) :casting)
+    (game-char-play-cast e)))
 
 (defmethod draw ((e game-char) lists m)
   (with-slots (sprite wpn-sprite wpn-box wpn-pos) e

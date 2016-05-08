@@ -59,6 +59,11 @@
   (with-slots (phases cur) ps
     (vector-pop phases)))
 
+(defun ps-interrupt (new-phase &optional (ps *ps*))
+  (with-slots (phase-refs) ps
+    (setf phase-refs 0)
+    (ps-push new-phase ps)))
+
 (defun ps-has-up-phase (ps)
   (with-slots (cur phases) ps
     (< cur (1- (length phases)))))

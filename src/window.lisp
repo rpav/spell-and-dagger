@@ -123,9 +123,13 @@
             (merge-pathnames
              (string+ map ".json")
              (autowrap:asdf-path :spell-and-dagger :assets :maps))))
-    (setf (entity-pos char) (map-find-start (current-map) target))
-    (setf (entity-motion char) +motion-none+)
-    (map-add (current-map) char)))
+    (multiple-value-bind (map-target props)
+        (map-find-start (current-map) target)
+      (setf (entity-pos char) map-target)
+      (setf (entity-motion char) +motion-none+)
+      (map-add (current-map) char)
+      (when-let (text (aval :text props))
+        (show-textbox text)))))
 
 (defun window-size ()
   (kit.sdl2:window-size *window*))

@@ -1,8 +1,8 @@
 { "columns":0,
  "margin":0,
- "name":"tm-dungeon",
+ "name":"dungeon",
  "spacing":0,
- "tilecount":105,
+ "tilecount":103,
  "tileheight":16,
  "tiles":
     {
@@ -20,21 +20,13 @@
         },
      "100":
         {
-         "image":"dungeon1\/d_100.png"
+         "image":"dungeon1\/d_102.png"
         },
      "101":
         {
-         "image":"dungeon1\/d_101.png"
-        },
-     "102":
-        {
-         "image":"dungeon1\/d_102.png"
-        },
-     "103":
-        {
          "image":"dungeon1\/d_103.png"
         },
-     "104":
+     "102":
         {
          "image":"dungeon1\/d_104.png"
         },
@@ -132,35 +124,35 @@
         },
      "32":
         {
-         "image":"dungeon1\/d_32.png"
+         "image":"dungeon1\/d_33.png"
         },
      "33":
         {
-         "image":"dungeon1\/d_33.png"
+         "image":"dungeon1\/d_34.png"
         },
      "34":
         {
-         "image":"dungeon1\/d_34.png"
+         "image":"dungeon1\/d_35.png"
         },
      "35":
         {
-         "image":"dungeon1\/d_35.png"
+         "image":"dungeon1\/d_36.png"
         },
      "36":
         {
-         "image":"dungeon1\/d_36.png"
+         "image":"dungeon1\/d_37.png"
         },
      "37":
         {
-         "image":"dungeon1\/d_37.png"
+         "image":"dungeon1\/d_38.png"
         },
      "38":
         {
-         "image":"dungeon1\/d_38.png"
+         "image":"dungeon1\/d_39.png"
         },
      "39":
         {
-         "image":"dungeon1\/d_39.png"
+         "image":"dungeon1\/d_40.png"
         },
      "4":
         {
@@ -168,43 +160,43 @@
         },
      "40":
         {
-         "image":"dungeon1\/d_40.png"
+         "image":"dungeon1\/d_41.png"
         },
      "41":
         {
-         "image":"dungeon1\/d_41.png"
+         "image":"dungeon1\/d_42.png"
         },
      "42":
         {
-         "image":"dungeon1\/d_42.png"
+         "image":"dungeon1\/d_43.png"
         },
      "43":
         {
-         "image":"dungeon1\/d_43.png"
+         "image":"dungeon1\/d_44.png"
         },
      "44":
         {
-         "image":"dungeon1\/d_44.png"
+         "image":"dungeon1\/d_45.png"
         },
      "45":
         {
-         "image":"dungeon1\/d_45.png"
+         "image":"dungeon1\/d_46.png"
         },
      "46":
         {
-         "image":"dungeon1\/d_46.png"
+         "image":"dungeon1\/d_47.png"
         },
      "47":
         {
-         "image":"dungeon1\/d_47.png"
+         "image":"dungeon1\/d_48.png"
         },
      "48":
         {
-         "image":"dungeon1\/d_48.png"
+         "image":"dungeon1\/d_49.png"
         },
      "49":
         {
-         "image":"dungeon1\/d_49.png"
+         "image":"dungeon1\/d_50.png"
         },
      "5":
         {
@@ -212,43 +204,43 @@
         },
      "50":
         {
-         "image":"dungeon1\/d_50.png"
+         "image":"dungeon1\/d_51.png"
         },
      "51":
         {
-         "image":"dungeon1\/d_51.png"
+         "image":"dungeon1\/d_52.png"
         },
      "52":
         {
-         "image":"dungeon1\/d_52.png"
+         "image":"dungeon1\/d_53.png"
         },
      "53":
         {
-         "image":"dungeon1\/d_53.png"
+         "image":"dungeon1\/d_54.png"
         },
      "54":
         {
-         "image":"dungeon1\/d_54.png"
+         "image":"dungeon1\/d_55.png"
         },
      "55":
         {
-         "image":"dungeon1\/d_55.png"
+         "image":"dungeon1\/d_56.png"
         },
      "56":
         {
-         "image":"dungeon1\/d_56.png"
+         "image":"dungeon1\/d_57.png"
         },
      "57":
         {
-         "image":"dungeon1\/d_57.png"
+         "image":"dungeon1\/d_58.png"
         },
      "58":
         {
-         "image":"dungeon1\/d_58.png"
+         "image":"dungeon1\/d_59.png"
         },
      "59":
         {
-         "image":"dungeon1\/d_59.png"
+         "image":"dungeon1\/d_60.png"
         },
      "6":
         {
@@ -256,43 +248,43 @@
         },
      "60":
         {
-         "image":"dungeon1\/d_60.png"
+         "image":"dungeon1\/d_61.png"
         },
      "61":
         {
-         "image":"dungeon1\/d_61.png"
+         "image":"dungeon1\/d_62.png"
         },
      "62":
         {
-         "image":"dungeon1\/d_62.png"
+         "image":"dungeon1\/d_63.png"
         },
      "63":
         {
-         "image":"dungeon1\/d_63.png"
+         "image":"dungeon1\/d_64.png"
         },
      "64":
         {
-         "image":"dungeon1\/d_64.png"
+         "image":"dungeon1\/d_65.png"
         },
      "65":
         {
-         "image":"dungeon1\/d_65.png"
+         "image":"dungeon1\/d_66.png"
         },
      "66":
         {
-         "image":"dungeon1\/d_66.png"
+         "image":"dungeon1\/d_67.png"
         },
      "67":
         {
-         "image":"dungeon1\/d_67.png"
+         "image":"dungeon1\/d_68.png"
         },
      "68":
         {
-         "image":"dungeon1\/d_68.png"
+         "image":"dungeon1\/d_69.png"
         },
      "69":
         {
-         "image":"dungeon1\/d_69.png"
+         "image":"dungeon1\/d_70.png"
         },
      "7":
         {
@@ -300,43 +292,43 @@
         },
      "70":
         {
-         "image":"dungeon1\/d_70.png"
+         "image":"dungeon1\/d_71.png"
         },
      "71":
         {
-         "image":"dungeon1\/d_71.png"
+         "image":"dungeon1\/d_72.png"
         },
      "72":
         {
-         "image":"dungeon1\/d_72.png"
+         "image":"dungeon1\/d_73.png"
         },
      "73":
         {
-         "image":"dungeon1\/d_73.png"
+         "image":"dungeon1\/d_74.png"
         },
      "74":
         {
-         "image":"dungeon1\/d_74.png"
+         "image":"dungeon1\/d_75.png"
         },
      "75":
         {
-         "image":"dungeon1\/d_75.png"
+         "image":"dungeon1\/d_76.png"
         },
      "76":
         {
-         "image":"dungeon1\/d_76.png"
+         "image":"dungeon1\/d_77.png"
         },
      "77":
         {
-         "image":"dungeon1\/d_77.png"
+         "image":"dungeon1\/d_78.png"
         },
      "78":
         {
-         "image":"dungeon1\/d_78.png"
+         "image":"dungeon1\/d_79.png"
         },
      "79":
         {
-         "image":"dungeon1\/d_79.png"
+         "image":"dungeon1\/d_80.png"
         },
      "8":
         {
@@ -344,43 +336,43 @@
         },
      "80":
         {
-         "image":"dungeon1\/d_80.png"
+         "image":"dungeon1\/d_81.png"
         },
      "81":
         {
-         "image":"dungeon1\/d_81.png"
+         "image":"dungeon1\/d_82.png"
         },
      "82":
         {
-         "image":"dungeon1\/d_82.png"
+         "image":"dungeon1\/d_83.png"
         },
      "83":
         {
-         "image":"dungeon1\/d_83.png"
+         "image":"dungeon1\/d_84.png"
         },
      "84":
         {
-         "image":"dungeon1\/d_84.png"
+         "image":"dungeon1\/d_85.png"
         },
      "85":
         {
-         "image":"dungeon1\/d_85.png"
+         "image":"dungeon1\/d_86.png"
         },
      "86":
         {
-         "image":"dungeon1\/d_86.png"
+         "image":"dungeon1\/d_87.png"
         },
      "87":
         {
-         "image":"dungeon1\/d_87.png"
+         "image":"dungeon1\/d_88.png"
         },
      "88":
         {
-         "image":"dungeon1\/d_88.png"
+         "image":"dungeon1\/d_89.png"
         },
      "89":
         {
-         "image":"dungeon1\/d_89.png"
+         "image":"dungeon1\/d_90.png"
         },
      "9":
         {
@@ -388,43 +380,43 @@
         },
      "90":
         {
-         "image":"dungeon1\/d_90.png"
+         "image":"dungeon1\/d_91.png"
         },
      "91":
         {
-         "image":"dungeon1\/d_91.png"
+         "image":"dungeon1\/d_92.png"
         },
      "92":
         {
-         "image":"dungeon1\/d_92.png"
+         "image":"dungeon1\/d_93.png"
         },
      "93":
         {
-         "image":"dungeon1\/d_93.png"
+         "image":"dungeon1\/d_94.png"
         },
      "94":
         {
-         "image":"dungeon1\/d_94.png"
+         "image":"dungeon1\/d_95.png"
         },
      "95":
         {
-         "image":"dungeon1\/d_95.png"
+         "image":"dungeon1\/d_96.png"
         },
      "96":
         {
-         "image":"dungeon1\/d_96.png"
+         "image":"dungeon1\/d_97.png"
         },
      "97":
         {
-         "image":"dungeon1\/d_97.png"
+         "image":"dungeon1\/d_98.png"
         },
      "98":
         {
-         "image":"dungeon1\/d_98.png"
+         "image":"dungeon1\/d_100.png"
         },
      "99":
         {
-         "image":"dungeon1\/d_99.png"
+         "image":"dungeon1\/d_101.png"
         }
     },
  "tilewidth":16

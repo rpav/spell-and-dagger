@@ -67,33 +67,20 @@
                  "height":16,
                  "id":17,
                  "name":"start",
+                 "properties":
+                    {
+                     "text":"Welcome to Spell & Dagger.  Press 'A' to interact with things."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
                  "rotation":0,
                  "type":"nil",
                  "visible":true,
                  "width":16,
-                 "x":128,
-                 "y":128
-                }, 
-                {
-                 "height":16,
-                 "id":74,
-                 "name":"NPC",
-                 "properties":
-                    {
-                     "sprite-name":"townfolk\/m-",
-                     "text":"Hello."
-                    },
-                 "propertytypes":
-                    {
-                     "sprite-name":"string",
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"npc",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":80
+                 "x":144,
+                 "y":112
                 }, 
                 {
                  "height":16,
@@ -763,8 +750,63 @@
          "width":16,
          "x":0,
          "y":0
+        }, 
+        {
+         "color":"#00ffff",
+         "draworder":"topdown",
+         "height":9,
+         "name":"npcs",
+         "objects":[
+                {
+                 "height":16,
+                 "id":86,
+                 "name":"npc",
+                 "properties":
+                    {
+                     "sprite-name":"tiny16\/kidm-",
+                     "text":"I want to play in the forest."
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":87,
+                 "name":"NPC",
+                 "properties":
+                    {
+                     "sprite-name":"townfolk\/m-",
+                     "text":"Hello."
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":80
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":85,
+ "nextobjectid":88,
  "orientation":"orthogonal",
  "properties":
     {

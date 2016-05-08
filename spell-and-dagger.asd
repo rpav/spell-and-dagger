@@ -86,4 +86,7 @@
       ((:static-file "tm/town.json")
        (:static-file "tm/indoor.json")
        (:static-file "tm/floating.json")
-       (:static-file "tm/dungeon.json")))))))
+       (:static-file "tm/dungeon.json")
+       (:static-file "tm/forest.json")
+       (:static-file "tm/cave.json")
+       (:static-file "tm/tiny16basic.json")))))))

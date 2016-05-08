@@ -1,0 +1,15 @@
+{ "columns":0,
+ "margin":0,
+ "name":"misc",
+ "spacing":0,
+ "tilecount":1,
+ "tileheight":16,
+ "tiles":
+    {
+     "1":
+        {
+         "image":"misc\/dagger_down.png"
+        }
+    },
+ "tilewidth":16
+}

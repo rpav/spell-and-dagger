@@ -12,8 +12,11 @@
                :key 1
                :index (find-anim-frame (asset-anims *assets*) "ranger-f/walk-down" 1))))
       (setf (current-char)
-            (make-instance 'game-char :sprite sprite))
-      (map-change "town"))))
+            (make-instance 'game-char :sprite sprite)))))
+
+(defmethod phase-start ((p map-phase))
+  (unless (current-map)
+    (map-change "town")))
 
 (defmethod phase-resume ((p map-phase))
   (ps-incref *ps*)
@@ -24,8 +27,7 @@
   (clear-motion-bits (current-char)))
 
 (defmethod phase-show-textbox ((phase map-phase) text)
-  (ps-push (make-instance 'text-phase :text text))
-  (ps-decref))
+  (ps-interrupt (make-instance 'text-phase :text text)))
 
 (defun show-textbox (text)
   (phase-show-textbox (ps-cur-phase) text))
