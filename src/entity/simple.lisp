@@ -47,7 +47,7 @@
 (defclass breakable (simple-text)
   ((brokenp :initform nil :reader breakable-brokenp)))
 
-(defmethod initialize-instance :after ((e breakable) &key sprite-name props &allow-other-keys)
+(defmethod initialize-instance :after ((e breakable) &key sprite-name &allow-other-keys)
   (with-slots (pos sprite) e
     ;; For some bizarre and unknown reason, sprites in an object layer---
     ;; nothing else---have their origin at the _lower left_ corner.

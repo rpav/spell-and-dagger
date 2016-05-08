@@ -89,4 +89,6 @@
        (:static-file "tm/dungeon.json")
        (:static-file "tm/forest.json")
        (:static-file "tm/cave.json")
+       (:static-file "tm/objects.json")
+       (:static-file "tm/misc.json")
        (:static-file "tm/tiny16basic.json")))))))

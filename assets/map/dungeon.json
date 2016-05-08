@@ -291,6 +291,56 @@
                  "width":16,
                  "x":32,
                  "y":13
+                }, 
+                {
+                 "height":16,
+                 "id":12,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":13,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":80
+                }, 
+                {
+                 "gid":104,
+                 "height":16,
+                 "id":15,
+                 "name":"dagger",
+                 "rotation":0,
+                 "type":"pickup-dagger",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -299,7 +349,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tileheight":16,
@@ -307,6 +357,14 @@
         {
          "firstgid":1,
          "source":"tm\/dungeon.json"
+        }, 
+        {
+         "firstgid":104,
+         "source":"tm\/misc.json"
+        }, 
+        {
+         "firstgid":106,
+         "source":"tm\/objects.json"
         }],
  "tilewidth":16,
  "version":1,

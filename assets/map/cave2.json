@@ -164,15 +164,72 @@
                  "width":16,
                  "x":112,
                  "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":10,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":140.666666666667,
+                 "y":72.3333333333333
+                }, 
+                {
+                 "height":16,
+                 "id":11,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":73.3333333333333,
+                 "y":34.6666666666667
+                }, 
+                {
+                 "height":16,
+                 "id":12,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":167,
+                 "y":31
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":16,
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":
     {

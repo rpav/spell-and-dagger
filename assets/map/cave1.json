@@ -263,7 +263,7 @@
                 {
                  "height":16,
                  "id":12,
-                 "name":"blob2",
+                 "name":"blob",
                  "properties":
                     {
                      "type":"tiny16\/blob"
@@ -276,13 +276,13 @@
                  "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":64,
-                 "y":96
+                 "x":59,
+                 "y":99
                 }, 
                 {
                  "height":16,
                  "id":13,
-                 "name":"blob3",
+                 "name":"blob",
                  "properties":
                     {
                      "type":"tiny16\/blob"
@@ -295,8 +295,8 @@
                  "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":160,
-                 "y":112
+                 "x":155.333333333333,
+                 "y":114.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",

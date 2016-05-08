@@ -6,7 +6,7 @@
  "tileheight":16,
  "tiles":
     {
-     "1":
+     "0":
         {
          "image":"misc\/dagger_down.png"
         }

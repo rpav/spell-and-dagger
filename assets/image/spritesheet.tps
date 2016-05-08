@@ -1162,10 +1162,14 @@
             <key type="filename">build/tiny16/bat_052.png</key>
             <key type="filename">build/tiny16/bat_053.png</key>
             <key type="filename">build/tiny16/bat_054.png</key>
+            <key type="filename">build/tiny16/bat_hit_0.png</key>
+            <key type="filename">build/tiny16/bat_hit_1.png</key>
             <key type="filename">build/tiny16/blob_048.png</key>
             <key type="filename">build/tiny16/blob_049.png</key>
             <key type="filename">build/tiny16/blob_050.png</key>
             <key type="filename">build/tiny16/blob_051.png</key>
+            <key type="filename">build/tiny16/blob_hit_0.png</key>
+            <key type="filename">build/tiny16/blob_hit_1.png</key>
             <key type="filename">build/tiny16/ghost_054.png</key>
             <key type="filename">build/tiny16/ghost_055.png</key>
             <key type="filename">build/tiny16/ghost_056.png</key>
@@ -1222,6 +1226,8 @@
             <key type="filename">build/tiny16/spider_058.png</key>
             <key type="filename">build/tiny16/spider_059.png</key>
             <key type="filename">build/tiny16/spider_060.png</key>
+            <key type="filename">build/tiny16/spider_hit_0.png</key>
+            <key type="filename">build/tiny16/spider_hit_1.png</key>
             <key type="filename">build/tiny16basic/tiny16basic_000.png</key>
             <key type="filename">build/tiny16basic/tiny16basic_001.png</key>
             <key type="filename">build/tiny16basic/tiny16basic_002.png</key>

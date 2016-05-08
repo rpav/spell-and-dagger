@@ -257,3 +257,20 @@
   (game-char-do-cast e)
   (setf (entity-state e) :moving)
   (game-char-update-motion e))
+
+ ;; dagger-pickup
+
+;;; This is a hack for the jam, it should be moved into a more general
+;;; class, more infrastructure for items etc.
+
+(defclass pickup-dagger (simple-entity) ())
+
+(defmethod initialize-instance :after ((e pickup-dagger) &key sprite-name &allow-other-keys)
+  (with-slots (pos sprite) e
+    (incf (vy pos) 16.0)
+    (setf sprite (make-instance 'sprite :key -1 :name sprite-name))))
+
+(defmethod entity-interact ((e pickup-dagger) (g game-char))
+  (setf (game-value :has-dagger) t)
+  (map-remove (current-map) e)
+  (show-textbox "You grab the dagger stuck in the ground. You have a strange feeling for a moment, then it passes.  (Press Z to attack.)"))
