@@ -49,7 +49,7 @@
                      :frame-length (/ 100 1000.0)
                      :count 1))))
 
-(defmethod spell-icon ((s spell-explode))
+(defmethod spell-icon ((s (eql 'spell-explode)))
   (find-anim-frame (asset-anims *assets*) "spell/explode" 3))
 
 (defmethod entity-touch ((e1 spell-explode) o)
@@ -64,6 +64,9 @@
                      :name "spell/ias-fireball"
                      :frame-length (/ 100 1000.0)
                      :count 1))))
+
+(defmethod spell-icon ((s (eql 'spell-fireball)))
+  (find-anim-frame (asset-anims *assets*) "spell/ias-fireball" 0))
 
 (defmethod entity-touch ((e1 spell-fireball) o)
   (entity-magic-hit o e1)

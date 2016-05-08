@@ -21,7 +21,8 @@
       (show-textbox "Have you tried it?  It can break certain things.")
       (progn
         (show-textbox "Let me teach you a useful spell.  (Press X to use.)")
-        (setf (game-value :has-spell) t))))
+        (setf (game-value :has-spell) t)
+        (char-teach-spell c 'spell-explode))))
 
  ;; NPC
 
@@ -81,5 +82,5 @@
       (show-textbox "Statue of Phoenix. This is where you learned how to cast Fireball. (Press S to switch spells.)")
       (progn
         (setf (game-value :has-fireball) t)
-        (pushnew 'spell-fireball (char-spells (current-char)))
+        (char-teach-spell (current-char) 'spell-fireball)
         (show-textbox "Statue of Phoenix ... you learn how to cast Fireball! (Press S to switch spells.)"))))

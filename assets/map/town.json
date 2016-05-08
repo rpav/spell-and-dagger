@@ -69,7 +69,7 @@
                  "name":"start",
                  "properties":
                     {
-                     "text":"Welcome to Spell & Dagger.  Press 'A' to interact with things."
+                     "text":"Welcome to Spell & Dagger.  Use the arrow keys to move.  Press 'A' to interact with things."
                     },
                  "propertytypes":
                     {

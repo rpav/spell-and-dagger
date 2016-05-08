@@ -15,6 +15,7 @@
 (defclass game-window (kit.sdl2:gl-window)
   (gk assets
    (map :initform nil :accessor game-window-map)
+   (map-screen :initform nil :accessor game-window-map-screen)
    (char :initform nil :accessor game-window-char)
    (game-state :initform (make-hash-table))
    (anim-manager :initform (make-instance 'anim-manager))
@@ -128,6 +129,7 @@
       (setf (entity-pos char) map-target)
       (setf (entity-motion char) +motion-none+)
       (map-add (current-map) char)
+      (map-update (current-map))
       (when-let (text (aval :text props))
         (show-textbox text)))))
 

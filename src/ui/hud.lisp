@@ -109,5 +109,12 @@
 
       (cmd-list-append ui-list health magic wpn-box spell-box)
 
-      (draw wpn-sprite lists m)
-      (draw spell-sprite lists m))))
+      (when (game-value :has-dagger)
+        (draw wpn-sprite lists m))
+      (when (char-spell (current-char))
+        (draw spell-sprite lists m)))))
+
+(defun hud-set-spell (hud id)
+  (when id
+    (with-slots (spell-sprite) hud
+      (setf (sprite-index spell-sprite) id))))

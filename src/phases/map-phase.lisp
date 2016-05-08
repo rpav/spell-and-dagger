@@ -11,18 +11,19 @@
                :sheet (asset-sheet *assets*)
                :key 1
                :index (find-anim-frame (asset-anims *assets*) "ranger-f/walk-down" 1))))
+      (setf (game-window-map-screen *window*) ms)
       (setf (current-char)
             (make-instance 'game-char :sprite sprite)))))
 
 (defmethod phase-start ((p map-phase))
-  (unless (current-map)
-    (map-change *default-map*))
   (phase-resume p))
 
 (defmethod phase-resume ((p map-phase))
   (ps-incref *ps*)
   (with-slots (map-screen) p
-    (setf (ui-visible map-screen) t)))
+    (setf (ui-visible map-screen) t))
+  (unless (current-map)
+    (map-change *default-map*)))
 
 (defmethod phase-pause ((p map-phase))
   (clear-motion-bits (current-char)))
@@ -36,3 +37,9 @@
 (defun game-over ()
   (ps-push (make-instance 'game-over-phase))
   (ps-decref))
+
+;;; huge hack, yes
+(defun update-spell (id)
+  (let ((map-screen (game-window-map-screen *window*)))
+    (with-slots (hud) map-screen
+      (hud-set-spell hud id))))

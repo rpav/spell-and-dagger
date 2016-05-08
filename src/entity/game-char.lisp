@@ -44,7 +44,8 @@
    (max-life :initform 5 :accessor char-max-life)
    (magic :initform 5 :reader char-magic)
    (max-magic :initform 5 :accessor char-max-magic)
-   (spells :initform (list 'spell-explode) :accessor char-spells)
+   (spells :initform nil :accessor char-spells)
+   (eqp-spell :initform nil :accessor char-spell)
    (state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
@@ -98,9 +99,27 @@
           (default-interact e nil)))))
 
 (defmethod entity-action ((e game-char) (a (eql :btn3)))
-  (when t #++ (game-value :has-spell)
+  (when (char-spell e)
     (setf (entity-state e) :casting)
     (game-char-play-cast e)))
+
+(defun char-teach-spell (e spell-name)
+  (pushnew spell-name (char-spells e))
+  (char-first-spell e))
+
+(defun char-first-spell (e)
+  (setf (char-spell e) (char-spells e))
+  (update-spell (spell-icon (car (char-spell e)))))
+
+(defun char-next-spell (e)
+  (if (cdr (char-spell e))
+      (progn
+        (setf (char-spell e) (cdr (char-spell e)))
+        (update-spell (spell-icon (car (char-spell e)))))
+      (char-first-spell e)))
+
+(defmethod entity-action ((e game-char) (a (eql :btn4)))
+  (char-next-spell e))
 
 (defmethod draw ((e game-char) lists m)
   (with-slots (sprite wpn-sprite wpn-box wpn-pos) e
@@ -244,12 +263,14 @@
               do (entity-attacked ob e nil))))))
 
 (defun game-char-do-cast (e)
-  (let ((spell (make-instance 'spell-fireball)))
-    (setf (entity-motion spell) (actor-facing e)
-          (entity-pos spell) (actor-facing e))
-    (nv2* (entity-pos spell) 8.0)
-    (nv2+ (entity-pos spell) (entity-pos e))
-    (map-add (current-map) spell)))
+  (let ((spell-class (car (char-spell e))))
+    (when spell-class
+      (let ((spell (make-instance spell-class)))
+        (setf (entity-motion spell) (actor-facing e)
+              (entity-pos spell) (actor-facing e))
+        (nv2* (entity-pos spell) 8.0)
+        (nv2+ (entity-pos spell) (entity-pos e))
+        (map-add (current-map) spell)))))
 
 (defun game-char-end-attack (e)
   (game-char-do-attack e)
