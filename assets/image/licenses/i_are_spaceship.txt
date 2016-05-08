@@ -1,0 +1,6 @@
+Author:  bart
+License: CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+Source:  http://opengameart.org/content/i-are-spaceship-16x16-space-sprites
+
+Notes: Specific sprites were cut with ImageMagick and repacked with
+TexturePacker.

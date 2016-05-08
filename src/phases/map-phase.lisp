@@ -16,7 +16,8 @@
 
 (defmethod phase-start ((p map-phase))
   (unless (current-map)
-    (map-change "town")))
+    (map-change *default-map*))
+  (phase-resume p))
 
 (defmethod phase-resume ((p map-phase))
   (ps-incref *ps*)

@@ -39,7 +39,8 @@
        (:file "game-char")
        (:file "npc")
        (:file "powerup")
-       (:file "spell")))
+       (:file "spell")
+       (:file "spell-interacts")))
 
      (:file "phase")
      (:module #:phases

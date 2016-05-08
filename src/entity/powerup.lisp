@@ -38,3 +38,11 @@
 
 (defmethod entity-touch ((g game-char) (e powerup))
   (incf (char-life g) 2))
+
+ ;; POWERUP-MAGIC
+
+(defclass powerup-magic (powerup)
+  ((sprite :initform (make-instance 'sprite :key 0 :name "powerup/crystal-blue.png"))))
+
+(defmethod entity-touch ((g game-char) (e powerup))
+  (incf (char-magic g) 2))

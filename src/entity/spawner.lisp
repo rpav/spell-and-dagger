@@ -7,7 +7,6 @@
 
 (defmethod initialize-instance :after ((s spawner) &key props &allow-other-keys)
   (with-slots ((_type type)) s
-    (:say "Spawner.")
     (let* ((type (aval :type props))
            (anim (find-anim (asset-anims *assets*) type)))
       (if anim
@@ -20,7 +19,6 @@
   (with-slots (last-dead-time mob type) s
     (if (delete s (map-find-in-box (current-map) (entity-box s) (entity-pos s)))
         (progn
-          (:say "Blocked!")
           (setf last-dead-time *time*)) ; Don't continuously try
         (when type
           (setf last-dead-time nil)

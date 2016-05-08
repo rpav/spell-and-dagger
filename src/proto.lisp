@@ -1,5 +1,7 @@
 (in-package :game)
 
+(defparameter *default-map* "x-dungeon5")
+
 (defvar *assets* nil
   "This should be set to ASSETS when any game logic stuff is called")
 

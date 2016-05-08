@@ -25,7 +25,9 @@
     (typecase target
       (gk-vec2 target)
       (t (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
-           (values (gk-vec2 (aval :x ob) (aval :y ob))
+           (values (let ((x (or (aval :x ob) 0))
+                         (y (or (aval :y ob) 0)))
+                     (gk-vec2 x y))
                    (aval :properties ob)))))))
 
 (defun map-add (map &rest objects)

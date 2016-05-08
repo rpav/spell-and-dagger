@@ -1,7 +1,7 @@
 { "height":9,
  "layers":[
         {
-         "data":[98, 98, 100, 98, 94, 93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 86, 87, 87, 35, 34, 18, 0, 1, 3, 2, 4, 2, 2, 5, 0, 0, 20, 20, 20, 6, 9, 20, 0, 10, 8, 8, 8, 7, 8, 13, 0, 0, 0, 0, 0, 10, 9, 0, 0, 6, 7, 8, 7, 7, 8, 9, 0, 0, 0, 0, 0, 10, 13, 0, 0, 12, 8, 7, 7, 8, 8, 13, 0, 0, 0, 0, 0, 12, 38, 3, 2, 39, 8, 7, 8, 8, 7, 11, 0, 0, 0, 0, 0, 14, 15, 16, 17, 16, 17, 16, 16, 16, 17, 18, 0, 0, 0, 0, 0, 20, 20, 27, 19, 19, 19, 20, 20, 27, 19, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[98, 98, 100, 98, 94, 93, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 87, 87, 87, 35, 34, 18, 0, 1, 3, 2, 4, 2, 2, 5, 0, 0, 20, 20, 20, 6, 9, 20, 0, 10, 8, 8, 8, 7, 8, 13, 0, 0, 0, 0, 0, 10, 9, 0, 0, 6, 7, 8, 7, 7, 8, 9, 0, 0, 0, 0, 0, 10, 13, 0, 0, 12, 8, 7, 7, 8, 8, 13, 0, 0, 0, 0, 0, 12, 38, 3, 2, 39, 8, 7, 8, 8, 7, 11, 0, 0, 0, 0, 0, 14, 15, 16, 17, 16, 17, 16, 16, 16, 17, 18, 0, 0, 0, 0, 0, 20, 20, 27, 19, 19, 19, 20, 20, 27, 19, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"Ground",
          "opacity":1,
@@ -20,7 +20,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"OnGround",
          "opacity":1,
@@ -233,6 +233,25 @@
                  "width":112,
                  "x":112,
                  "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":17,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"The entrance shut! When did that happen? Was there a path west before?"
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -261,48 +280,91 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":11.6363636363636,
-                 "id":1,
-                 "name":"cave",
+                 "height":16,
+                 "id":12,
+                 "name":"bat",
                  "properties":
                     {
-                     "map":"cave2",
-                     "target":"dungeon-cave"
+                     "type":"tiny16\/bat"
                     },
                  "propertytypes":
                     {
-                     "map":"string",
-                     "target":"string"
+                     "type":"string"
                     },
                  "rotation":0,
-                 "type":"link",
+                 "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":32,
-                 "y":0
+                 "x":128,
+                 "y":32
                 }, 
                 {
                  "height":16,
-                 "id":11,
-                 "name":"dungeon-cave",
+                 "id":13,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":16,
+                 "name":"start",
                  "rotation":0,
                  "type":"nil",
                  "visible":true,
                  "width":16,
-                 "x":32,
-                 "y":13
+                 "x":160,
+                 "y":48
                 }, 
                 {
-                 "gid":104,
                  "height":16,
-                 "id":15,
-                 "name":"dagger",
+                 "id":19,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
                  "rotation":0,
-                 "type":"pickup-dagger",
+                 "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":160,
-                 "y":64
+                 "x":49.75,
+                 "y":40.25
+                }, 
+                {
+                 "height":16,
+                 "id":20,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":62.75,
+                 "y":68.75
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -311,8 +373,16 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":16,
+ "nextobjectid":21,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "w":"x-dungeon2"
+    },
+ "propertytypes":
+    {
+     "w":"string"
+    },
  "renderorder":"right-up",
  "tileheight":16,
  "tilesets":[

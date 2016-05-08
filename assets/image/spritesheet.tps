@@ -1002,6 +1002,8 @@
             <key type="filename">build/indoor/t2_82.png</key>
             <key type="filename">build/indoor/t2_83.png</key>
             <key type="filename">build/misc/dagger_down.png</key>
+            <key type="filename">build/misc/t16_torch_off.png</key>
+            <key type="filename">build/misc/t16_torch_on.png</key>
             <key type="filename">build/nosprite.png</key>
             <key type="filename">build/objects/o_000.png</key>
             <key type="filename">build/objects/o_001.png</key>
@@ -1149,6 +1151,8 @@
             <key type="filename">build/rpg_enemies/red_slime_09.png</key>
             <key type="filename">build/rpg_enemies/red_slime_10.png</key>
             <key type="filename">build/rpg_enemies/red_slime_11.png</key>
+            <key type="filename">build/rpg_enemies/red_slime_hit_0.png</key>
+            <key type="filename">build/rpg_enemies/red_slime_hit_1.png</key>
             <key type="filename">build/rpg_enemies/shroom_00.png</key>
             <key type="filename">build/rpg_enemies/shroom_01.png</key>
             <key type="filename">build/rpg_enemies/shroom_02.png</key>
@@ -1158,6 +1162,10 @@
             <key type="filename">build/spell/explode_1.png</key>
             <key type="filename">build/spell/explode_2.png</key>
             <key type="filename">build/spell/explode_3.png</key>
+            <key type="filename">build/spell/ias_fireball_0.png</key>
+            <key type="filename">build/spell/ias_fireball_1.png</key>
+            <key type="filename">build/spell/ias_fireball_2.png</key>
+            <key type="filename">build/spell/ias_fireball_3.png</key>
             <key type="filename">build/tiny16/bat_051.png</key>
             <key type="filename">build/tiny16/bat_052.png</key>
             <key type="filename">build/tiny16/bat_053.png</key>
@@ -1403,6 +1411,7 @@
             <key type="filename">build/townfolk/m_walk_up_001.png</key>
             <key type="filename">build/townfolk/m_walk_up_002.png</key>
             <key type="filename">build/townfolk/m_walk_up_003.png</key>
+            <key type="filename">build/weapon/dagger_icon.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,1</point_f>

@@ -44,6 +44,7 @@
    (max-life :initform 5 :accessor char-max-life)
    (magic :initform 5 :reader char-magic)
    (max-magic :initform 5 :accessor char-max-magic)
+   (spells :initform (list 'spell-explode) :accessor char-spells)
    (state :initform :moving)
    (motion-mask :initform 0)
    (wpn-box :initform (box 4 4 8 8))
@@ -243,9 +244,11 @@
               do (entity-attacked ob e nil))))))
 
 (defun game-char-do-cast (e)
-  (let ((spell (make-instance 'spell-explode)))
+  (let ((spell (make-instance 'spell-fireball)))
     (setf (entity-motion spell) (actor-facing e)
-          (entity-pos spell) (entity-pos e))
+          (entity-pos spell) (actor-facing e))
+    (nv2* (entity-pos spell) 8.0)
+    (nv2+ (entity-pos spell) (entity-pos e))
     (map-add (current-map) spell)))
 
 (defun game-char-end-attack (e)
@@ -273,4 +276,5 @@
 (defmethod entity-interact ((e pickup-dagger) (g game-char))
   (setf (game-value :has-dagger) t)
   (map-remove (current-map) e)
-  (show-textbox "You grab the dagger stuck in the ground. You have a strange feeling for a moment, then it passes.  (Press Z to attack.)"))
+  (show-textbox "You grab the dagger stuck in the ground. This might help with those blobs, but you're still not sure how to get out. (Press Z to attack.)")
+  (map-change "x-dungeon"))

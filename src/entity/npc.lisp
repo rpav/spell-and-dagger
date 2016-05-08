@@ -66,3 +66,20 @@
     (let ((d (- *time* act-start)))
       (when (> d (+ 0.5 (random 2.0)))
         (simple-mob-change-action e)))))
+
+ ;; fireball-teacher
+
+(defclass fireball-teacher (simple-entity) ())
+
+(defmethod initialize-instance :after ((e fireball-teacher) &key sprite-name &allow-other-keys)
+  (with-slots (pos sprite) e
+    (incf (vy pos) 16.0)
+    (setf sprite (make-instance 'sprite :key -1 :name sprite-name))))
+
+(defmethod entity-interact ((e fireball-teacher) (a game-char))
+  (if (game-value :has-fireball)
+      (show-textbox "Statue of Phoenix. This is where you learned how to cast Fireball. (Press S to switch spells.)")
+      (progn
+        (setf (game-value :has-fireball) t)
+        (pushnew 'spell-fireball (char-spells (current-char)))
+        (show-textbox "Statue of Phoenix ... you learn how to cast Fireball! (Press S to switch spells.)"))))

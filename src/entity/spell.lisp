@@ -10,6 +10,10 @@
    (speed :initform 1.0)
    anim anim-state))
 
+(defgeneric spell-icon (spell)
+  (:documentation "Return the index for `SPELL`'s icon.")
+  (:method (s) (find-frame (asset-sheet *assets*) "nosprite.png")))
+
 (defmethod initialize-instance :after ((e spell) &key &allow-other-keys)
   (with-slots (anim anim-state sprite) e
     (setf anim-state (animation-instance anim sprite)
@@ -31,6 +35,7 @@
     (anim-play *anim-manager* anim-state)))
 
 (defmethod entity-touch ((e spell) e2)
+  #++
   (when (and (entity-solid-p e2)
              (not (eq (current-char) e2)))
     (map-remove (current-map) e)))
@@ -44,6 +49,22 @@
                      :frame-length (/ 100 1000.0)
                      :count 1))))
 
+(defmethod spell-icon ((s spell-explode))
+  (find-anim-frame (asset-anims *assets*) "spell/explode" 3))
+
 (defmethod entity-touch ((e1 spell-explode) o)
-  (entity-break o)
+  (entity-magic-hit o e1)
+  (call-next-method))
+
+ ;; SPELL-FIREBALL
+
+(defclass spell-fireball (spell)
+  ((speed :initform 1.2)
+   (anim :initform (make-instance 'anim-sprite
+                     :name "spell/ias-fireball"
+                     :frame-length (/ 100 1000.0)
+                     :count 1))))
+
+(defmethod entity-touch ((e1 spell-fireball) o)
+  (entity-magic-hit o e1)
   (call-next-method))
