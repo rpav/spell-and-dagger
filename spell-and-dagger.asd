@@ -33,9 +33,11 @@
       :components
       ((:file "actor")
        (:file "simple")
+       (:file "move-manager")
        (:file "simple-mob")
        (:file "spawner")
        (:file "game-char")
+       (:file "npc")
        (:file "powerup")
        (:file "spell")))
 

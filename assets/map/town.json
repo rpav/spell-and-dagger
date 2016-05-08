@@ -73,10 +73,31 @@
                  "width":16,
                  "x":128,
                  "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":74,
+                 "name":"NPC",
+                 "properties":
+                    {
+                     "sprite-name":"townfolk\/m-",
+                     "text":"Hello."
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":16,
          "x":0,
          "y":0
@@ -653,15 +674,17 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":74,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "properties":
     {
-     "n":"town-n"
+     "n":"town-n",
+     "s":"town-s"
     },
  "propertytypes":
     {
-     "n":"string"
+     "n":"string",
+     "s":"string"
     },
  "renderorder":"right-up",
  "tileheight":16,

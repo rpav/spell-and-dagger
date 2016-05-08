@@ -35,7 +35,7 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
    (motion :initform (gk-vec2 0 0) :reader entity-motion)
    (state :initform nil :accessor entity-state)
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)
-   (props :initform nil :initarg :props :reader entity-props)))
+   (props :initform nil :initarg :props)))
 
 (defmethod initialize-instance :after ((e entity) &key pos size &allow-other-keys)
   (with-slots ((_pos pos) (_size size)) e

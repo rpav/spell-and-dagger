@@ -4,7 +4,7 @@
 
 (defclass actor (entity)
   ((life :initform 1 :accessor actor-life)
-   (facing :initform +motion-down+ :reader actor-facing)
+   (facing :initform +motion-down+ :accessor actor-facing)
    (knockback-time :initform 0.3 :accessor actor-knockback-time)
    (knockback-speed :initform 2.0 :accessor actor-knockback-speed)
    (hit-start :initform nil))
