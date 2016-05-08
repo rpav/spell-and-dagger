@@ -6,16 +6,23 @@
 
 (defgeneric behavior-act (behavior npc interacting-entity)
   (:documentation "Called when `NPC` is interacted with by
-`INTERACTING-ENTITY`."))
+`INTERACTING-ENTITY`.")
+  (:method (b npc e)
+    (if-let (text (entity-property npc :text))
+      (show-textbox text)
+      (show-textbox "..."))))
 
 (defclass simple-behavior (behavior) ())
 
-(defmethod behavior-act (b npc e)
-  (if-let (text (entity-property npc :text))
-    (show-textbox text)
-    (show-textbox "...")))
 
-(defclass teacher-behavior (simple-behavior) ())
+(defclass teacher-behavior (behavior) ())
+
+(defmethod behavior-act ((b teacher-behavior) npc c)
+  (if (game-value :has-spell)
+      (show-textbox "Have you tried it?  It can break certain things.")
+      (progn
+        (show-textbox "Let me teach you a useful spell.  (Press A to use.)")
+        (setf (game-value :has-spell) t))))
 
  ;; NPC
 

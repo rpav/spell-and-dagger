@@ -16,6 +16,7 @@
   (gk assets
    (map :initform nil :accessor game-window-map)
    (char :initform nil :accessor game-window-char)
+   (game-state :initform (make-hash-table))
    (anim-manager :initform (make-instance 'anim-manager))
    (screen :initform nil :accessor game-window-screen)
    (phase-stack :initform (make-instance 'phase-stack))
@@ -134,3 +135,11 @@
 
 (defun window-height ()
   (kit.sdl2:window-height *window*))
+
+(defun game-value (name)
+  (with-slots (game-state) *window*
+    (gethash name game-state)))
+
+(defun (setf game-value) (v name)
+  (with-slots (game-state) *window*
+    (setf (gethash name game-state) v)))

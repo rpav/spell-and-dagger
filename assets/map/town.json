@@ -94,6 +94,96 @@
                  "width":16,
                  "x":112,
                  "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":77,
+                 "name":"house1",
+                 "properties":
+                    {
+                     "map":"house1"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string"
+                    },
+                 "rotation":0,
+                 "type":"link",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":79,
+                 "name":"house1-exit",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":81,
+                 "name":"house3",
+                 "properties":
+                    {
+                     "map":"house3"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string"
+                    },
+                 "rotation":0,
+                 "type":"link",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":82,
+                 "name":"house3-exit",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":48
+                }, 
+                {
+                 "height":16,
+                 "id":83,
+                 "name":"house2",
+                 "properties":
+                    {
+                     "map":"house2"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string"
+                    },
+                 "rotation":0,
+                 "type":"link",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":84,
+                 "name":"house2-exit",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -674,7 +764,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":75,
+ "nextobjectid":85,
  "orientation":"orthogonal",
  "properties":
     {

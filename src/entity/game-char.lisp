@@ -88,8 +88,9 @@
     (game-char-play-attack e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn2)))
-  (setf (entity-state e) :casting)
-  (game-char-play-cast e))
+  (when (game-value :has-spell)
+    (setf (entity-state e) :casting)
+    (game-char-play-cast e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn3)))
   (with-slots (wpn-box wpn-pos) e
@@ -104,7 +105,8 @@
   (with-slots (sprite wpn-sprite wpn-box wpn-pos) e
     (draw sprite lists m)
     (case (entity-state e)
-      (:attacking (draw wpn-sprite lists m)))))
+      (:attacking (when (game-value :has-dagger)
+                    (draw wpn-sprite lists m))))))
 
 (defmethod entity-collide ((e game-char) (c link))
   (let ((map (entity-property c :map))
@@ -223,9 +225,6 @@
           (anim-state-on-stop anim-state) (lambda (s)
                                             (declare (ignore s))
                                             (game-char-end-cast e)))
-    (setf (sprite-index wpn-sprite) (find-frame (asset-sheet *assets*)
-                                                (aval facing *weapon*)))
-    (set-vec2 (sprite-pos wpn-sprite) (sprite-pos sprite))
     (anim-play *anim-manager* anim-state)))
 
 (defun game-char-update-wpn-box (e)
@@ -237,10 +236,11 @@
 (defun game-char-do-attack (e)
   (game-char-update-wpn-box e)
   (with-slots (wpn-box wpn-pos) e
-    (let* ((map (current-map))
-           (hits (delete e (map-find-in-box map wpn-box wpn-pos))))
-      (loop for ob in hits
-            do (entity-attacked ob e nil)))))
+    (when (game-value :has-dagger)
+      (let* ((map (current-map))
+             (hits (delete e (map-find-in-box map wpn-box wpn-pos))))
+        (loop for ob in hits
+              do (entity-attacked ob e nil))))))
 
 (defun game-char-do-cast (e)
   (let ((spell (make-instance 'spell-explode)))
