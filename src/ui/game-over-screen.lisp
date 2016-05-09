@@ -16,3 +16,14 @@
   (with-slots (ui-list) lists
     (with-slots (text style) s
       (cmd-list-append ui-list style text))))
+
+(defmethod key-event ((s game-over-screen) key state)
+  (when (eq state :keydown)
+    (case key
+      (:scancode-z (ps-pop-to 'title-phase)))))
+
+(defclass the-end-screen (game-over-screen) ())
+
+(defmethod initialize-instance :after ((s the-end-screen) &key &allow-other-keys)
+  (with-slots (text) s
+    (setf (text-string text) "End...")))

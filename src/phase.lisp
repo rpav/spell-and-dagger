@@ -59,10 +59,26 @@
   (with-slots (phases cur) ps
     (vector-pop phases)))
 
+(defun ps-pop-to (type &optional (ps *ps*))
+  (with-slots (phases phase-refs cur) ps
+    (loop as phase = (vector-pop phases)
+          do (decf cur)
+             (when (typep phase type)
+               (setf phase-refs 0)
+               (ps-push phase ps)
+               (return)))))
+
 (defun ps-interrupt (new-phase &optional (ps *ps*))
   (with-slots (phase-refs) ps
     (setf phase-refs 0)
     (ps-push new-phase ps)))
+
+(defun ps-replace (new-phase &optional (ps *ps*))
+  (with-slots (phase-refs phases) ps
+    (phase-finish (ps-cur-phase))
+    (setf phase-refs 0)
+    (setf (aref phases (ps-cur ps)) new-phase)
+    (phase-start new-phase)))
 
 (defun ps-has-up-phase (ps)
   (with-slots (cur phases) ps

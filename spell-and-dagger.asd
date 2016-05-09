@@ -40,7 +40,8 @@
        (:file "npc")
        (:file "powerup")
        (:file "spell")
-       (:file "spell-interacts")))
+       (:file "spell-interacts")
+       (:file "more-interacts")))
 
      (:file "phase")
      (:module #:phases
@@ -49,7 +50,8 @@
       ((:file "title")
        (:file "map-phase")
        (:file "text-phase")
-       (:file "game-over")))
+       (:file "game-over")
+       (:file "end-game")))
 
      (:file "ui")
      (:module #:uis
@@ -92,4 +94,5 @@
        (:static-file "tm/cave.json")
        (:static-file "tm/objects.json")
        (:static-file "tm/misc.json")
-       (:static-file "tm/tiny16basic.json")))))))
+       (:static-file "tm/tiny16basic.json")
+       (:static-file "tm/town-old.json")))))))

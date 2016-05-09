@@ -44,7 +44,7 @@
    (max-life :initform 5 :accessor char-max-life)
    (magic :initform 5 :reader char-magic)
    (max-magic :initform 5 :accessor char-max-magic)
-   (spells :initform nil :accessor char-spells)
+   (spells :initform (list 'spell-fireball) :accessor char-spells)
    (eqp-spell :initform nil :accessor char-spell)
    (state :initform :moving)
    (motion-mask :initform 0)

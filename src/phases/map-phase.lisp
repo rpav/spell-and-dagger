@@ -4,6 +4,7 @@
   ((map-screen :initform (make-instance 'map-screen))))
 
 (defmethod initialize-instance :after ((p map-phase) &key &allow-other-keys)
+  (:say "new map phase")
   (with-slots ((ms map-screen)) p
     (let* ((sprite
              (make-instance 'sprite
@@ -28,6 +29,10 @@
 (defmethod phase-pause ((p map-phase))
   (clear-motion-bits (current-char)))
 
+(defmethod phase-finish ((p map-phase))
+  (with-slots (map-screen) p
+    (setf (ui-visible map-screen) nil)))
+
 (defmethod phase-show-textbox ((phase map-phase) text)
   (ps-interrupt (make-instance 'text-phase :text text)))
 
@@ -43,3 +48,6 @@
   (let ((map-screen (game-window-map-screen *window*)))
     (with-slots (hud) map-screen
       (hud-set-spell hud id))))
+
+(defun phase-to-endgame ()
+  (ps-replace (make-instance 'end-game-phase)))

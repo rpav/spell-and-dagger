@@ -441,15 +441,91 @@
                  "width":16,
                  "x":32,
                  "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":22,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":87.3333333333333,
+                 "y":25
+                }, 
+                {
+                 "height":16,
+                 "id":23,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":169.666666666667,
+                 "y":37
+                }, 
+                {
+                 "height":16,
+                 "id":24,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":126.666666666667,
+                 "y":61.3333333333333
+                }, 
+                {
+                 "height":16,
+                 "id":25,
+                 "name":"blob",
+                 "properties":
+                    {
+                     "type":"tiny16\/blob"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":172.333333333333,
+                 "y":90.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":16,
          "x":0,
          "y":0
         }],
- "nextobjectid":22,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "properties":
     {

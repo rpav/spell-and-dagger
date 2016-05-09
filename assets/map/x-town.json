@@ -1,7 +1,7 @@
 { "height":9,
  "layers":[
         {
-         "data":[31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 11, 8, 9, 12, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 178, 171, 180, 31, 31, 31, 31, 31, 31, 31, 31, 31, 182, 171, 163, 171, 160, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 11, 6, 8, 12, 31, 31, 31, 31, 170, 31, 11, 9, 8, 12, 31, 31, 31, 31, 177, 171, 171, 171, 171, 171, 160, 31, 31, 31, 183, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 177, 171, 171, 171, 176, 31, 31],
+         "data":[31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 315, 312, 313, 316, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 178, 171, 180, 31, 31, 31, 31, 31, 31, 31, 31, 31, 182, 171, 163, 171, 160, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 170, 31, 31, 31, 31, 31, 31, 31, 315, 311, 312, 316, 31, 31, 31, 31, 170, 31, 315, 313, 312, 316, 31, 31, 31, 31, 177, 171, 171, 171, 171, 171, 160, 31, 31, 31, 183, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 177, 171, 171, 171, 176, 31, 31],
          "height":9,
          "name":"Ground",
          "opacity":1,
@@ -20,7 +20,7 @@
          "y":0
         }, 
         {
-         "data":[19, 19, 19, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 19, 19, 19, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 19, 19, 19, 0, 0, 0, 18, 0, 0, 0, 0, 19, 0, 0, 0, 0, 19, 19, 19, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 19, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19],
+         "data":[19, 19, 19, 19, 19, 19, 19, 0, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 19, 19, 19, 0, 0, 0, 330, 0, 0, 0, 0, 19, 0, 0, 0, 0, 19, 19, 19, 0, 0, 0, 0, 319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 342, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 0, 19, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19],
          "height":9,
          "name":"OnGround",
          "opacity":1,
@@ -39,7 +39,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 21, 22, 29, 30, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 24, 25, 26, 27, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 22, 29, 30, 0, 0, 0, 0, 0, 0, 21, 22, 29, 30, 0, 0, 24, 25, 26, 27, 0, 0, 0, 0, 0, 0, 24, 25, 26, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 320, 321, 328, 329, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 323, 324, 325, 326, 0, 0, 0, 0, 0, 0, 0, 318, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 321, 328, 329, 0, 0, 0, 0, 0, 0, 320, 321, 328, 329, 0, 0, 323, 324, 325, 326, 0, 0, 0, 0, 0, 0, 323, 324, 325, 326, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"AboveChar",
          "opacity":1,
@@ -64,113 +64,104 @@
          "name":"objects",
          "objects":[
                 {
+                 "gid":337,
                  "height":16,
-                 "id":17,
-                 "name":"start",
+                 "id":88,
+                 "name":"",
                  "properties":
                     {
-                     "text":"Welcome to Spell & Dagger.  Use the arrow keys to move.  Press 'A' to interact with things."
+                     "broken":"forest\/f_004.png",
+                     "btext":"Only a few ashes left.",
+                     "text":"A thorny tangle of brush. If you had some way to set it on fire, you might be able to get through."
                     },
                  "propertytypes":
                     {
+                     "broken":"string",
+                     "btext":"string",
                      "text":"string"
                     },
                  "rotation":0,
-                 "type":"nil",
+                 "type":"fireball-breakable",
                  "visible":true,
                  "width":16,
-                 "x":144,
-                 "y":112
+                 "x":112,
+                 "y":16
                 }, 
                 {
                  "height":16,
-                 "id":77,
-                 "name":"house1",
+                 "id":95,
+                 "name":"spider",
                  "properties":
                     {
-                     "map":"house1"
+                     "type":"tiny16\/spider"
                     },
                  "propertytypes":
                     {
-                     "map":"string"
+                     "type":"string"
                     },
                  "rotation":0,
-                 "type":"link",
+                 "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":48,
-                 "y":96
+                 "x":36.6666666666667,
+                 "y":39.3333333333333
                 }, 
                 {
                  "height":16,
-                 "id":79,
-                 "name":"house1-exit",
-                 "rotation":0,
-                 "type":"nil",
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":112
-                }, 
-                {
-                 "height":16,
-                 "id":81,
-                 "name":"house3",
+                 "id":96,
+                 "name":"spider",
                  "properties":
                     {
-                     "map":"house3"
+                     "type":"tiny16\/spider"
                     },
                  "propertytypes":
                     {
-                     "map":"string"
+                     "type":"string"
                     },
                  "rotation":0,
-                 "type":"link",
+                 "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":176,
+                 "x":120.333333333333,
+                 "y":87
+                }, 
+                {
+                 "height":16,
+                 "id":97,
+                 "name":"spider",
+                 "properties":
+                    {
+                     "type":"tiny16\/spider"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":218,
+                 "y":53
+                }, 
+                {
+                 "height":16,
+                 "id":98,
+                 "name":"spider",
+                 "properties":
+                    {
+                     "type":"tiny16\/spider"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":111.333333333333,
                  "y":32
-                }, 
-                {
-                 "height":16,
-                 "id":82,
-                 "name":"house3-exit",
-                 "rotation":0,
-                 "type":"nil",
-                 "visible":true,
-                 "width":16,
-                 "x":176,
-                 "y":48
-                }, 
-                {
-                 "height":16,
-                 "id":83,
-                 "name":"house2",
-                 "properties":
-                    {
-                     "map":"house2"
-                    },
-                 "propertytypes":
-                    {
-                     "map":"string"
-                    },
-                 "rotation":0,
-                 "type":"link",
-                 "visible":true,
-                 "width":16,
-                 "x":208,
-                 "y":96
-                }, 
-                {
-                 "height":16,
-                 "id":84,
-                 "name":"house2-exit",
-                 "rotation":0,
-                 "type":"nil",
-                 "visible":true,
-                 "width":16,
-                 "x":208,
-                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -186,7 +177,7 @@
          "name":"collision",
          "objects":[
                 {
-                 "height":128,
+                 "height":144,
                  "id":27,
                  "name":"",
                  "properties":
@@ -238,7 +229,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":48,
+                 "width":80,
                  "x":32,
                  "y":0
                 }, 
@@ -248,7 +239,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"It's a tree.  You remember attempting to climb this one."
+                     "text":"Long-dead remains of a tree.  You remember climbing this tree."
                     },
                  "propertytypes":
                     {
@@ -267,7 +258,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"It's a well.  You've drawn water from here many times."
+                     "text":" You've drawn water from here many times.  Now it's cracked and dry."
                     },
                  "propertytypes":
                     {
@@ -286,7 +277,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"It's a bush."
+                     "text":"Scraggly roots of a bush."
                     },
                  "propertytypes":
                     {
@@ -305,7 +296,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -317,25 +308,6 @@
                  "width":32,
                  "x":16,
                  "y":80
-                }, 
-                {
-                 "height":16,
-                 "id":39,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"It's a tree."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":0,
-                 "y":128
                 }, 
                 {
                  "height":16,
@@ -466,8 +438,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":208,
+                 "width":96,
+                 "x":128,
                  "y":0
                 }, 
                 {
@@ -476,7 +448,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -495,7 +467,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -514,7 +486,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -533,7 +505,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -552,7 +524,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -571,7 +543,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -590,7 +562,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -609,7 +581,7 @@
                  "name":"",
                  "properties":
                     {
-                     "text":"A house."
+                     "text":"The decrepit remains of a house."
                     },
                  "propertytypes":
                     {
@@ -621,6 +593,63 @@
                  "width":16,
                  "x":160,
                  "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":89,
+                 "name":"closed",
+                 "properties":
+                    {
+                     "text":"Broken."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":91,
+                 "name":"closed",
+                 "properties":
+                    {
+                     "text":"Broken."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":92,
+                 "name":"closed",
+                 "properties":
+                    {
+                     "text":"Broken."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -636,100 +665,25 @@
          "name":"interacts",
          "objects":[
                 {
-                 "gid":13,
                  "height":16,
-                 "id":26,
-                 "name":"",
+                 "id":93,
+                 "name":"text",
                  "properties":
                     {
-                     "broken":"town\/solid\/t_19.png",
-                     "btext":"A broken barrel.",
-                     "text":"A barrel."
+                     "flag":"x-town-entry",
+                     "text":"You arrive back in town.. or what you thought was town.  More than just deserted, it appears long-abandoned, houses decaying and overgrown."
                     },
                  "propertytypes":
                     {
-                     "broken":"string",
-                     "btext":"string",
+                     "flag":"string",
                      "text":"string"
                     },
                  "rotation":0,
-                 "type":"breakable",
+                 "type":"text-once",
                  "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":96
-                }, 
-                {
-                 "gid":13,
-                 "height":16,
-                 "id":71,
-                 "name":"",
-                 "properties":
-                    {
-                     "broken":"town\/solid\/t_19.png",
-                     "btext":"A broken barrel.",
-                     "text":"A barrel."
-                    },
-                 "propertytypes":
-                    {
-                     "broken":"string",
-                     "btext":"string",
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"breakable",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":64
-                }, 
-                {
-                 "gid":13,
-                 "height":16,
-                 "id":72,
-                 "name":"",
-                 "properties":
-                    {
-                     "broken":"town\/solid\/t_19.png",
-                     "btext":"A broken barrel.",
-                     "text":"A barrel."
-                    },
-                 "propertytypes":
-                    {
-                     "broken":"string",
-                     "btext":"string",
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"breakable",
-                 "visible":true,
-                 "width":16,
-                 "x":224,
+                 "width":208,
+                 "x":16,
                  "y":128
-                }, 
-                {
-                 "gid":13,
-                 "height":16,
-                 "id":73,
-                 "name":"",
-                 "properties":
-                    {
-                     "broken":"town\/solid\/t_19.png",
-                     "btext":"A broken barrel.",
-                     "text":"A barrel."
-                    },
-                 "propertytypes":
-                    {
-                     "broken":"string",
-                     "btext":"string",
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"breakable",
-                 "visible":true,
-                 "width":16,
-                 "x":224,
-                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -764,7 +718,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":88,
+ "nextobjectid":104,
  "orientation":"orthogonal",
  "properties":
     {
@@ -786,6 +740,14 @@
         {
          "firstgid":31,
          "source":"tm\/floating.json"
+        }, 
+        {
+         "firstgid":311,
+         "source":"tm\/town-old.json"
+        }, 
+        {
+         "firstgid":330,
+         "source":"tm\/forest.json"
         }],
  "tilewidth":16,
  "version":1,

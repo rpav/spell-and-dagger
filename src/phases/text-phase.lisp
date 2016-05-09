@@ -3,10 +3,10 @@
 (defclass text-phase (game-phase)
   ((text-screen :initform nil)))
 
-(defmethod initialize-instance :after ((p text-phase) &key text &allow-other-keys)
+(defmethod initialize-instance :after ((p text-phase) &key text (map t) &allow-other-keys)
   (with-slots (text-screen) p
     (setf text-screen
-          (make-instance 'text-screen :text text))))
+          (make-instance 'text-screen :text text :map map))))
 
 (defmethod phase-resume ((p text-phase))
   (ps-incref *ps*)

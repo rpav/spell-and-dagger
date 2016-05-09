@@ -398,29 +398,10 @@
          "draworder":"topdown",
          "height":9,
          "name":"interacts",
-         "objects":[
-                {
-                 "height":16,
-                 "id":19,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A hole in the ground.  Was this here before?"
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"simple-text",
-                 "visible":true,
-                 "width":16,
-                 "x":224,
-                 "y":112
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":16,
          "x":0,
          "y":0
@@ -433,31 +414,69 @@
          "objects":[
                 {
                  "height":16,
-                 "id":20,
-                 "name":"hole",
+                 "id":25,
+                 "name":"ghost",
                  "properties":
                     {
-                     "map":"cave1"
+                     "type":"tiny16\/ghost"
                     },
                  "propertytypes":
                     {
-                     "map":"string"
+                     "type":"string"
                     },
                  "rotation":0,
-                 "type":"link",
+                 "type":"spawner",
                  "visible":true,
-                 "width":6.75,
-                 "x":233.25,
-                 "y":112
+                 "width":16,
+                 "x":48,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":27,
+                 "name":"ghost",
+                 "properties":
+                    {
+                     "type":"tiny16\/ghost"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":28,
+                 "name":"ghost",
+                 "properties":
+                    {
+                     "type":"tiny16\/ghost"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":16,
          "x":0,
          "y":0
         }],
- "nextobjectid":24,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "properties":
     {

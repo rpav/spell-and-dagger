@@ -20,7 +20,7 @@
       (setf text (cmd-text "Press Z" :x (/ w 2.0) :y (* 3 (/ h 4.0)))))))
 
 (defmethod key-event ((s title-screen) key state)
-  (when (eq state :keyup)
+  (when (eq state :keydown)
     (case key
       (:scancode-z (title-start)))))
 

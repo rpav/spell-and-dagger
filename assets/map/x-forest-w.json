@@ -328,8 +328,59 @@
          "width":16,
          "x":0,
          "y":0
+        }, 
+        {
+         "color":"#00ff00",
+         "draworder":"topdown",
+         "height":9,
+         "name":"objects",
+         "objects":[
+                {
+                 "height":16,
+                 "id":13,
+                 "name":"red-blob",
+                 "properties":
+                    {
+                     "type":"rpg-enemies\/red-slime"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":55.3333333333333,
+                 "y":50.3333333333333
+                }, 
+                {
+                 "height":16,
+                 "id":14,
+                 "name":"red-blob",
+                 "properties":
+                    {
+                     "type":"rpg-enemies\/red-slime"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":147.333333333333,
+                 "y":49
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":13,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "properties":
     {

@@ -1,9 +1,28 @@
 { "height":9,
  "layers":[
         {
-         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 144, 127, 145, 1, 1, 1, 1, 144, 127, 145, 1, 1, 1, 1, 1, 1, 126, 108, 124, 1, 1, 1, 1, 126, 108, 124, 1, 1, 1, 1, 1, 1, 143, 125, 142, 1, 1, 1, 1, 143, 125, 142, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 20, 20, 20, 20, 38, 0, 0, 0, 0, 0, 37, 20, 20, 1, 0, 1, 1, 1, 1, 1, 1, 20, 20, 20, 20, 20, 5, 1, 222, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 222, 222, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 222, 222, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 222, 222, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
          "height":9,
          "name":"Ground",
+         "opacity":1,
+         "properties":
+            {
+             "layer":-3
+            },
+         "propertytypes":
+            {
+             "layer":"int"
+            },
+         "type":"tilelayer",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 254, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 0, 0, 0, 0, 0, 0, 0, 0, 220, 222, 223, 299, 299, 0, 0, 254, 0, 0, 299, 220, 222, 223, 0, 0, 220, 222, 223, 299, 299, 0, 0, 255, 0, 299, 299, 220, 222, 223, 0, 0, 220, 222, 223, 299, 299, 0, 0, 0, 0, 299, 299, 220, 222, 220, 222, 0, 0, 299, 299, 299, 299, 0, 0, 0, 0, 299, 299, 220, 222, 220, 222, 222, 223, 299, 299, 299, 299, 0, 0, 0, 0, 0, 299, 220, 0, 220, 222, 222, 223, 299, 299, 299, 299, 0, 0, 0, 0, 299, 299, 299, 299, 220, 222, 299, 299, 299, 299, 299, 299, 299, 0, 0, 299, 299, 299, 299, 299, 299, 299],
+         "height":9,
+         "name":"OnGround",
          "opacity":1,
          "properties":
             {
@@ -20,18 +39,10 @@
          "y":0
         }, 
         {
-         "data":[299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 237, 238, 0, 0, 0, 299, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 299, 299, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 299, 299, 299, 299, 299, 299, 299, 0, 0, 0, 0, 0, 299, 299, 299, 299, 299, 299, 299, 299, 299, 299, 299, 0, 0, 0, 0, 299, 299, 299, 299, 299, 299, 299, 299, 299],
+         "data":[0, 37, 20, 38, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 17, 0, 0, 36, 18, 35, 0, 0, 0, 0, 0, 0, 0, 0, 36, 18, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36, 18, 20, 38, 48, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 48, 0, 0, 48, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
-         "name":"OnGround",
+         "name":"OnGround+",
          "opacity":1,
-         "properties":
-            {
-             "layer":-1
-            },
-         "propertytypes":
-            {
-             "layer":"int"
-            },
          "type":"tilelayer",
          "visible":true,
          "width":16,
@@ -39,7 +50,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"Char+",
          "opacity":1,
@@ -58,12 +69,19 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
-         "name":"interacts",
-         "objects":[],
+         "name":"Char++",
          "opacity":1,
-         "type":"objectgroup",
+         "properties":
+            {
+             "layer":4
+            },
+         "propertytypes":
+            {
+             "layer":"int"
+            },
+         "type":"tilelayer",
          "visible":true,
          "width":16,
          "x":0,
@@ -76,7 +94,83 @@
          "name":"collision",
          "objects":[
                 {
-                 "height":144,
+                 "height":112,
+                 "id":1,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":32
+                }, 
+                {
+                 "height":48,
+                 "id":2,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":48
+                }, 
+                {
+                 "height":32,
+                 "id":3,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":4,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":128
+                }, 
+                {
+                 "height":16,
                  "id":5,
                  "name":"",
                  "properties":
@@ -91,16 +185,35 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":0,
-                 "y":0
+                 "x":96,
+                 "y":128
                 }, 
                 {
                  "height":16,
+                 "id":6,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":96
+                }, 
+                {
+                 "height":48,
                  "id":7,
                  "name":"",
                  "properties":
                     {
-                     "text":"Some bushes."
+                     "text":"A deep canyon."
                     },
                  "propertytypes":
                     {
@@ -109,17 +222,17 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":16,
-                 "y":96
+                 "width":32,
+                 "x":96,
+                 "y":0
                 }, 
                 {
-                 "height":32,
+                 "height":48,
                  "id":8,
                  "name":"",
                  "properties":
                     {
-                     "text":"Some bushes."
+                     "text":"A deep canyon."
                     },
                  "propertytypes":
                     {
@@ -129,142 +242,22 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":16,
-                 "y":112
-                }, 
-                {
-                 "height":48,
-                 "id":9,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":208,
-                 "y":80
-                }, 
-                {
-                 "height":32,
-                 "id":10,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":208,
-                 "y":48
-                }, 
-                {
-                 "height":48,
-                 "id":11,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32.5,
-                 "x":224,
+                 "x":144,
                  "y":0
-                }, 
-                {
-                 "height":16,
-                 "id":14,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":192,
-                 "y":96
-                }, 
-                {
-                 "height":16,
-                 "id":16,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":128,
-                 "y":112
-                }, 
-                {
-                 "height":16,
-                 "id":17,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A tree stump."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":128,
-                 "y":48
-                }, 
-                {
-                 "height":16,
-                 "id":18,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":128
                 }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "color":"#ffff00",
+         "draworder":"topdown",
+         "height":9,
+         "name":"interacts",
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -279,80 +272,26 @@
          "name":"objects",
          "objects":[
                 {
-                 "height":16,
-                 "id":19,
-                 "name":"Shrooms",
-                 "properties":
-                    {
-                     "type":"rpg-enemies\/shroom"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
+                 "height":4,
+                 "id":12,
+                 "name":"end",
                  "rotation":0,
-                 "type":"spawner",
+                 "type":"end-game",
                  "visible":true,
                  "width":16,
-                 "x":48,
-                 "y":32
+                 "x":128,
+                 "y":0
                 }, 
                 {
                  "height":16,
-                 "id":20,
-                 "name":"Shrooms",
-                 "properties":
-                    {
-                     "type":"rpg-enemies\/shroom"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
+                 "id":14,
+                 "name":"start",
                  "rotation":0,
-                 "type":"spawner",
+                 "type":"nil",
                  "visible":true,
                  "width":16,
-                 "x":80,
-                 "y":80
-                }, 
-                {
-                 "height":16,
-                 "id":21,
-                 "name":"Shrooms",
-                 "properties":
-                    {
-                     "type":"rpg-enemies\/shroom"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"spawner",
-                 "visible":true,
-                 "width":16,
-                 "x":160,
-                 "y":80
-                }, 
-                {
-                 "height":16,
-                 "id":22,
-                 "name":"Shrooms",
-                 "properties":
-                    {
-                     "type":"rpg-enemies\/shroom"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
-                 "rotation":0,
-                 "type":"spawner",
-                 "visible":true,
-                 "width":16,
-                 "x":160,
-                 "y":16
+                 "x":128,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -361,16 +300,14 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":23,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "properties":
     {
-     "n":"x-town",
-     "s":"x-forest"
+     "s":"x-town-n"
     },
  "propertytypes":
     {
-     "n":"string",
      "s":"string"
     },
  "renderorder":"right-up",

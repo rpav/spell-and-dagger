@@ -46,7 +46,8 @@
 ;;; handling.
 
 (defclass text-screen (screen)
-  ((textbox :initform (make-instance 'textbox))))
+  ((textbox :initform (make-instance 'textbox))
+   (draw-map-p :initarg :map :initform t)))
 
 (defmethod initialize-instance :after ((ts text-screen) &key text &allow-other-keys)
   (with-slots (textbox) ts
@@ -55,8 +56,10 @@
 
 (defmethod draw :after ((s text-screen) lists m)
   ;; The textbox is a child, so it automatically gets rendered.
-  (when-let (map (current-map))
-    (draw map lists m)))
+  (with-slots (draw-map-p) s
+    (when draw-map-p
+      (when-let (map (current-map))
+        (draw map lists m)))))
 
 (defmethod key-event ((w text-screen) key state)
   (when (eq state :keydown)
