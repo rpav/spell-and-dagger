@@ -1,6 +1,6 @@
 # Spell & Dagger: Lisp Game Jam 2016 Q2 entry
 
-<img src="http://ogmo.mephle.net/lgj/final.gif">
+<img src="http://ogmo.mephle.net/lgj/final2.gif">
 
 ## Requirements
 
