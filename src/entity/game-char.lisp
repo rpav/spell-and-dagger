@@ -2,49 +2,6 @@
 
  ;; Quick take on character
 
-;;; We'll generate these later for actions, but we don't want to cons
-;;; up new strings everytime an action changes
-(defparameter *walking*
-  `((,+motion-up+ . "ranger-f/walk-up")
-    (,+motion-down+ . "ranger-f/walk-down")
-    (,+motion-left+ . "ranger-f/walk-left")
-    (,+motion-right+ . "ranger-f/walk-right")))
-
-(defparameter *attacking*
-  `((,+motion-up+ . "ranger-f/atk-up")
-    (,+motion-down+ . "ranger-f/atk-down")
-    (,+motion-left+ . "ranger-f/atk-left")
-    (,+motion-right+ . "ranger-f/atk-right")))
-
-(defparameter *casting*
-  `((,+motion-up+ . "ranger-f/cast-up")
-    (,+motion-down+ . "ranger-f/cast-down")
-    (,+motion-left+ . "ranger-f/cast-left")
-    (,+motion-right+ . "ranger-f/cast-right")))
-
-(defparameter *weapon*
-  `((,+motion-up+ . "weapon/sword_up.png")
-    (,+motion-down+ . "weapon/sword_down.png")
-    (,+motion-left+ . "weapon/sword_left.png")
-    (,+motion-right+ . "weapon/sword_right.png")))
-
-(defparameter +game-char-bbox+
-  (cons (gk-vec2 4 1)
-        (gk-vec2 7 4)))
-
-(defparameter +interact-box-left+ (box -1 7 4 2))
-(defparameter +interact-box-right+ (box 2 7 14 2))
-
-(defparameter +interact-box-up+ (box 7 0 2 16))
-(defparameter +interact-box-down+ (box 7 -4 2 16))
-
-;;; Note how trivial it is to add diagonals here
-(defparameter +motion-mask+
-  `((,+motion-left+  . #b1000)
-    (,+motion-right+ . #b0001)
-    (,+motion-up+    . #b0100)
-    (,+motion-down+  . #b0010)))
-
 (defclass game-char (actor)
   ((life :initform 5 :reader char-life)
    (max-life :initform 5 :accessor char-max-life)

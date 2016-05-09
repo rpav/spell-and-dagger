@@ -1,21 +1,5 @@
 (in-package :game)
 
-(defvar +motion-none+  (gk-vec2  0  0))
-(defvar +motion-up+    (gk-vec2  0  1))
-(defvar +motion-down+  (gk-vec2  0 -1))
-(defvar +motion-left+  (gk-vec2 -1  0))
-(defvar +motion-right+ (gk-vec2  1  0))
-
-(defparameter +motions+
-  (list +motion-up+ +motion-down+ +motion-left+ +motion-right+))
-
-(defparameter +reverse-motion+
-  `((,+motion-none+ . ,+motion-none+)
-    (,+motion-up+ . ,+motion-down+)
-    (,+motion-down+ . ,+motion-up+)
-    (,+motion-left+ . ,+motion-right+)
-    (,+motion-right+ . ,+motion-left+)))
-
 (defun relative-motion (a b)
   "Return the \"direction\" of `B` in relation to `A`, e.g.,
 if `B` is \"left of\" `A`, return `+motion-left+`."
@@ -24,8 +8,6 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
     (if (< (abs dy) (abs dx))
         (if (< dx 0.0) +motion-right+ +motion-left+)
         (if (< dy 0.0) +motion-up+ +motion-down+))))
-
-(defparameter +default-box+ (cons (gk-vec2 0 0) (gk-vec2 16 16)))
 
 ;;; May convert this to be prototypey later
 (defclass entity ()
@@ -118,7 +100,8 @@ only when `E2` is not `ENTITY-SOLID-P`.")
 
 (defmethod draw ((e entity) lists m)
   (with-slots (sprite) e
-    (when sprite (draw sprite lists m))))
+    (when sprite
+      (draw sprite lists m))))
 
 ;;; A more complex system would allow channels or entity-entity tests
 ;;; or whatnot.  For now this is a simple boolean.  Default is T,

@@ -79,19 +79,29 @@
   (with-game-state (window)
     (let ((scancode (sdl2:scancode keysym)))
       (when (or (eq :scancode-escape scancode))
-        (kit.sdl2:close-window window))
+        (if build:*binary*
+            (sb-ext:exit)
+            (kit.sdl2:close-window window)))
       (unless repeat-p
         (when-let (screen (current-screen))
           (key-event screen scancode state))))))
 
 (defun run (&key (w 1280) (h 720))
+  (static-startup)
   (kit.sdl2:start)
   (sdl2:in-main-thread ()
     (sdl2:gl-set-attr :context-major-version 3)
     (sdl2:gl-set-attr :context-minor-version 3)
     (sdl2:gl-set-attr :context-profile-mask 1)
     (sdl2:gl-set-attr :stencil-size 8))
-  (make-instance 'game-window :w w :h h))
+  (bt:make-thread
+   (lambda () (make-instance 'game-window :w w :h h)))
+  (when build:*binary*
+    (let ((thread
+            (find "SDL2 Main Thread" (bt:all-threads)
+                  :key 'bt:thread-name
+                  :test 'equalp)))
+      (bt:join-thread thread))))
 
 ;;; (run)
 

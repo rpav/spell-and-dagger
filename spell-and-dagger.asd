@@ -19,6 +19,7 @@
     :components
     ((:file "util.rpav-1")
      (:file "package")
+     (:file "startup")
      (:file "util")
      (:file "proto")
 

@@ -6,10 +6,6 @@
    (type :initform nil)
    (mob :initform nil)))
 
-(defparameter +spawner-bbox+
-  (cons (gk-vec2 4 4)
-        (gk-vec2 8 8)))
-
 (defmethod initialize-instance :after ((s spawner) &key props &allow-other-keys)
   (with-slots ((_type type) size) s
     (let* ((type (aval :type props))

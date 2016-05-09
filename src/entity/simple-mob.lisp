@@ -1,9 +1,5 @@
 (in-package :game)
 
-(defparameter +simple-mob-bbox+
-  (cons (gk-vec2 2 2)
-        (gk-vec2 14 12)))
-
 (defclass simple-mob (actor)
   ((life :initform 3)
    (state :initform :starting)

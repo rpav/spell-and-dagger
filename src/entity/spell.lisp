@@ -2,9 +2,6 @@
 
  ;; SPELL
 
-(defparameter +spell-bbox+
-  (cons (gk-vec2 4 4) (gk-vec2 8 8)))
-
 (defclass spell (entity)
   ((sprite :initform (make-instance 'sprite :key 0))
    (speed :initform 1.0)

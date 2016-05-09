@@ -68,3 +68,55 @@ of 0..1.0"
         (incf by1 (vy offs-b)))
       (and (<  ax0 bx1) (<  ay0 by1)
            (>= ax1 bx0) (>= ay1 by0)))))
+
+ ;; :say
+
+(defvar *return-value* nil)
+(defvar *say-io* *debug-io*)
+
+(defmacro :say (&rest vars)
+  (let (formats vals (tabbing 0))
+    (labels
+        ((join (&rest strings)
+           (apply #'concatenate 'string strings))
+         (format-expr (var more-exprs-p)
+           (push (join (format nil "~~~A,0T" tabbing)
+                       (if more-exprs-p "~A = ~S, " "~A = ~S"))
+                 formats)
+           (if (symbolp var)
+               (push (symbol-name var) vals)
+               (push `',var vals))
+           (push var vals))
+         (format-val (val &optional (with-space-p nil))
+           (if with-space-p
+               (push "~S " formats)
+               (push "~S" formats))
+           (push val vals))
+         (format-str (val &optional (with-space-p nil))
+           (if with-space-p
+               (push "~A " formats)
+               (push "~A" formats))
+           (push val vals)))
+      (loop for x on vars
+            as var = (car x)
+            as next = (cdr x)
+            as next-expr-p = (and next (not (stringp (car next))))
+            do (typecase var
+                 ((or string number) (format-str var))
+                 (keyword
+                  (case var
+                    (:br (push "~%" formats))))
+                 (list
+                  (case (car var)
+                    (:tab (setf tabbing (cadr var)))
+                    ((:val :vals)
+                     (mapcar #'format-val (cdr var)
+                             (maplist (lambda (x) (and (cdr x) t))
+                                      (cdr var))))
+                    (t (format-expr var next-expr-p))))
+                 (t (format-expr var next-expr-p))))
+      `(let ((*return-value*))
+         (format *say-io*
+                 ,(join "~&" (apply #'join (nreverse formats)) "~%")
+                 ,@(nreverse vals))
+         *return-value*))))
