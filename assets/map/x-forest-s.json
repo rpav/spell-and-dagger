@@ -1,7 +1,7 @@
 { "height":9,
  "layers":[
         {
-         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 144, 127, 127, 127, 145, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 126, 108, 108, 108, 124, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 126, 108, 108, 108, 124, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 126, 108, 108, 108, 124, 1, 1, 1, 1, 224, 224, 1, 1, 1, 1, 1, 143, 125, 125, 125, 142, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 144, 145, 1, 1, 1, 2, 18, 18, 3, 1, 1, 1, 1, 1, 1, 1, 143, 142, 1, 1, 1, 17, 228, 228, 19, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 54, 17, 233, 233, 19, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 18, 18, 35, 224, 224, 36, 3, 1, 1, 1, 1, 1, 2, 18, 18, 35, 224, 224, 224, 224, 224, 224, 19, 1, 1, 1, 1, 1, 17, 224, 224, 224, 224, 224, 224, 224, 224, 224, 19, 1, 1, 1, 1, 2, 35, 224, 224, 224, 224, 224, 224, 224, 224, 224, 36, 3, 1, 1, 1, 17, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 224, 19, 1],
          "height":9,
          "name":"Ground",
          "opacity":1,
@@ -20,7 +20,7 @@
          "y":0
         }, 
         {
-         "data":[320, 320, 320, 320, 320, 0, 0, 0, 0, 0, 0, 0, 0, 320, 320, 320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 20, 0, 18, 18, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 19, 0, 0, 222, 222, 223, 313, 0, 0, 0, 0, 0, 0, 0, 0, 320, 36, 18, 0, 223, 224, 223, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 220, 222, 0, 0, 0, 0, 313, 0, 0, 0, 0, 0, 0, 0, 0, 320, 220, 222, 223, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 223, 320, 320, 320, 241, 320, 320, 320, 241, 241, 320, 320, 320, 320, 241, 320],
+         "data":[320, 320, 320, 320, 320, 320, 0, 0, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 0, 0, 0, 0, 0, 277, 278, 279, 320, 320, 320, 320, 20, 38, 0, 320, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 320, 320, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 18, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 222, 223, 0, 0, 0, 0, 0, 221, 222, 223, 0, 0, 220, 0, 0, 0, 222, 223, 0, 0, 221, 222, 223, 227, 228, 229, 0, 0, 226, 0, 220, 221, 0, 0, 0, 0, 227, 228, 229, 232, 233, 234, 0, 0, 231, 0, 0, 320, 320, 320, 320, 223, 232, 233, 234, 0, 0, 0, 0, 0, 0, 220, 320, 320],
          "height":9,
          "name":"OnGround",
          "opacity":1,
@@ -39,7 +39,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 20, 20, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 272, 273, 274, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"Char+",
          "opacity":1,
@@ -58,7 +58,7 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 312, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 322, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 321, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"Char++",
          "opacity":1,
@@ -83,25 +83,6 @@
          "name":"collision",
          "objects":[
                 {
-                 "height":16,
-                 "id":1,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":80,
-                 "x":0,
-                 "y":0
-                }, 
-                {
                  "height":32,
                  "id":2,
                  "name":"",
@@ -116,12 +97,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32,
-                 "x":224,
+                 "width":64,
+                 "x":0,
                  "y":0
                 }, 
                 {
-                 "height":64,
+                 "height":16,
                  "id":3,
                  "name":"",
                  "properties":
@@ -135,9 +116,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":208,
-                 "y":48
+                 "width":48,
+                 "x":0,
+                 "y":128
                 }, 
                 {
                  "height":16,
@@ -154,127 +135,32 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":48,
-                 "x":16,
-                 "y":128
-                }, 
-                {
-                 "height":128,
-                 "id":7,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A short cliff."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":0,
-                 "y":16
-                }, 
-                {
-                 "height":80,
-                 "id":8,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A short cliff with the cave you used to exit."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":16,
-                 "y":16
-                }, 
-                {
-                 "height":80,
-                 "id":9,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A short cliff."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
                  "width":32,
-                 "x":224,
-                 "y":32
-                }, 
-                {
-                 "height":16,
-                 "id":10,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Tree stump."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
                  "x":64,
-                 "y":64
-                }, 
-                {
-                 "height":16,
-                 "id":12,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Tree stump."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":96
-                }, 
-                {
-                 "height":32,
-                 "id":13,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":208,
                  "y":0
                 }, 
                 {
                  "height":16,
-                 "id":14,
+                 "id":5,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":32
+                }, 
+                {
+                 "height":48,
+                 "id":6,
                  "name":"",
                  "properties":
                     {
@@ -288,31 +174,12 @@
                  "type":"",
                  "visible":true,
                  "width":48,
-                 "x":80,
-                 "y":128
+                 "x":208,
+                 "y":0
                 }, 
                 {
-                 "height":16,
-                 "id":15,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"Some bushes."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":160,
-                 "y":128
-                }, 
-                {
-                 "height":16,
-                 "id":16,
+                 "height":32,
+                 "id":7,
                  "name":"",
                  "properties":
                     {
@@ -327,15 +194,91 @@
                  "visible":true,
                  "width":16,
                  "x":240,
-                 "y":128
+                 "y":48
                 }, 
                 {
-                 "height":16,
-                 "id":17,
+                 "height":32,
+                 "id":8,
                  "name":"",
                  "properties":
                     {
-                     "text":"A rock."
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":112
+                }, 
+                {
+                 "height":32,
+                 "id":10,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":11,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Some bushes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":128,
+                 "y":0
+                }, 
+                {
+                 "height":80,
+                 "id":12,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A short cliff.  Too high to climb.  What happened to the tree?"
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":0,
+                 "y":32
+                }, 
+                {
+                 "height":48,
+                 "id":13,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A short cliff.  Not very interesting."
                     },
                  "propertytypes":
                     {
@@ -346,34 +289,15 @@
                  "visible":true,
                  "width":16,
                  "x":224,
-                 "y":128
+                 "y":64
                 }, 
                 {
                  "height":16,
-                 "id":19,
+                 "id":16,
                  "name":"",
                  "properties":
                     {
-                     "text":"A rock."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":15.3333333333333,
-                 "x":144,
-                 "y":128
-                }, 
-                {
-                 "height":16,
-                 "id":20,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"A rock."
+                     "text":"A large tree blocks the path to .. some bushes."
                     },
                  "propertytypes":
                     {
@@ -383,16 +307,73 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":128,
-                 "y":128
+                 "x":160,
+                 "y":16
                 }, 
                 {
-                 "height":16,
+                 "height":112,
+                 "id":17,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A deep chasm.  "
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":160,
+                 "y":32
+                }, 
+                {
+                 "height":64,
                  "id":21,
                  "name":"",
                  "properties":
                     {
-                     "text":"A rock."
+                     "text":"A deep chasm.  "
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":112,
+                 "y":80
+                }, 
+                {
+                 "height":48,
+                 "id":22,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A deep chasm.  "
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":64,
+                 "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":23,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A deep chasm.  "
                     },
                  "propertytypes":
                     {
@@ -402,7 +383,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":64,
+                 "x":48,
                  "y":128
                 }],
          "opacity":1,
@@ -417,7 +398,26 @@
          "draworder":"topdown",
          "height":9,
          "name":"interacts",
-         "objects":[],
+         "objects":[
+                {
+                 "height":16,
+                 "id":19,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A hole in the ground.  Was this here before?"
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"simple-text",
+                 "visible":true,
+                 "width":16,
+                 "x":224,
+                 "y":112
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":false,
@@ -433,14 +433,22 @@
          "objects":[
                 {
                  "height":16,
-                 "id":11,
-                 "name":"cave-forest",
+                 "id":20,
+                 "name":"hole",
+                 "properties":
+                    {
+                     "map":"cave1"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string"
+                    },
                  "rotation":0,
-                 "type":"nil",
+                 "type":"link",
                  "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":96
+                 "width":6.75,
+                 "x":233.25,
+                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -449,17 +457,17 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":22,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "properties":
     {
-     "e":"x-forest-s",
-     "n":"x-forest-w"
+     "n":"x-forest",
+     "w":"x-forest-sw"
     },
  "propertytypes":
     {
-     "e":"string",
-     "n":"string"
+     "n":"string",
+     "w":"string"
     },
  "renderorder":"right-up",
  "tileheight":16,
@@ -475,6 +483,10 @@
         {
          "firstgid":311,
          "source":"tm\/forest.json"
+        }, 
+        {
+         "firstgid":344,
+         "source":"tm\/cave.json"
         }],
  "tilewidth":16,
  "version":1,
