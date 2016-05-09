@@ -309,5 +309,6 @@
 (defmethod entity-interact ((e pickup-dagger) (g game-char))
   (setf (game-value :has-dagger) t)
   (map-remove (current-map) e)
-  (show-textbox "You grab the dagger stuck in the ground. This might help with those blobs, but you're still not sure how to get out. (Press Z to attack.)")
-  (map-change "x-dungeon"))
+  (show-textbox "You grab the dagger stuck in the ground. This might help with those blobs, but you're still not sure how to get out. (Press Z to attack.)
+Monsters appeared!")
+  (map-change "x-dungeon" (entity-pos g)))

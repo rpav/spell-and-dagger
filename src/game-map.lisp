@@ -24,6 +24,7 @@
     ;; This should probably be done via GF, but
     (typecase target
       (gk-vec2 target)
+      (gk-vec3 target)
       (t (let* ((ob (tilemap-find-object tilemap "objects" (or target "start"))))
            (values (let ((x (or (aval :x ob) 0))
                          (y (or (aval :y ob) 0)))
