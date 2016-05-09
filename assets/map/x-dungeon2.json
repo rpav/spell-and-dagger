@@ -476,6 +476,38 @@
                  "width":16,
                  "x":48,
                  "y":32
+                }, 
+                {
+                 "height":7,
+                 "id":42,
+                 "name":"x-cave",
+                 "properties":
+                    {
+                     "map":"x-cave",
+                     "target":"dungeon-cave"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string",
+                     "target":"string"
+                    },
+                 "rotation":0,
+                 "type":"link",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":44,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112.333333333333,
+                 "y":10
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -484,7 +516,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":42,
+ "nextobjectid":45,
  "orientation":"orthogonal",
  "properties":
     {
