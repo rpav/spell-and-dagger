@@ -309,6 +309,28 @@
                  "width":16,
                  "x":48,
                  "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":22,
+                 "name":"start",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":23,
+                 "name":"cave-forest",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -317,7 +339,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":21,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "properties":
     {

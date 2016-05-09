@@ -1,7 +1,7 @@
 { "height":9,
  "layers":[
         {
-         "data":[0, 0, 94, 94, 93, 90, 88, 100, 94, 93, 94, 90, 93, 94, 89, 93, 0, 0, 19, 10, 7, 7, 7, 8, 7, 7, 34, 17, 16, 87, 87, 87, 0, 0, 0, 12, 7, 34, 16, 35, 34, 16, 18, 20, 19, 19, 20, 19, 0, 0, 0, 6, 7, 13, 20, 12, 11, 20, 19, 0, 0, 0, 0, 0, 4, 2, 4, 39, 34, 18, 0, 12, 9, 0, 0, 0, 0, 0, 0, 0, 16, 17, 17, 15, 18, 19, 0, 12, 13, 0, 0, 0, 0, 0, 0, 0, 19, 20, 20, 19, 19, 0, 0, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 5, 0, 0, 10, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 9, 0, 0, 10, 13, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 94, 94, 93, 90, 88, 100, 94, 93, 94, 90, 93, 94, 89, 93, 0, 0, 19, 10, 7, 7, 7, 8, 7, 7, 34, 17, 16, 87, 87, 87, 0, 0, 0, 12, 7, 7, 8, 7, 8, 7, 13, 20, 19, 19, 20, 19, 0, 0, 0, 6, 7, 34, 16, 35, 34, 16, 18, 0, 0, 0, 0, 0, 4, 2, 4, 39, 34, 18, 20, 12, 11, 20, 19, 0, 0, 0, 0, 0, 16, 17, 17, 15, 18, 19, 0, 12, 13, 0, 0, 0, 0, 0, 0, 0, 19, 20, 20, 19, 19, 0, 0, 10, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 5, 0, 0, 10, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 9, 0, 0, 10, 13, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "name":"Ground",
          "opacity":1,
@@ -102,7 +102,7 @@
                  "y":32
                 }, 
                 {
-                 "height":96,
+                 "height":80,
                  "id":33,
                  "name":"",
                  "properties":
@@ -118,10 +118,10 @@
                  "visible":true,
                  "width":32,
                  "x":144,
-                 "y":48
+                 "y":64
                 }, 
                 {
-                 "height":96,
+                 "height":80,
                  "id":34,
                  "name":"",
                  "properties":
@@ -137,7 +137,7 @@
                  "visible":true,
                  "width":16,
                  "x":96,
-                 "y":48
+                 "y":64
                 }, 
                 {
                  "height":64,
@@ -320,7 +320,7 @@
                  "visible":true,
                  "width":16,
                  "x":128,
-                 "y":32
+                 "y":48
                 }, 
                 {
                  "height":16,
@@ -355,7 +355,7 @@
                  "visible":true,
                  "width":16,
                  "x":112,
-                 "y":32
+                 "y":48
                 }, 
                 {
                  "gid":111,
@@ -379,7 +379,7 @@
                  "visible":true,
                  "width":16,
                  "x":96,
-                 "y":32
+                 "y":48
                 }, 
                 {
                  "gid":164,
@@ -508,6 +508,54 @@
                  "width":16,
                  "x":112,
                  "y":6.33333333333333
+                }, 
+                {
+                 "gid":111,
+                 "height":16,
+                 "id":45,
+                 "name":"",
+                 "properties":
+                    {
+                     "broken":"forest\/f_004.png",
+                     "btext":"Only a few ashes left.",
+                     "text":"A thorny tangle of brush. If you had some way to set it on fire, you might be able to get through."
+                    },
+                 "propertytypes":
+                    {
+                     "broken":"string",
+                     "btext":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"fireball-breakable",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":32
+                }, 
+                {
+                 "gid":111,
+                 "height":16,
+                 "id":47,
+                 "name":"",
+                 "properties":
+                    {
+                     "broken":"forest\/f_004.png",
+                     "btext":"Only a few ashes left.",
+                     "text":"A thorny tangle of brush. If you had some way to set it on fire, you might be able to get through."
+                    },
+                 "propertytypes":
+                    {
+                     "broken":"string",
+                     "btext":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"fireball-breakable",
+                 "visible":true,
+                 "width":16,
+                 "x":128.909090909091,
+                 "y":31.2727272727273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -516,7 +564,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":45,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "properties":
     {

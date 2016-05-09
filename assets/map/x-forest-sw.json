@@ -178,7 +178,7 @@
                  "y":16
                 }, 
                 {
-                 "height":80,
+                 "height":64,
                  "id":8,
                  "name":"",
                  "properties":
@@ -404,6 +404,44 @@
                  "width":16,
                  "x":64,
                  "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":27,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A short cliff with the cave you used to exit."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":16,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":28,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A short cliff with the cave you used to exit."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -517,6 +555,27 @@
                  "width":16,
                  "x":172.333333333333,
                  "y":90.3333333333333
+                }, 
+                {
+                 "height":10.5454545454545,
+                 "id":29,
+                 "name":"x-cave",
+                 "properties":
+                    {
+                     "map":"x-cave",
+                     "target":"cave-forest"
+                    },
+                 "propertytypes":
+                    {
+                     "map":"string",
+                     "target":"string"
+                    },
+                 "rotation":0,
+                 "type":"link",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -525,7 +584,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":26,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "properties":
     {
