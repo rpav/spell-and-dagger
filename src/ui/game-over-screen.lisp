@@ -20,7 +20,10 @@
 (defmethod key-event ((s game-over-screen) key state)
   (when (eq state :keydown)
     (case key
-      (:scancode-z (ps-pop-to 'title-phase)))))
+      (:scancode-z (ps-back))
+      (:scancode-a (ps-back))
+      (:scancode-x (ps-back))
+      (:scancode-s (ps-back)))))
 
 (defclass the-end-screen (game-over-screen) ())
 

@@ -9,3 +9,6 @@
     (setf (current-map) nil)
     (setf (current-char) nil)
     (setf (ui-visible screen) t)))
+
+(defmethod phase-back ((p game-over-phase))
+  (ps-pop-to 'title-phase))

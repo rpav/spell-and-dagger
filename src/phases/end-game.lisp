@@ -16,3 +16,6 @@
 
 (defmethod phase-show-textbox ((phase end-game-phase) text)
   (ps-interrupt (make-instance 'text-phase :map nil :text text)))
+
+(defmethod phase-back ((p end-game-phase))
+  (ps-pop-to 'title-phase))
