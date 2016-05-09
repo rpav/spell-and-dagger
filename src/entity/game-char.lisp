@@ -48,7 +48,7 @@
    (eqp-spell :initform nil :accessor char-spell)
    (state :initform :moving)
    (motion-mask :initform 0)
-   (wpn-box :initform (box 4 4 8 8))
+   (wpn-box :initform (box 0 0 16 16))
    (wpn-pos :initform (gk-vec2 0 0))
    wpn-sprite
    anim anim-state

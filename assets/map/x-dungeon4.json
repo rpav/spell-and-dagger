@@ -542,8 +542,8 @@
                  "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":35.6666666666667,
-                 "y":11.3333333333333
+                 "x":80,
+                 "y":32
                 }, 
                 {
                  "height":16,
@@ -561,8 +561,8 @@
                  "type":"spawner",
                  "visible":true,
                  "width":16,
-                 "x":59,
-                 "y":11.3333333333333
+                 "x":32,
+                 "y":80
                 }, 
                 {
                  "height":16,
@@ -582,6 +582,63 @@
                  "width":16,
                  "x":240,
                  "y":96
+                }, 
+                {
+                 "height":16,
+                 "id":57,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":58,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":128
+                }, 
+                {
+                 "height":16,
+                 "id":59,
+                 "name":"bat",
+                 "properties":
+                    {
+                     "type":"tiny16\/bat"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"spawner",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -590,7 +647,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":57,
+ "nextobjectid":60,
  "orientation":"orthogonal",
  "properties":
     {
