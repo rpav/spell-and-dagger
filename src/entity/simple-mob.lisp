@@ -1,5 +1,9 @@
 (in-package :game)
 
+(defparameter +simple-mob-bbox+
+  (cons (gk-vec2 2 2)
+        (gk-vec2 14 12)))
+
 (defclass simple-mob (actor)
   ((life :initform 3)
    (state :initform :starting)
@@ -17,6 +21,10 @@
       (setf anim (make-instance 'anim-sprite :name name))
       (setf anim-state (animation-instance anim sprite))
       (anim-play *anim-manager* anim-state))))
+
+(defmethod entity-box ((e simple-mob))
+  (with-slots (pos) e
+    (values +simple-mob-bbox+ pos)))
 
 (defmethod entity-attacked ((e simple-mob) a w)
   (with-slots (anim anim-state life hit-name) e

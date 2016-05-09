@@ -488,11 +488,13 @@
  "orientation":"orthogonal",
  "properties":
     {
+     "e":"x-dungeon",
      "s":"x-dungeon4",
      "w":"x-dungeon3"
     },
  "propertytypes":
     {
+     "e":"string",
      "s":"string",
      "w":"string"
     },

@@ -78,8 +78,7 @@
 (defmethod kit.sdl2:keyboard-event ((window game-window) state ts repeat-p keysym)
   (with-game-state (window)
     (let ((scancode (sdl2:scancode keysym)))
-      (when (or (eq :scancode-escape scancode)
-                (eq :scancode-q scancode))
+      (when (or (eq :scancode-escape scancode))
         (kit.sdl2:close-window window))
       (unless repeat-p
         (when-let (screen (current-screen))

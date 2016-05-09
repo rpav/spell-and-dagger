@@ -303,6 +303,17 @@
                  "width":16,
                  "x":160,
                  "y":64
+                }, 
+                {
+                 "height":16,
+                 "id":16,
+                 "name":"start",
+                 "rotation":0,
+                 "type":"nil",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -311,7 +322,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":16,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tileheight":16,

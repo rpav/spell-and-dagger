@@ -5,13 +5,21 @@
    (type :initform nil)
    (mob :initform nil)))
 
+(defparameter +spawner-bbox+
+  (cons (gk-vec2 4 4)
+        (gk-vec2 8 8)))
+
 (defmethod initialize-instance :after ((s spawner) &key props &allow-other-keys)
-  (with-slots ((_type type)) s
+  (with-slots ((_type type) size) s
     (let* ((type (aval :type props))
            (anim (find-anim (asset-anims *assets*) type)))
       (if anim
           (setf _type type)
           (format t "Warning: spawner can't find type ~S~%" type)))))
+
+(defmethod entity-box ((e spawner))
+  (with-slots (pos) e
+    (values +spawner-bbox+ pos)))
 
 (defmethod entity-solid-p ((e spawner)) nil)
 

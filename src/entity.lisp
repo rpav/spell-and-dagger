@@ -37,7 +37,8 @@ if `B` is \"left of\" `A`, return `+motion-left+`."
    (sprite :initform nil :initarg :sprite :accessor entity-sprite)
    (props :initform nil :initarg :props)))
 
-(defmethod initialize-instance :after ((e entity) &key pos size &allow-other-keys)
+(defmethod initialize-instance ((e entity) &key pos size &allow-other-keys)
+  (call-next-method)
   (with-slots ((_pos pos) (_size size)) e
     ;; Using set-vec2 makes it so everyone can specify them.  We don't use Z.
     (when pos (set-vec2 _pos pos))
