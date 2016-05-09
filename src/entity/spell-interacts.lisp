@@ -21,6 +21,10 @@
 
 (defmethod entity-solid-p ((e breakable-base)) (not (breakable-brokenp e)))
 
+(defmethod entity-magic-hit :around ((e breakable-base) m)
+  (with-slots (brokenp) e
+    (unless brokenp (call-next-method))))
+
 (defmethod entity-interact ((e breakable-base) a)
   (with-slots (brokenp props) e
     (if brokenp
@@ -33,11 +37,11 @@
 
 (defmethod entity-magic-hit ((e breakable) (m spell-explode))
   (breakable-do-break e)
-  (map-add (current-map)
-           (if (< (random 1.0) 0.5)
-               (if (< (random 1.0) 0.5)
-                   (make-instance 'powerup-life :pos (entity-pos e))
-                   (make-instance 'powerup-magic :pos (entity-pos e))))))
+  (when-let ((powerup (if (< (random 1.0) 0.5)
+                          (if (< (random 1.0) 0.5)
+                              (make-instance 'powerup-life :pos (entity-pos e))
+                              (make-instance 'powerup-magic :pos (entity-pos e))))))
+    (map-add (current-map) powerup)))
 
  ;; fireball-breakable
 
