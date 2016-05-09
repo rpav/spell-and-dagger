@@ -99,9 +99,12 @@
           (default-interact e nil)))))
 
 (defmethod entity-action ((e game-char) (a (eql :btn3)))
-  (when (char-spell e)
-    (setf (entity-state e) :casting)
-    (game-char-play-cast e)))
+  (when-let (spell (char-spell e))
+    (let ((cost (spell-cost (car spell))))
+      (when (> (char-magic e) cost)
+        (decf (char-magic e) cost)
+        (setf (entity-state e) :casting)
+        (game-char-play-cast e)))))
 
 (defun char-teach-spell (e spell-name)
   (pushnew spell-name (char-spells e))

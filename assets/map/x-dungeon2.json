@@ -501,13 +501,13 @@
                 {
                  "height":16,
                  "id":44,
-                 "name":"",
+                 "name":"dungeon-cave",
                  "rotation":0,
-                 "type":"",
+                 "type":"nil",
                  "visible":true,
                  "width":16,
-                 "x":112.333333333333,
-                 "y":10
+                 "x":112,
+                 "y":6.33333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",

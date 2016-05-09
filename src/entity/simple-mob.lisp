@@ -26,14 +26,23 @@
   (with-slots (pos) e
     (values +simple-mob-bbox+ pos)))
 
+(defun spawn-simple-random-powerup (pos &key (pct 0.5) bounce)
+  (let ((r (random 1.0)))
+    (when (< r pct)
+      (let* ((r (random 1.0))
+             (type (cond
+                     ((< r 0.5) 'powerup-life)
+                     ((< r 1.0) 'powerup-magic))))
+        (when type
+          (map-add (current-map)
+                   (make-instance type :bounce-in bounce :pos pos)))))))
+
 (defmethod entity-attacked ((e simple-mob) a w)
   (with-slots (anim anim-state life hit-name) e
     (decf life)
     (if (actor-dead-p e)
         (unless (eq (entity-state e) :die)
-          (map-add (current-map) (make-instance 'powerup-life
-                                   :bounce-in t
-                                   :pos (entity-pos e)))
+          (spawn-simple-random-powerup (entity-pos e) :bounce t)
           (setf (entity-state e) :die
                 (entity-motion e) +motion-none+
                 (anim-sprite-anim anim) (find-anim (asset-anims *assets*) "fx/splat")

@@ -14,6 +14,11 @@
   (:documentation "Return the index for `SPELL`'s icon.")
   (:method (s) (find-frame (asset-sheet *assets*) "nosprite.png")))
 
+;;; This is kinda dumb.  We need a real inventory system to keep spell
+;;; instances.  Then it'll just be a slot value.
+(defgeneric spell-cost (spell)
+  (:method (s) 0.0))
+
 (defmethod initialize-instance :after ((e spell) &key &allow-other-keys)
   (with-slots (anim anim-state sprite) e
     (setf anim-state (animation-instance anim sprite)
@@ -67,6 +72,8 @@
 
 (defmethod spell-icon ((s (eql 'spell-fireball)))
   (find-anim-frame (asset-anims *assets*) "spell/ias-fireball" 0))
+
+(defmethod spell-cost ((s (eql 'spell-fireball))) 2.0)
 
 (defmethod entity-touch ((e1 spell-fireball) o)
   (entity-magic-hit o e1)
