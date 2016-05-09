@@ -160,6 +160,48 @@
                  "width":16,
                  "x":128,
                  "y":32
+                }, 
+                {
+                 "height":16,
+                 "id":110,
+                 "name":"npc",
+                 "properties":
+                    {
+                     "sprite-name":"tiny16\/kidf-",
+                     "text":"Do you like trees?"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":111,
+                 "name":"npc",
+                 "properties":
+                    {
+                     "sprite-name":"tiny16\/kidm-",
+                     "text":"I'm supposed to be doing chores.  Don't tell anyone."
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":96
                 }],
          "opacity":1,
          "properties":
@@ -682,7 +724,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":109,
+ "nextobjectid":112,
  "orientation":"orthogonal",
  "properties":
     {

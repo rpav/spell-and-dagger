@@ -270,6 +270,27 @@
                  "width":16,
                  "x":144,
                  "y":88
+                }, 
+                {
+                 "height":16,
+                 "id":32,
+                 "name":"npc",
+                 "properties":
+                    {
+                     "sprite-name":"tiny16\/kidf-",
+                     "text":"When I grow up, I'm going to wear armor all the time."
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -291,7 +312,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":32,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

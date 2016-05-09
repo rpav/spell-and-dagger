@@ -32,6 +32,12 @@
   (cons (gk-vec2 4 1)
         (gk-vec2 7 4)))
 
+(defparameter +interact-box-left+ (box -1 7 4 2))
+(defparameter +interact-box-right+ (box 2 7 14 2))
+
+(defparameter +interact-box-up+ (box 7 0 2 16))
+(defparameter +interact-box-down+ (box 7 -4 2 16))
+
 ;;; Note how trivial it is to add diagonals here
 (defparameter +motion-mask+
   `((,+motion-left+  . #b1000)
@@ -44,7 +50,7 @@
    (max-life :initform 5 :accessor char-max-life)
    (magic :initform 5 :reader char-magic)
    (max-magic :initform 5 :accessor char-max-magic)
-   (spells :initform (list 'spell-fireball) :accessor char-spells)
+   (spells :initform nil :accessor char-spells)
    (eqp-spell :initform nil :accessor char-spell)
    (state :initform :moving)
    (motion-mask :initform 0)
@@ -90,13 +96,16 @@
     (game-char-play-attack e)))
 
 (defmethod entity-action ((e game-char) (a (eql :btn2)))
-  (with-slots (wpn-box wpn-pos) e
-    (game-char-update-wpn-box e)
-    (let* ((map (current-map))
-           (matches (delete e (map-find-in-box map wpn-box wpn-pos))))
-      (if matches
-          (entity-interact (car matches) e)
-          (default-interact e nil)))))
+  (let* ((map (current-map))
+         (box (switch ((actor-facing e))
+                (+motion-up+ +interact-box-up+)
+                (+motion-down+ +interact-box-down+)
+                (+motion-left+ +interact-box-left+)
+                (+motion-right+ +interact-box-right+)))
+         (matches (delete e (map-find-in-box map box (entity-pos e)))))
+    (if matches
+        (entity-interact (car matches) e)
+        (default-interact e nil))))
 
 (defmethod entity-action ((e game-char) (a (eql :btn3)))
   (when-let (spell (char-spell e))

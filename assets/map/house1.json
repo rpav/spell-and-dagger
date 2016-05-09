@@ -184,6 +184,27 @@
                  "width":16,
                  "x":144,
                  "y":88
+                }, 
+                {
+                 "height":16,
+                 "id":24,
+                 "name":"npc",
+                 "properties":
+                    {
+                     "sprite-name":"townfolk\/f-",
+                     "text":"Shouldn't you be studying?"
+                    },
+                 "propertytypes":
+                    {
+                     "sprite-name":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -262,7 +283,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":24,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,
