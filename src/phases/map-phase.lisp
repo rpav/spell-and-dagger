@@ -4,7 +4,6 @@
   ((map-screen :initform (make-instance 'map-screen))))
 
 (defmethod initialize-instance :after ((p map-phase) &key &allow-other-keys)
-  (:say "new map phase")
   (with-slots ((ms map-screen)) p
     (let* ((sprite
              (make-instance 'sprite
