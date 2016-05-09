@@ -2,6 +2,7 @@
 
 (defclass spawner (entity)
   ((last-dead-time :initform nil)
+   (did-spawn-p :initform nil)
    (type :initform nil)
    (mob :initform nil)))
 
@@ -39,12 +40,8 @@
           (map-add (current-map) mob)))))
 
 (defmethod entity-update ((e spawner))
-  (with-slots (type last-dead-time mob) e
+  (with-slots (type did-spawn-p mob) e
     (when type
-      (when (and mob (actor-dead-p mob) (not last-dead-time))
-        (setf last-dead-time *time*))
-      (if last-dead-time
-          (let ((d (- *time* last-dead-time)))
-            (when (> d 3) (spawner-spawn e)))
-          (if (not mob)
-              (spawner-spawn e))))))
+      (unless did-spawn-p
+        (if (not mob)
+            (spawner-spawn e))))))
