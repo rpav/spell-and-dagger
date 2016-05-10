@@ -1,7 +1,10 @@
 (in-package :game)
 
 (defun get-path (&rest dirs)
-  (let* ((argv0 (first sb-ext:*posix-argv*))
+  (let* ((argv0 (if build:*binary*
+                    (first sb-ext:*posix-argv*)
+                    (asdf:component-pathname
+                     (asdf:find-system :spell-and-dagger))))
          (path (merge-pathnames (string-join dirs "/") argv0)))
     (unless (probe-file path)
       (error "File not found: ~A" path))
