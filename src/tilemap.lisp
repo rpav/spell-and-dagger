@@ -80,8 +80,8 @@
       (setf s (make-array len
                           :initial-contents
                           (mapcar (lambda (x)
-                                    (load-tileset (autowrap:asdf-path :spell-and-dagger :assets :maps
-                                                                      (aval :source x))))
+                                    (load-tileset (get-path "assets" "map"
+                                                            (aval :source x))))
                                   sets))))))
 
 (defun tms-find (tms num)
