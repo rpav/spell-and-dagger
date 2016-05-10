@@ -129,10 +129,7 @@
   (let ((char (current-char)))
     (setf (current-map)
           (make-instance 'game-map
-            :map
-            (merge-pathnames
-             (string+ map ".json")
-             (autowrap:asdf-path :spell-and-dagger :assets :maps))))
+            :map (get-path "assets" "map" (string+ map ".json"))))
     (multiple-value-bind (map-target props)
         (map-find-start (current-map) target)
       (setf (entity-pos char) map-target)

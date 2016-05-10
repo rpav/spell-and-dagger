@@ -3,13 +3,21 @@
 
 (in-package :spell-and-dagger.asdf)
 
+(defsystem :spell-and-dagger/pre
+  :depends-on (:cffi)
+  :serial t
+  :pathname "src"
+  :components
+  ((:file "presetup")))
+
 (defsystem :spell-and-dagger
   :description "Spell & Dagger: Lisp Game Jam 2016 Q2 entry"
   :author "Ryan Pavlik"
   :license "GPL2"
   :version "0.0"
 
-  :depends-on (:alexandria :defpackage-plus
+  :depends-on (:spell-and-dagger/pre
+               :alexandria :defpackage-plus
                :cl-json :cl-ppcre :sdl2kit :gamekernel)
   :serial t
 

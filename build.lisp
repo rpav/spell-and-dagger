@@ -58,9 +58,10 @@
 
 (sb-ext:save-lisp-and-die *binary*
 			  :toplevel (lambda ()
-				      (sb-posix:putenv
-				       (format nil "SBCL_HOME=~A" 
-				      	       #.(sb-ext:posix-getenv "SBCL_HOME")))
+                                      (sb-ext:disable-debugger)
+                                      (setup-library-paths)
+                                      (gk.raw:load-gk-library)
 				      (funcall (read-from-string *startup*))
 				      0)
 			  :executable t)
+

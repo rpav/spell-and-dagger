@@ -1,5 +1,12 @@
 (in-package :game)
 
+(defun get-path (&rest dirs)
+  (let* ((argv0 (first sb-ext:*posix-argv*))
+         (path (merge-pathnames (string-join dirs "/") argv0)))
+    (unless (probe-file path)
+      (error "File not found: ~A" path))
+    path))
+
 (defclass asset-pack ()
   ((title :reader asset-title)
    (proj :initform (gk-mat4) :reader asset-proj)
@@ -13,15 +20,15 @@
       (with-bundle (b)
         (let* ((config (make-instance 'cmd-list :subsystem :config))
                (ortho (cmd-tf-ortho proj 0 256 0 144 -10000 10000))
-               (load-title (cmd-image-create (autowrap:asdf-path :spell-and-dagger :assets :images "title.png")
+               (load-title (cmd-image-create (get-path "assets" "image" "title.png")
                                              :mag :nearest))
                (load-sprites (cmd-spritesheet-create
-                              (autowrap:asdf-path :spell-and-dagger :assets :images "spritesheet.json")
+                              (get-path "assets" "image" "spritesheet.json")
                               :gk-ssf-texturepacker-json
                               :flags '(:flip-y)))
                (load-font (cmd-font-create
                            "hardpixel"
-                           (autowrap:asdf-path :spell-and-dagger :assets :fonts "hardpixel.ttf"))))
+                           (get-path "assets" "font" "hardpixel.ttf"))))
           (cmd-list-append config ortho load-title load-sprites load-font)
           (bundle-append b config)
           (gk:process gk b)
