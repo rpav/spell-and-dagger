@@ -60,7 +60,7 @@
 			  :toplevel (lambda ()
                                       (sb-ext:disable-debugger)
                                       (setup-library-paths)
-                                      (gk.raw:load-gk-library)
+                                      (gk:gk-init)
 				      (funcall (read-from-string *startup*))
 				      0)
 			  :executable t)

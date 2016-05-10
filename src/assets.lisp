@@ -8,6 +8,7 @@
          (path (merge-pathnames (string-join dirs "/") argv0)))
     (unless (probe-file path)
       (error "File not found: ~A" path))
+    (format t "Find ~A~%" path)
     path))
 
 (defclass asset-pack ()
