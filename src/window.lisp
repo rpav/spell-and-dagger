@@ -80,7 +80,10 @@
     (let ((scancode (sdl2:scancode keysym)))
       (when (or (eq :scancode-escape scancode))
         (if build:*binary*
-            (sb-ext:exit)
+            (progn
+              (kit.sdl2:close-window window)
+              (kit.sdl2:quit)
+              (sb-ext:exit))
             (kit.sdl2:close-window window)))
       (unless repeat-p
         (when-let (screen (current-screen))
