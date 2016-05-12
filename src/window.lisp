@@ -89,6 +89,7 @@
           (key-event screen scancode state))))))
 
 (define-start-function run (&key (w 1280) (h 720))
+  (static-startup)
   (sdl2:gl-set-attr :context-major-version 3)
   (sdl2:gl-set-attr :context-minor-version 3)
   (sdl2:gl-set-attr :context-profile-mask 1)
