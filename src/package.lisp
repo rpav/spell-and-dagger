@@ -14,6 +14,7 @@
 (defpackage+-1:defpackage+ :game
   (:use #:cl #:alexandria #:util.rpav-1)
   (:import-except #:gk #:create #:process #:destroy)
+  (:import-from #:kit.sdl2 #:define-start-function)
   (:export #:run))
 
 (in-package :game)
