@@ -58,10 +58,12 @@
 
 (sb-ext:save-lisp-and-die *binary*
 			  :toplevel (lambda ()
-                                      (sb-ext:disable-debugger)
-                                      (setup-library-paths)
-                                      (gk:gk-init)
-				      (funcall (read-from-string *startup*))
-				      0)
+                                      (sdl2:make-this-thread-main
+                                       (lambda ()
+                                         (sb-ext:disable-debugger)
+                                         (setup-library-paths)
+                                         (gk:gk-init)
+                                         (funcall (read-from-string *startup*))
+                                         0)))
 			  :executable t)
 

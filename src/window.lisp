@@ -90,16 +90,14 @@
 
 (defun run (&key (w 1280) (h 720))
   (static-startup)
-  (kit.sdl2:start)
+  (kit.sdl2:init)
   (sdl2:in-main-thread ()
     (sdl2:gl-set-attr :context-major-version 3)
     (sdl2:gl-set-attr :context-minor-version 3)
     (sdl2:gl-set-attr :context-profile-mask 1)
     (sdl2:gl-set-attr :stencil-size 8))
-  (bt:make-thread
-   (lambda () (make-instance 'game-window :w w :h h)))
-  (when build:*binary*
-    (bt:join-thread sdl2::*the-main-thread*)))
+  (make-instance 'game-window :w w :h h)
+  (kit.sdl2:start))
 
 ;;; (run)
 
