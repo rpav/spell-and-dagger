@@ -82,9 +82,7 @@
         (if build:*binary*
             (progn
               (kit.sdl2:close-window window)
-              (kit.sdl2:quit)
-              (sdl2:quit)
-              (cl-user::quit))
+              (kit.sdl2:quit))
             (kit.sdl2:close-window window)))
       (unless repeat-p
         (when-let (screen (current-screen))
@@ -101,13 +99,7 @@
   (bt:make-thread
    (lambda () (make-instance 'game-window :w w :h h)))
   (when build:*binary*
-    (loop while sdl2::*main-thread-channel* do (sleep 2))
-    #++
-    (let ((thread
-            (find "SDL2 Main Thread" (bt:all-threads)
-                  :key 'bt:thread-name
-                  :test 'equalp)))
-      (bt:join-thread thread))))
+    (bt:join-thread sdl2::*the-main-thread*)))
 
 ;;; (run)
 
