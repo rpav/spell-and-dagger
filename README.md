@@ -10,11 +10,15 @@
 
 ## Building
 
-This requires the *absolute latest* of the following:
+This requires the following:
 
 * cl-autowrap        (https://github.com/rpav/cl-autowrap)
 * GameKernel         (https://github.com/rpav/GameKernel)
 * cl-gamekernel      (https://github.com/rpav/cl-gamekernel)
+
+For `GameKernel` and `cl-gamekernel`, use the **tag `lgj-2016-q2`** of
+each to build Spell & Dagger since quite a bit of development has
+taken place on GameKernel since this entry.
 
 Everything else can be quickloaded.
 
